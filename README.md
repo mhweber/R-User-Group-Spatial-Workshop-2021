@@ -1,0 +1,1 @@
+Course material for the first half of Fundamentals and Advanced Hydrologic Spatial Applications in R for the AWRA 2020 Spring Conference Workshop in Austin, TX March 22nd.  See [Fundamentals of Spatial Analysis in R](https://mhweber.github.io/AWRA_2020_R_Spatial/index.html).

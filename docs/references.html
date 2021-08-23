@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>References | Fundamentals of Spatial Analysis in R</title>
+  <meta name="description" content="This is a draft of material for the Fundamentals of Spatial Analysis in R workshop at the AWRA Spring Conference in Austin in March 2020." />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="References | Fundamentals of Spatial Analysis in R" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a draft of material for the Fundamentals of Spatial Analysis in R workshop at the AWRA Spring Conference in Austin in March 2020." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="References | Fundamentals of Spatial Analysis in R" />
+  
+  <meta name="twitter:description" content="This is a draft of material for the Fundamentals of Spatial Analysis in R workshop at the AWRA Spring Conference in Austin in March 2020." />
+  
+
+<meta name="author" content="Marc Weber" />
+
+
+<meta name="date" content="2020-08-09" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="visualizing-spatial-data.html"/>
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+
+
+
+<link rel="stylesheet" href="css\style.css" type="text/css" />
+<link rel="stylesheet" href="css\lesson.css" type="text/css" />
+<link rel="stylesheet" href="css\bootstrap.min.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Fundamentals of Spatial Analysis in R</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#workshop-packages-and-data"><i class="fa fa-check"></i><b>1.1</b> Workshop Packages and Data</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#overview"><i class="fa fa-check"></i><b>1.2</b> Overview</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#r-basics-review"><i class="fa fa-check"></i><b>1.3</b> R Basics Review</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#spatial-data-in-r"><i class="fa fa-check"></i><b>1.4</b> Spatial Data in R</a><ul>
+<li class="chapter" data-level="1.4.1" data-path="index.html"><a href="index.html#challenge"><i class="fa fa-check"></i><b>1.4.1</b> Challenge</a></li>
+<li class="chapter" data-level="1.4.2" data-path="index.html"><a href="index.html#answer"><i class="fa fa-check"></i><b>1.4.2</b> Answer</a></li>
+<li class="chapter" data-level="1.4.3" data-path="index.html"><a href="index.html#r-spatial-package-landscape"><i class="fa fa-check"></i><b>1.4.3</b> R Spatial Package Landscape</a></li>
+<li class="chapter" data-level="1.4.4" data-path="index.html"><a href="index.html#how-did-we-make-this-figure"><i class="fa fa-check"></i><b>1.4.4</b> How did we make this figure?</a></li>
+<li class="chapter" data-level="1.4.5" data-path="index.html"><a href="index.html#answer-1"><i class="fa fa-check"></i><b>1.4.5</b> Answer</a></li>
+<li class="chapter" data-level="1.4.6" data-path="index.html"><a href="index.html#primary-r-spatial-packages"><i class="fa fa-check"></i><b>1.4.6</b> Primary R spatial packages</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#quick-examples"><i class="fa fa-check"></i><b>1.5</b> Quick examples</a><ul>
+<li class="chapter" data-level="1.5.1" data-path="index.html"><a href="index.html#geocoding-example-with-tmaptools-using-open-street-map"><i class="fa fa-check"></i><b>1.5.1</b> Geocoding example with tmaptools using open street map</a></li>
+<li class="chapter" data-level="1.5.2" data-path="index.html"><a href="index.html#run-and-examine-code-chunk-above"><i class="fa fa-check"></i><b>1.5.2</b> Run and examine code chunk above</a></li>
+<li class="chapter" data-level="1.5.3" data-path="index.html"><a href="index.html#answer-2"><i class="fa fa-check"></i><b>1.5.3</b> Answer</a></li>
+<li class="chapter" data-level="1.5.4" data-path="index.html"><a href="index.html#choropleth-map"><i class="fa fa-check"></i><b>1.5.4</b> Choropleth map</a></li>
+<li class="chapter" data-level="1.5.5" data-path="index.html"><a href="index.html#interactive-mapping"><i class="fa fa-check"></i><b>1.5.5</b> Interactive mapping</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="reading-in-spatial-data.html"><a href="reading-in-spatial-data.html"><i class="fa fa-check"></i><b>2</b> Reading in Spatial Data</a><ul>
+<li class="chapter" data-level="2.1" data-path="reading-in-spatial-data.html"><a href="reading-in-spatial-data.html#reading-in-vector-data"><i class="fa fa-check"></i><b>2.1</b> Reading in vector data</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="reading-in-spatial-data.html"><a href="reading-in-spatial-data.html#shapefiles"><i class="fa fa-check"></i><b>2.1.1</b> Shapefiles</a></li>
+<li class="chapter" data-level="2.1.2" data-path="reading-in-spatial-data.html"><a href="reading-in-spatial-data.html#st_read-versus-read_sf"><i class="fa fa-check"></i><b>2.1.2</b> st_read versus read_sf</a></li>
+<li class="chapter" data-level="2.1.3" data-path="index.html"><a href="index.html#answer"><i class="fa fa-check"></i><b>2.1.3</b> Answer</a></li>
+<li class="chapter" data-level="2.1.4" data-path="reading-in-spatial-data.html"><a href="reading-in-spatial-data.html#geodatabases"><i class="fa fa-check"></i><b>2.1.4</b> Geodatabases</a></li>
+<li class="chapter" data-level="2.1.5" data-path="reading-in-spatial-data.html"><a href="reading-in-spatial-data.html#geopackages"><i class="fa fa-check"></i><b>2.1.5</b> Geopackages</a></li>
+<li class="chapter" data-level="2.1.6" data-path="reading-in-spatial-data.html"><a href="reading-in-spatial-data.html#open-spatial-data-sources"><i class="fa fa-check"></i><b>2.1.6</b> Open spatial data sources</a></li>
+<li class="chapter" data-level="2.1.7" data-path="reading-in-spatial-data.html"><a href="reading-in-spatial-data.html#spatial-data-from-r-packages"><i class="fa fa-check"></i><b>2.1.7</b> Spatial data from R packages</a></li>
+<li class="chapter" data-level="2.1.8" data-path="reading-in-spatial-data.html"><a href="reading-in-spatial-data.html#read-in-raster-data"><i class="fa fa-check"></i><b>2.1.8</b> Read in raster data</a></li>
+<li class="chapter" data-level="2.1.9" data-path="reading-in-spatial-data.html"><a href="reading-in-spatial-data.html#read-in-openstreetmap-data"><i class="fa fa-check"></i><b>2.1.9</b> Read in OpenStreetMap data</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="coordinate-reference-systems.html"><a href="coordinate-reference-systems.html"><i class="fa fa-check"></i><b>3</b> Coordinate reference systems</a><ul>
+<li class="chapter" data-level="3.1" data-path="coordinate-reference-systems.html"><a href="coordinate-reference-systems.html#lesson-objectives"><i class="fa fa-check"></i><b>3.1</b> Lesson Objectives</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="coordinate-reference-systems.html"><a href="coordinate-reference-systems.html#why-you-need-to-know-about-crs-working-with-spatial-data-in-r"><i class="fa fa-check"></i><b>3.1.1</b> Why you need to know about CRS working with spatial data in R:</a></li>
+<li class="chapter" data-level="3.1.2" data-path="coordinate-reference-systems.html"><a href="coordinate-reference-systems.html#changes-to-crs-recently-in-r-in-sf"><i class="fa fa-check"></i><b>3.1.2</b> Changes to CRS recently in R in <code>sf</code></a></li>
+<li class="chapter" data-level="3.1.3" data-path="coordinate-reference-systems.html"><a href="coordinate-reference-systems.html#projected-coordinate-systems"><i class="fa fa-check"></i><b>3.1.3</b> Projected coordinate systems</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="vector-data-with-sf.html"><a href="vector-data-with-sf.html"><i class="fa fa-check"></i><b>4</b> Vector data with <code>sf</code></a><ul>
+<li class="chapter" data-level="4.0.1" data-path="vector-data-with-sf.html"><a href="vector-data-with-sf.html#units-in-sf"><i class="fa fa-check"></i><b>4.0.1</b> Units in <code>sf</code></a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="raster-data.html"><a href="raster-data.html"><i class="fa fa-check"></i><b>5</b> Raster data</a></li>
+<li class="chapter" data-level="6" data-path="geoprocessing.html"><a href="geoprocessing.html"><i class="fa fa-check"></i><b>6</b> Geoprocessing</a><ul>
+<li class="chapter" data-level="6.1" data-path="geoprocessing.html"><a href="geoprocessing.html#example-one"><i class="fa fa-check"></i><b>6.1</b> Example one</a></li>
+<li class="chapter" data-level="6.2" data-path="geoprocessing.html"><a href="geoprocessing.html#example-two"><i class="fa fa-check"></i><b>6.2</b> Example two</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="visualizing-spatial-data.html"><a href="visualizing-spatial-data.html"><i class="fa fa-check"></i><b>7</b> Visualizing Spatial Data</a><ul>
+<li class="chapter" data-level="7.1" data-path="visualizing-spatial-data.html"><a href="visualizing-spatial-data.html#lesson-goals"><i class="fa fa-check"></i><b>7.1</b> Lesson Goals</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="visualizing-spatial-data.html"><a href="visualizing-spatial-data.html#chorpleths-with-tmap"><i class="fa fa-check"></i><b>7.1.1</b> Chorpleths with tmap</a></li>
+<li class="chapter" data-level="7.1.2" data-path="visualizing-spatial-data.html"><a href="visualizing-spatial-data.html#leaflet"><i class="fa fa-check"></i><b>7.1.2</b> Leaflet</a></li>
+<li class="chapter" data-level="7.1.3" data-path="visualizing-spatial-data.html"><a href="visualizing-spatial-data.html#mapview"><i class="fa fa-check"></i><b>7.1.3</b> mapview</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a><ul>
+<li class="chapter" data-level="7.1.4" data-path="references.html"><a href="references.html#r-spatial-resources"><i class="fa fa-check"></i><b>7.1.4</b> R Spatial Resources</a></li>
+<li class="chapter" data-level="7.1.5" data-path="references.html"><a href="references.html#r-vector-processing-simple-features-resources"><i class="fa fa-check"></i><b>7.1.5</b> R Vector Processing / Simple Features Resources</a></li>
+<li class="chapter" data-level="7.1.6" data-path="references.html"><a href="references.html#r-raster-resources"><i class="fa fa-check"></i><b>7.1.6</b> R Raster Resources</a></li>
+<li class="chapter" data-level="7.1.7" data-path="references.html"><a href="references.html#r-mapping-resources"><i class="fa fa-check"></i><b>7.1.7</b> R Mapping Resources</a></li>
+<li class="chapter" data-level="7.1.8" data-path="references.html"><a href="references.html#general-r-resources"><i class="fa fa-check"></i><b>7.1.8</b> General R Resources</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/mhweber/AWRA_2020_R_Spatial" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Fundamentals of Spatial Analysis in R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="references" class="section level1 unnumbered">
+<h1>References</h1>
+<div id="r-spatial-resources" class="section level3">
+<h3><span class="header-section-number">7.1.4</span> R Spatial Resources</h3>
+<ul>
+<li><a href="http://rspatial.org/spatial/">R Spatial - <strong>Spatial Data Science with R</strong></a></li>
+<li><a href="https://geocompr.robinlovelace.net/"><strong>Geocomputation with R</strong></a></li>
+<li><a href="https://cran.r-project.org/web/views/Spatial.html"><strong>R Spatial Task View</strong></a></li>
+<li><a href="http://files.zevross.com/workshops/spatial/slides/html/0-deck-list.html"><strong>Modern Geospatial Data Analysis with R by Zev Ross</strong></a></li>
+<li><a href="https://keen-swartz-3146c4.netlify.com/"><strong>Spatial Data Science - Pebesma and Bivand</strong></a></li>
+<li><a href="http://adamwilson.us/SpatialDataScience/index.html"><strong>Spatial Data Science Course- Prof. Adam Wilson</strong></a></li>
+<li><a href="https://cengel.github.io/rspatial/"><strong>Introduction to Mapping and Spatial Analysis with R</strong></a></li>
+<li><a href="https://mhweber.github.io/R-User-Group-Spatial-Workshop-2018/index.html"><strong>R Spatial Workshop for EPA R User Group</strong></a></li>
+<li><a href="https://mgimond.github.io/Spatial/index.html"><strong>Intro to GIS and Spatial Analysis by Manuel Gimond</strong></a></li>
+<li><a href="https://bakaniko.github.io/FOSS4G2019_Geoprocessing_with_R_workshop/"><strong>FOSS4G2019 R for Geospatial Processing</strong></a></li>
+<li><a href="https://bookdown.org/lexcomber/brunsdoncomber2e/"><strong>An Introduction to Spatial Analysis and Mapping in R</strong></a></li>
+<li><a href="https://www.earthdatascience.org/courses/earth-analytics/spatial-data-r/">Earth Analytics Spatial Data in R</a></li>
+</ul>
+</div>
+<div id="r-vector-processing-simple-features-resources" class="section level3">
+<h3><span class="header-section-number">7.1.5</span> R Vector Processing / Simple Features Resources</h3>
+<ul>
+<li><a href="https://r-spatial.github.io/sf/index.html"><strong>Simple Features for R</strong></a></li>
+<li><a href="https://edzer.github.io/UseR2017/"><strong>Spatial Data in R: New Directions</strong></a></li>
+<li><a href="https://github.com/r-spatial/sf/wiki/Migrating"><strong>sp-sf Migration</strong></a></li>
+<li><a href="https://www.jessesadler.com/post/simple-feature-objects/"><strong>An Exploration of Simple Features for R</strong></a></li>
+<li><a href="https://www.azavea.com/blog/2017/08/30/spatial-analysis-pipelines-in-r-with-simple-features/"><strong>Simple Features: Building Spatial Data Pipelines in R</strong></a></li>
+<li><a href="http://strimas.com/r/tidy-sf/"><strong>Tidy spatial data in R: using dplyr, tidyr, and ggplot2 with sf</strong></a></li>
+</ul>
+</div>
+<div id="r-raster-resources" class="section level3">
+<h3><span class="header-section-number">7.1.6</span> R Raster Resources</h3>
+<ul>
+<li><a href="http://geoscripting-wur.github.io/IntroToRaster/">Wageningen University <strong>Intro to Raster</strong></a></li>
+<li><a href="https://geoscripting-wur.github.io/AdvancedRasterAnalysis/">Wageningen University <strong>Advanced Raster Analysis</strong></a></li>
+<li><a href="https://github.com/etiennebr/visualraster"><strong>The Visual Raster Cheat Sheet GitHub Repo</strong></a></li>
+<li><a href="https://oscarperpinan.github.io/rastervis/"><strong>Rastervis</strong></a></li>
+<li><a href="https://r-spatial.github.io/stars/"><strong>stars - spatiotemporal arrays</strong></a></li>
+</ul>
+</div>
+<div id="r-mapping-resources" class="section level3">
+<h3><span class="header-section-number">7.1.7</span> R Mapping Resources</h3>
+<ul>
+<li><a href="https://r-spatial.github.io/mapview/"><strong>mapview</strong></a></li>
+<li><a href="https://rstudio.github.io/leaflet/"><strong>Leaflet for R</strong></a></li>
+<li><a href="https://github.com/mtennekes/tmap"><strong>tmap</strong></a></li>
+<li><a href="http://zevross.com/blog/2018/10/02/creating-beautiful-demographic-maps-in-r-with-the-tidycensus-and-tmap-packages/">Zev Ross <strong>Creating beautiful demographic maps in R with the <code>tidycensus</code> and <code>tmap</code> packages</strong></a></li>
+<li><a href="https://geocompr.robinlovelace.net/adv-map.html">Geocomputation with R: <strong>Making maps with R</strong></a></li>
+<li><a href="https://ryanpeek.github.io/mapping-in-R-workshop/index.html">Ryan Peek: <strong>Mapping in R</strong></a></li>
+</ul>
+</div>
+<div id="general-r-resources" class="section level3">
+<h3><span class="header-section-number">7.1.8</span> General R Resources</h3>
+<ul>
+<li><a href="https://google.github.io/styleguide/Rguide.xml"><strong>Google R Style Guide</strong></a></li>
+<li><a href="http://adv-r.had.co.nz/"><strong>Advanced R by Hadley Wickham</strong></a></li>
+</ul>
+
+</div>
+</div>
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/lesson.js"></script>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="visualizing-spatial-data.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["AWRA_2020_R_Spatial.pdf", "AWRA_2020_R_Spatial.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
