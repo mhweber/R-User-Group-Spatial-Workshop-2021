@@ -10,7 +10,7 @@ bookdown::gitbook:
       before: |
         <li><a href="./">Fundamentals of Spatial Analysis in R</a></li>
       after: |
-        <li><a href="https://github.com/mhweber/AWRA_2020_R_Spatial" target="blank">Published with bookdown</a></li>
+        <li><a href="https://github.com/mhweber/R-User-Group-Spatial-Workshop-2021" target="blank">Published with bookdown</a></li>
     download: ["pdf", "epub"]
 bookdown::pdf_book:
   includes:
