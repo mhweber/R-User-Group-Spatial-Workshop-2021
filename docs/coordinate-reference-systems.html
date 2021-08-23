@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 3 Coordinate reference systems | Fundamentals of Spatial Analysis in R</title>
   <meta name="description" content="This is a draft of material for the Fundamentals of Spatial Analysis in R workshop at the AWRA Spring Conference in Austin in March 2020." />
-  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.23 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 3 Coordinate reference systems | Fundamentals of Spatial Analysis in R" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Marc Weber" />
 
 
-<meta name="date" content="2020-08-09" />
+<meta name="date" content="2021-08-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +33,8 @@
   
 <link rel="prev" href="reading-in-spatial-data.html"/>
 <link rel="next" href="vector-data-with-sf.html"/>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/header-attrs-2.10/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -50,22 +51,39 @@
 
 
 
-<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-1.3.1/leaflet.js"></script>
+<link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
+<script src="libs/proj4-2.6.2/proj4.min.js"></script>
+<script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
+<link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-binding-2.0.4.1/leaflet.js"></script>
+<script src="libs/leaflet-providers-1.9.0/leaflet-providers_1.9.0.js"></script>
+<script src="libs/leaflet-providers-plugin-2.0.4.1/leaflet-providers-plugin.js"></script>
+<link href="libs/HomeButton-0.0.1/home-button.css" rel="stylesheet" />
+<script src="libs/HomeButton-0.0.1/home-button.js"></script>
+<script src="libs/HomeButton-0.0.1/easy-button-src.min.js"></script>
+<script src="libs/clipboard-0.0.1/setClipboardText.js"></script>
+<link href="libs/mapviewCSS-0.0.1/mapview-popup.css" rel="stylesheet" />
+<link href="libs/mapviewCSS-0.0.1/mapview.css" rel="stylesheet" />
 
 
 <style type="text/css">
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -85,7 +103,7 @@ pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-le
 div.sourceCode
   {   }
 @media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -118,9 +136,10 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
-<link rel="stylesheet" href="css\style.css" type="text/css" />
-<link rel="stylesheet" href="css\lesson.css" type="text/css" />
-<link rel="stylesheet" href="css\bootstrap.min.css" type="text/css" />
+
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+<link rel="stylesheet" href="css/lesson.css" type="text/css" />
+<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" />
 </head>
 
 <body>
@@ -136,11 +155,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">Fundamentals of Spatial Analysis in R</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
 <li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#workshop-packages-and-data"><i class="fa fa-check"></i><b>1.1</b> Workshop Packages and Data</a></li>
 <li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#overview"><i class="fa fa-check"></i><b>1.2</b> Overview</a></li>
 <li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#r-basics-review"><i class="fa fa-check"></i><b>1.3</b> R Basics Review</a></li>
-<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#spatial-data-in-r"><i class="fa fa-check"></i><b>1.4</b> Spatial Data in R</a><ul>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#spatial-data-in-r"><i class="fa fa-check"></i><b>1.4</b> Spatial Data in R</a>
+<ul>
 <li class="chapter" data-level="1.4.1" data-path="index.html"><a href="index.html#challenge"><i class="fa fa-check"></i><b>1.4.1</b> Challenge</a></li>
 <li class="chapter" data-level="1.4.2" data-path="index.html"><a href="index.html#answer"><i class="fa fa-check"></i><b>1.4.2</b> Answer</a></li>
 <li class="chapter" data-level="1.4.3" data-path="index.html"><a href="index.html#r-spatial-package-landscape"><i class="fa fa-check"></i><b>1.4.3</b> R Spatial Package Landscape</a></li>
@@ -148,7 +169,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.4.5" data-path="index.html"><a href="index.html#answer-1"><i class="fa fa-check"></i><b>1.4.5</b> Answer</a></li>
 <li class="chapter" data-level="1.4.6" data-path="index.html"><a href="index.html#primary-r-spatial-packages"><i class="fa fa-check"></i><b>1.4.6</b> Primary R spatial packages</a></li>
 </ul></li>
-<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#quick-examples"><i class="fa fa-check"></i><b>1.5</b> Quick examples</a><ul>
+<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#quick-examples"><i class="fa fa-check"></i><b>1.5</b> Quick examples</a>
+<ul>
 <li class="chapter" data-level="1.5.1" data-path="index.html"><a href="index.html#geocoding-example-with-tmaptools-using-open-street-map"><i class="fa fa-check"></i><b>1.5.1</b> Geocoding example with tmaptools using open street map</a></li>
 <li class="chapter" data-level="1.5.2" data-path="index.html"><a href="index.html#run-and-examine-code-chunk-above"><i class="fa fa-check"></i><b>1.5.2</b> Run and examine code chunk above</a></li>
 <li class="chapter" data-level="1.5.3" data-path="index.html"><a href="index.html#answer-2"><i class="fa fa-check"></i><b>1.5.3</b> Answer</a></li>
@@ -156,11 +178,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.5.5" data-path="index.html"><a href="index.html#interactive-mapping"><i class="fa fa-check"></i><b>1.5.5</b> Interactive mapping</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="reading-in-spatial-data.html"><a href="reading-in-spatial-data.html"><i class="fa fa-check"></i><b>2</b> Reading in Spatial Data</a><ul>
-<li class="chapter" data-level="2.1" data-path="reading-in-spatial-data.html"><a href="reading-in-spatial-data.html#reading-in-vector-data"><i class="fa fa-check"></i><b>2.1</b> Reading in vector data</a><ul>
+<li class="chapter" data-level="2" data-path="reading-in-spatial-data.html"><a href="reading-in-spatial-data.html"><i class="fa fa-check"></i><b>2</b> Reading in Spatial Data</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="reading-in-spatial-data.html"><a href="reading-in-spatial-data.html#reading-in-vector-data"><i class="fa fa-check"></i><b>2.1</b> Reading in vector data</a>
+<ul>
 <li class="chapter" data-level="2.1.1" data-path="reading-in-spatial-data.html"><a href="reading-in-spatial-data.html#shapefiles"><i class="fa fa-check"></i><b>2.1.1</b> Shapefiles</a></li>
-<li class="chapter" data-level="2.1.2" data-path="reading-in-spatial-data.html"><a href="reading-in-spatial-data.html#st_read-versus-read_sf"><i class="fa fa-check"></i><b>2.1.2</b> st_read versus read_sf</a></li>
-<li class="chapter" data-level="2.1.3" data-path="index.html"><a href="index.html#answer"><i class="fa fa-check"></i><b>2.1.3</b> Answer</a></li>
+<li class="chapter" data-level="2.1.2" data-path="reading-in-spatial-data.html"><a href="reading-in-spatial-data.html#st_read-versus-read_sf"><i class="fa fa-check"></i><b>2.1.2</b> <code>st_read</code> versus <code>read_sf</code></a></li>
+<li class="chapter" data-level="2.1.3" data-path="reading-in-spatial-data.html"><a href="reading-in-spatial-data.html#answer-3"><i class="fa fa-check"></i><b>2.1.3</b> Answer</a></li>
 <li class="chapter" data-level="2.1.4" data-path="reading-in-spatial-data.html"><a href="reading-in-spatial-data.html#geodatabases"><i class="fa fa-check"></i><b>2.1.4</b> Geodatabases</a></li>
 <li class="chapter" data-level="2.1.5" data-path="reading-in-spatial-data.html"><a href="reading-in-spatial-data.html#geopackages"><i class="fa fa-check"></i><b>2.1.5</b> Geopackages</a></li>
 <li class="chapter" data-level="2.1.6" data-path="reading-in-spatial-data.html"><a href="reading-in-spatial-data.html#open-spatial-data-sources"><i class="fa fa-check"></i><b>2.1.6</b> Open spatial data sources</a></li>
@@ -169,28 +193,61 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.1.9" data-path="reading-in-spatial-data.html"><a href="reading-in-spatial-data.html#read-in-openstreetmap-data"><i class="fa fa-check"></i><b>2.1.9</b> Read in OpenStreetMap data</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="coordinate-reference-systems.html"><a href="coordinate-reference-systems.html"><i class="fa fa-check"></i><b>3</b> Coordinate reference systems</a><ul>
-<li class="chapter" data-level="3.1" data-path="coordinate-reference-systems.html"><a href="coordinate-reference-systems.html#lesson-objectives"><i class="fa fa-check"></i><b>3.1</b> Lesson Objectives</a><ul>
+<li class="chapter" data-level="3" data-path="coordinate-reference-systems.html"><a href="coordinate-reference-systems.html"><i class="fa fa-check"></i><b>3</b> Coordinate reference systems</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="coordinate-reference-systems.html"><a href="coordinate-reference-systems.html#lesson-objectives"><i class="fa fa-check"></i><b>3.1</b> Lesson Objectives</a>
+<ul>
 <li class="chapter" data-level="3.1.1" data-path="coordinate-reference-systems.html"><a href="coordinate-reference-systems.html#why-you-need-to-know-about-crs-working-with-spatial-data-in-r"><i class="fa fa-check"></i><b>3.1.1</b> Why you need to know about CRS working with spatial data in R:</a></li>
 <li class="chapter" data-level="3.1.2" data-path="coordinate-reference-systems.html"><a href="coordinate-reference-systems.html#changes-to-crs-recently-in-r-in-sf"><i class="fa fa-check"></i><b>3.1.2</b> Changes to CRS recently in R in <code>sf</code></a></li>
 <li class="chapter" data-level="3.1.3" data-path="coordinate-reference-systems.html"><a href="coordinate-reference-systems.html#projected-coordinate-systems"><i class="fa fa-check"></i><b>3.1.3</b> Projected coordinate systems</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="vector-data-with-sf.html"><a href="vector-data-with-sf.html"><i class="fa fa-check"></i><b>4</b> Vector data with <code>sf</code></a></li>
-<li class="chapter" data-level="5" data-path="raster-data.html"><a href="raster-data.html"><i class="fa fa-check"></i><b>5</b> Raster data</a></li>
-<li class="chapter" data-level="6" data-path="geoprocessing.html"><a href="geoprocessing.html"><i class="fa fa-check"></i><b>6</b> Geoprocessing</a><ul>
-<li class="chapter" data-level="6.1" data-path="geoprocessing.html"><a href="geoprocessing.html#example-one"><i class="fa fa-check"></i><b>6.1</b> Example one</a></li>
-<li class="chapter" data-level="6.2" data-path="geoprocessing.html"><a href="geoprocessing.html#example-two"><i class="fa fa-check"></i><b>6.2</b> Example two</a></li>
+<li class="chapter" data-level="4" data-path="vector-data-with-sf.html"><a href="vector-data-with-sf.html"><i class="fa fa-check"></i><b>4</b> Vector data with <code>sf</code></a>
+<ul>
+<li class="chapter" data-level="4.0.1" data-path="vector-data-with-sf.html"><a href="vector-data-with-sf.html#units-in-sf"><i class="fa fa-check"></i><b>4.0.1</b> Units in <code>sf</code></a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a><ul>
-<li class="chapter" data-level="6.2.1" data-path="references.html"><a href="references.html#r-spatial-resources"><i class="fa fa-check"></i><b>6.2.1</b> R Spatial Resources</a></li>
-<li class="chapter" data-level="6.2.2" data-path="references.html"><a href="references.html#r-vector-processing-simple-features-resources"><i class="fa fa-check"></i><b>6.2.2</b> R Vector Processing / Simple Features Resources</a></li>
-<li class="chapter" data-level="6.2.3" data-path="references.html"><a href="references.html#r-raster-resources"><i class="fa fa-check"></i><b>6.2.3</b> R Raster Resources</a></li>
-<li class="chapter" data-level="6.2.4" data-path="references.html"><a href="references.html#r-mapping-resources"><i class="fa fa-check"></i><b>6.2.4</b> R Mapping Resources</a></li>
-<li class="chapter" data-level="6.2.5" data-path="references.html"><a href="references.html#general-r-resources"><i class="fa fa-check"></i><b>6.2.5</b> General R Resources</a></li>
+<li class="chapter" data-level="5" data-path="raster-data.html"><a href="raster-data.html"><i class="fa fa-check"></i><b>5</b> Raster data</a>
+<ul>
+<li class="chapter" data-level="5.0.1" data-path="raster-data.html"><a href="raster-data.html#exploring-raster-objects"><i class="fa fa-check"></i><b>5.0.1</b> Exploring raster objects</a></li>
+<li class="chapter" data-level="5.0.2" data-path="raster-data.html"><a href="raster-data.html#answer-4"><i class="fa fa-check"></i><b>5.0.2</b> Answer</a></li>
+<li class="chapter" data-level="5.0.3" data-path="raster-data.html"><a href="raster-data.html#manipulating-raster-objects"><i class="fa fa-check"></i><b>5.0.3</b> Manipulating <code>raster</code> objects</a></li>
+<li class="chapter" data-level="5.0.4" data-path="raster-data.html"><a href="raster-data.html#rasterbricks-and-rasterstacks"><i class="fa fa-check"></i><b>5.0.4</b> RasterBricks and Rasterstacks</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="geoprocessing.html"><a href="geoprocessing.html"><i class="fa fa-check"></i><b>6</b> Geoprocessing</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="geoprocessing.html"><a href="geoprocessing.html#lesson-goals"><i class="fa fa-check"></i><b>6.1</b> Lesson Goals</a></li>
+<li class="chapter" data-level="6.2" data-path="geoprocessing.html"><a href="geoprocessing.html#example-one"><i class="fa fa-check"></i><b>6.2</b> Example one</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="geoprocessing.html"><a href="geoprocessing.html#spatial-subsetting"><i class="fa fa-check"></i><b>6.2.1</b> Spatial Subsetting</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="geoprocessing.html"><a href="geoprocessing.html#example-two"><i class="fa fa-check"></i><b>6.3</b> Example two</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="geoprocessing.html"><a href="geoprocessing.html#spatial-join"><i class="fa fa-check"></i><b>6.3.1</b> Spatial Join</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="geoprocessing.html"><a href="geoprocessing.html#example-three"><i class="fa fa-check"></i><b>6.4</b> Example Three</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="geoprocessing.html"><a href="geoprocessing.html#dissolve"><i class="fa fa-check"></i><b>6.4.1</b> Dissolve</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="visualizing-spatial-data.html"><a href="visualizing-spatial-data.html"><i class="fa fa-check"></i><b>7</b> Visualizing Spatial Data</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="visualizing-spatial-data.html"><a href="visualizing-spatial-data.html#lesson-goals-1"><i class="fa fa-check"></i><b>7.1</b> Lesson Goals</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="visualizing-spatial-data.html"><a href="visualizing-spatial-data.html#chorpleths-with-tmap"><i class="fa fa-check"></i><b>7.1.1</b> Chorpleths with tmap</a></li>
+<li class="chapter" data-level="7.1.2" data-path="visualizing-spatial-data.html"><a href="visualizing-spatial-data.html#leaflet"><i class="fa fa-check"></i><b>7.1.2</b> Leaflet</a></li>
+<li class="chapter" data-level="7.1.3" data-path="visualizing-spatial-data.html"><a href="visualizing-spatial-data.html#mapview"><i class="fa fa-check"></i><b>7.1.3</b> mapview</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a>
+<ul>
+<li class="chapter" data-level="7.1.4" data-path="references.html"><a href="references.html#r-spatial-resources"><i class="fa fa-check"></i><b>7.1.4</b> R Spatial Resources</a></li>
+<li class="chapter" data-level="7.1.5" data-path="references.html"><a href="references.html#r-vector-processing-simple-features-resources"><i class="fa fa-check"></i><b>7.1.5</b> R Vector Processing / Simple Features Resources</a></li>
+<li class="chapter" data-level="7.1.6" data-path="references.html"><a href="references.html#r-raster-resources"><i class="fa fa-check"></i><b>7.1.6</b> R Raster Resources</a></li>
+<li class="chapter" data-level="7.1.7" data-path="references.html"><a href="references.html#r-mapping-resources"><i class="fa fa-check"></i><b>7.1.7</b> R Mapping Resources</a></li>
+<li class="chapter" data-level="7.1.8" data-path="references.html"><a href="references.html#general-r-resources"><i class="fa fa-check"></i><b>7.1.8</b> General R Resources</a></li>
 </ul></li>
 <li class="divider"></li>
-<li><a href="https://github.com/mhweber/AWRA_2020_R_Spatial" target="blank">Published with bookdown</a></li>
+<li><a href="https://github.com/mhweber/R-User-Group-Spatial-Workshop-2021" target="blank">Published with bookdown</a></li>
 
 </ul>
 
@@ -209,9 +266,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="coordinate-reference-systems" class="section level1">
+<div id="coordinate-reference-systems" class="section level1" number="3">
 <h1><span class="header-section-number">Chapter 3</span> Coordinate reference systems</h1>
-<div id="lesson-objectives" class="section level2">
+<div id="lesson-objectives" class="section level2" number="3.1">
 <h2><span class="header-section-number">3.1</span> Lesson Objectives</h2>
 <p>Describe and understand a <code>CRS</code> in R and components of a <code>CRS</code></p>
 <p>A <code>CRS</code> is made up of several components:</p>
@@ -221,7 +278,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><strong>Datum</strong>: The modeled version of the shape of the earth</li>
 <li><strong>Projection details</strong>: If projected, the mathematical equation used to flatten objects from round surface (earth) to flat surface (paper or screen)</li>
 </ul>
-<div class="figure"><span id="fig:unnamed-chunk-1"></span>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-21"></span>
 <img src="images/Ellipsoid.png" alt="Source: https://mgimond.github.io/Spatial/coordinate-systems.html" width="75%" />
 <p class="caption">
 Figure 3.1: Source: <a href="https://mgimond.github.io/Spatial/coordinate-systems.html" class="uri">https://mgimond.github.io/Spatial/coordinate-systems.html</a>
@@ -232,24 +289,24 @@ Figure 3.1: Source: <a href="https://mgimond.github.io/Spatial/coordinate-system
 - semi-minor axis (polar radius)</p>
 <p>We know with precision that the measure of these two are 6,378,137 meters and 6,356,752 meters respectively.</p>
 <p>More precisely that an <em>ellipsoid</em>, though, we know that earth is a <em>geoid</em> - it is not perfectly smooth - and modelling the the undulations due to changes in gravitational pull for different locations is crucial to accuracy in a GIS. This is where a <em>datum</em> comes in - we match the geoid to the ellipsoid to best match local conditions. We have many datums to choose from based on location of interest - in the US we would typically choose <em>NAD83</em></p>
-<div id="why-you-need-to-know-about-crs-working-with-spatial-data-in-r" class="section level3">
+<div id="why-you-need-to-know-about-crs-working-with-spatial-data-in-r" class="section level3" number="3.1.1">
 <h3><span class="header-section-number">3.1.1</span> Why you need to know about CRS working with spatial data in R:</h3>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="coordinate-reference-systems.html#cb1-1"></a><span class="kw">library</span>(awra2020spatial)</span>
-<span id="cb1-2"><a href="coordinate-reference-systems.html#cb1-2"></a><span class="kw">library</span>(readr)</span>
-<span id="cb1-3"><a href="coordinate-reference-systems.html#cb1-3"></a><span class="kw">library</span>(sf)</span>
-<span id="cb1-4"><a href="coordinate-reference-systems.html#cb1-4"></a><span class="kw">data</span>(pnw)</span>
-<span id="cb1-5"><a href="coordinate-reference-systems.html#cb1-5"></a></span>
-<span id="cb1-6"><a href="coordinate-reference-systems.html#cb1-6"></a>gages =<span class="st"> </span><span class="kw">read_csv</span>(<span class="kw">system.file</span>(<span class="st">&quot;extdata/Gages_flowdata.csv&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;awra2020spatial&quot;</span>))</span>
-<span id="cb1-7"><a href="coordinate-reference-systems.html#cb1-7"></a></span>
-<span id="cb1-8"><a href="coordinate-reference-systems.html#cb1-8"></a>gages_sf &lt;-<span class="st"> </span>gages <span class="op">%&gt;%</span></span>
-<span id="cb1-9"><a href="coordinate-reference-systems.html#cb1-9"></a><span class="st">  </span><span class="kw">st_as_sf</span>(<span class="dt">coords =</span> <span class="kw">c</span>(<span class="st">&quot;LON_SITE&quot;</span>, <span class="st">&quot;LAT_SITE&quot;</span>), <span class="dt">crs =</span> <span class="dv">4269</span>, <span class="dt">remove =</span> <span class="ot">FALSE</span>) <span class="op">%&gt;%</span></span>
-<span id="cb1-10"><a href="coordinate-reference-systems.html#cb1-10"></a><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">select</span>(STATION_NM,LON_SITE, LAT_SITE)</span>
-<span id="cb1-11"><a href="coordinate-reference-systems.html#cb1-11"></a></span>
-<span id="cb1-12"><a href="coordinate-reference-systems.html#cb1-12"></a><span class="co"># Awesome, let&#39;s plot our gage data and state boundaries!</span></span>
-<span id="cb1-13"><a href="coordinate-reference-systems.html#cb1-13"></a><span class="kw">plot</span>(pnw<span class="op">$</span>geometry, <span class="dt">axes=</span><span class="ot">TRUE</span>)</span>
-<span id="cb1-14"><a href="coordinate-reference-systems.html#cb1-14"></a><span class="kw">plot</span>(gages_sf<span class="op">$</span>geometry, <span class="dt">col=</span><span class="st">&#39;red&#39;</span>, <span class="dt">add=</span><span class="ot">TRUE</span>)</span></code></pre></div>
-<p><img src="AWRA_2020_R_Spatial_files/figure-html/crs_fail-1.png" width="672" /></p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="coordinate-reference-systems.html#cb2-1"></a><span class="co"># um, what?</span></span></code></pre></div>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="coordinate-reference-systems.html#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(awra2020spatial)</span>
+<span id="cb72-2"><a href="coordinate-reference-systems.html#cb72-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb72-3"><a href="coordinate-reference-systems.html#cb72-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb72-4"><a href="coordinate-reference-systems.html#cb72-4" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(pnw)</span>
+<span id="cb72-5"><a href="coordinate-reference-systems.html#cb72-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb72-6"><a href="coordinate-reference-systems.html#cb72-6" aria-hidden="true" tabindex="-1"></a>gages <span class="ot">=</span> <span class="fu">read_csv</span>(<span class="fu">system.file</span>(<span class="st">&quot;extdata/Gages_flowdata.csv&quot;</span>, <span class="at">package =</span> <span class="st">&quot;awra2020spatial&quot;</span>))</span>
+<span id="cb72-7"><a href="coordinate-reference-systems.html#cb72-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb72-8"><a href="coordinate-reference-systems.html#cb72-8" aria-hidden="true" tabindex="-1"></a>gages_sf <span class="ot">&lt;-</span> gages <span class="sc">%&gt;%</span></span>
+<span id="cb72-9"><a href="coordinate-reference-systems.html#cb72-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_as_sf</span>(<span class="at">coords =</span> <span class="fu">c</span>(<span class="st">&quot;LON_SITE&quot;</span>, <span class="st">&quot;LAT_SITE&quot;</span>), <span class="at">crs =</span> <span class="dv">4269</span>, <span class="at">remove =</span> <span class="cn">FALSE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb72-10"><a href="coordinate-reference-systems.html#cb72-10" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(STATION_NM,LON_SITE, LAT_SITE)</span>
+<span id="cb72-11"><a href="coordinate-reference-systems.html#cb72-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb72-12"><a href="coordinate-reference-systems.html#cb72-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Awesome, let&#39;s plot our gage data and state boundaries!</span></span>
+<span id="cb72-13"><a href="coordinate-reference-systems.html#cb72-13" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(pnw<span class="sc">$</span>geometry, <span class="at">axes=</span><span class="cn">TRUE</span>)</span>
+<span id="cb72-14"><a href="coordinate-reference-systems.html#cb72-14" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(gages_sf<span class="sc">$</span>geometry, <span class="at">col=</span><span class="st">&#39;red&#39;</span>, <span class="at">add=</span><span class="cn">TRUE</span>)</span></code></pre></div>
+<p><img src="R-User-Group-Spatial-Workshop-2021_files/figure-html/crs_fail-1.png" width="672" /></p>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="coordinate-reference-systems.html#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="co"># um, what?</span></span></code></pre></div>
 <p>There is no ‘on-the-fly’ projection in R - you need to make sure you specify the CRS of your objects, and CRS needs to match for any spatial operations or you’ll get an error</p>
 <ul>
 <li><p><a href="https://spatialreference.org/">spatialreference.org</a> is your friend in R - chances are you will use it frequently working with spatial data in R.</p></li>
@@ -261,7 +318,7 @@ Figure 3.1: Source: <a href="https://mgimond.github.io/Spatial/coordinate-system
 </ul></li>
 </ul>
 </div>
-<div id="changes-to-crs-recently-in-r-in-sf" class="section level3">
+<div id="changes-to-crs-recently-in-r-in-sf" class="section level3" number="3.1.2">
 <h3><span class="header-section-number">3.1.2</span> Changes to CRS recently in R in <code>sf</code></h3>
 <p>It’s important to <a href="https://www.r-spatial.org/r/2020/03/17/wkt.html#crs-objects-in-sf">understand recent changes</a> in handling of <code>crs</code> in <code>sf</code>
 Prior to <code>sf</code> 0.9, <code>crs</code> were represented as lists with two components:
@@ -312,15 +369,15 @@ x$proj4string
 
 ## [1] &quot;+proj=longlat +datum=WGS84 +no_defs&quot;</code></pre>
 </div>
-<div id="projected-coordinate-systems" class="section level3">
+<div id="projected-coordinate-systems" class="section level3" number="3.1.3">
 <h3><span class="header-section-number">3.1.3</span> Projected coordinate systems</h3>
 <p>Typically we want to work with data that is projected. Projected coordinate systems (which are based on Cartesian coordinates) have: an origin, an x axis, a y axis, and a linear unit of measure. Going from geographic coordinates to a projected coordinate reference systems requires mathematical transformations.</p>
 <p>Four spatial properties of projected coordinate systems that are subject to distortion are: <em>shape</em>, <em>area</em>, <em>distance</em> and <em>direction</em>. A map that preserves shape is called <em>conformal</em>; one that preserves area is called <em>equal-area</em>; one that preserves distance is called <em>equidistant</em>; and one that preserves direction is called <em>azimuthal</em> (from <a href="https://mgimond.github.io/Spatial/coordinate-systems.html">https://mgimond.github.io/Spatial/coordinate-systems.html</a>.</p>
 <p>The takeaway from all this is you need to be aware of the <code>crs</code> for your objects in R, make sure they are projected if appropriate and in a projection that optimizes properties you are interested in, and objects you are analyzing or mapping together need to be in same <code>crs</code>.</p>
 <p>Going back to our original example, we can transform <code>crs</code> of objects to work with them together:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="coordinate-reference-systems.html#cb6-1"></a><span class="kw">library</span>(ggplot2)</span>
-<span id="cb6-2"><a href="coordinate-reference-systems.html#cb6-2"></a><span class="co"># Check our coordinate reference systems</span></span>
-<span id="cb6-3"><a href="coordinate-reference-systems.html#cb6-3"></a><span class="kw">st_crs</span>(gages_sf)</span></code></pre></div>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="coordinate-reference-systems.html#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb77-2"><a href="coordinate-reference-systems.html#cb77-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Check our coordinate reference systems</span></span>
+<span id="cb77-3"><a href="coordinate-reference-systems.html#cb77-3" aria-hidden="true" tabindex="-1"></a><span class="fu">st_crs</span>(gages_sf)</span></code></pre></div>
 <pre><code>## Coordinate Reference System:
 ##   User input: EPSG:4269 
 ##   wkt:
@@ -338,11 +395,11 @@ x$proj4string
 ##             ORDER[2],
 ##             ANGLEUNIT[&quot;degree&quot;,0.0174532925199433]],
 ##     USAGE[
-##         SCOPE[&quot;unknown&quot;],
-##         AREA[&quot;North America - NAD83&quot;],
+##         SCOPE[&quot;Geodesy.&quot;],
+##         AREA[&quot;North America - onshore and offshore: Canada - Alberta; British Columbia; Manitoba; New Brunswick; Newfoundland and Labrador; Northwest Territories; Nova Scotia; Nunavut; Ontario; Prince Edward Island; Quebec; Saskatchewan; Yukon. Puerto Rico. United States (USA) - Alabama; Alaska; Arizona; Arkansas; California; Colorado; Connecticut; Delaware; Florida; Georgia; Hawaii; Idaho; Illinois; Indiana; Iowa; Kansas; Kentucky; Louisiana; Maine; Maryland; Massachusetts; Michigan; Minnesota; Mississippi; Missouri; Montana; Nebraska; Nevada; New Hampshire; New Jersey; New Mexico; New York; North Carolina; North Dakota; Ohio; Oklahoma; Oregon; Pennsylvania; Rhode Island; South Carolina; South Dakota; Tennessee; Texas; Utah; Vermont; Virginia; Washington; West Virginia; Wisconsin; Wyoming. US Virgin Islands.  British Virgin Islands.&quot;],
 ##         BBOX[14.92,167.65,86.46,-47.74]],
 ##     ID[&quot;EPSG&quot;,4269]]</code></pre>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="coordinate-reference-systems.html#cb8-1"></a><span class="kw">st_crs</span>(pnw)</span></code></pre></div>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="coordinate-reference-systems.html#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="fu">st_crs</span>(pnw)</span></code></pre></div>
 <pre><code>## Coordinate Reference System:
 ##   User input: +proj=aea +lat_1=41 +lat_2=47 +lat_0=44 +lon_0=-120 +x_0=0 +y_0=0 +ellps=GRS80 +datum=NAD83 +units=m +no_defs 
 ##   wkt:
@@ -385,17 +442,17 @@ x$proj4string
 ##             ORDER[2],
 ##             LENGTHUNIT[&quot;metre&quot;,1,
 ##                 ID[&quot;EPSG&quot;,9001]]]]</code></pre>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="coordinate-reference-systems.html#cb10-1"></a><span class="co"># Are they equal?</span></span>
-<span id="cb10-2"><a href="coordinate-reference-systems.html#cb10-2"></a><span class="kw">st_crs</span>(gages_sf)<span class="op">==</span><span class="kw">st_crs</span>(pnw)</span></code></pre></div>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="coordinate-reference-systems.html#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Are they equal?</span></span>
+<span id="cb81-2"><a href="coordinate-reference-systems.html#cb81-2" aria-hidden="true" tabindex="-1"></a><span class="fu">st_crs</span>(gages_sf)<span class="sc">==</span><span class="fu">st_crs</span>(pnw)</span></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="coordinate-reference-systems.html#cb12-1"></a><span class="co"># transform one to the other</span></span>
-<span id="cb12-2"><a href="coordinate-reference-systems.html#cb12-2"></a>gages_sf &lt;-<span class="st"> </span><span class="kw">st_transform</span>(gages_sf, <span class="kw">st_crs</span>(pnw))</span>
-<span id="cb12-3"><a href="coordinate-reference-systems.html#cb12-3"></a><span class="kw">ggplot</span>() <span class="op">+</span><span class="st"> </span></span>
-<span id="cb12-4"><a href="coordinate-reference-systems.html#cb12-4"></a><span class="st">  </span><span class="kw">geom_sf</span>(<span class="dt">data=</span>gages_sf,  <span class="dt">color=</span><span class="st">&quot;blue&quot;</span>) <span class="op">+</span></span>
-<span id="cb12-5"><a href="coordinate-reference-systems.html#cb12-5"></a><span class="st">  </span><span class="kw">geom_sf</span>(<span class="dt">data=</span>pnw,  <span class="dt">color=</span><span class="st">&quot;black&quot;</span>, <span class="dt">fill=</span><span class="ot">NA</span>) <span class="op">+</span></span>
-<span id="cb12-6"><a href="coordinate-reference-systems.html#cb12-6"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title=</span><span class="st">&quot;USGS Stream Gages in the Pacific Northwest&quot;</span>) <span class="op">+</span></span>
-<span id="cb12-7"><a href="coordinate-reference-systems.html#cb12-7"></a><span class="st">  </span><span class="kw">theme_bw</span>() </span></code></pre></div>
-<p><img src="AWRA_2020_R_Spatial_files/figure-html/crs_fix-1.png" width="672" /></p>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="coordinate-reference-systems.html#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="co"># transform one to the other</span></span>
+<span id="cb83-2"><a href="coordinate-reference-systems.html#cb83-2" aria-hidden="true" tabindex="-1"></a>gages_sf <span class="ot">&lt;-</span> <span class="fu">st_transform</span>(gages_sf, <span class="fu">st_crs</span>(pnw))</span>
+<span id="cb83-3"><a href="coordinate-reference-systems.html#cb83-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb83-4"><a href="coordinate-reference-systems.html#cb83-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data=</span>gages_sf,  <span class="at">color=</span><span class="st">&quot;blue&quot;</span>) <span class="sc">+</span></span>
+<span id="cb83-5"><a href="coordinate-reference-systems.html#cb83-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data=</span>pnw,  <span class="at">color=</span><span class="st">&quot;black&quot;</span>, <span class="at">fill=</span><span class="cn">NA</span>) <span class="sc">+</span></span>
+<span id="cb83-6"><a href="coordinate-reference-systems.html#cb83-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">&quot;USGS Stream Gages in the Pacific Northwest&quot;</span>) <span class="sc">+</span></span>
+<span id="cb83-7"><a href="coordinate-reference-systems.html#cb83-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() </span></code></pre></div>
+<p><img src="R-User-Group-Spatial-Workshop-2021_files/figure-html/crs_fix-1.png" width="672" /></p>
 
 </div>
 </div>
@@ -432,6 +489,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
@@ -451,7 +509,11 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": ["AWRA_2020_R_Spatial.pdf", "AWRA_2020_R_Spatial.epub"],
+"download": ["R-User-Group-Spatial-Workshop-2021.pdf", "R-User-Group-Spatial-Workshop-2021.epub"],
+"search": {
+"engine": "lunr",
+"options": null
+},
 "toc": {
 "collapse": "subsection"
 }
