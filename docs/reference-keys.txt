@@ -66,3 +66,5 @@ r-vector-processing-simple-features-resources
 r-raster-resources
 r-mapping-resources
 general-r-resources
+example-four
+spatial-overlap

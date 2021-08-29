@@ -47,3 +47,23 @@ parks_zip <- parks %>%
   theme_bw()
 parks_zip
 ```
+
+## Example Four
+### Spatial Overlap
+Here's a fun example using material posted by Nicholas Tierney [here](https://www.njtierney.com/post/2021/08/21/how-much-one-shapefile-overlaps-another/) that he put together based on [this Stack Overflow discussion](https://gis.stackexchange.com/questions/362466/calculate-percentage-overlap-of-2-sets-of-polygons-in-r).
+
+
+```{r overlap, message=FALSE, warning=FALSE, error=FALSE}
+library(ggplot2)
+library(tidycensus)
+library(tidyverse)
+library(tigris)
+
+tracts <- get_acs(geography = "tract", variables = "DP04_0134", 
+                state = "OR", geometry = TRUE, progress_bar = FALSE)
+
+pdx <- core_based_statistical_areas(cb = TRUE, progress_bar = FALSE) %>%
+  filter(GEOID == "38900")
+ggplot(pdx) + geom_sf()
+```
+
