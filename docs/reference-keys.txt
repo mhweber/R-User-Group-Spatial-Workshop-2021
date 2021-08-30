@@ -83,3 +83,11 @@ test
 this-step-should-have-given-you-an-error
 fix-for-the-error
 all-steps-rolled-into-a-function
+exercise
+solution
+exercise-1
+solution-1
+exercise-2
+solution-2
+exercise-3
+solution-3

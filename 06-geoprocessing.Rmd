@@ -106,10 +106,10 @@ intersection_area <- st_intersection(pdx, pdx_simplified) %>%
     st_drop_geometry()
 ```
 
-#### This step should have given you an error {.challenge}
-THIS IS VERY COMMON WORKING WITH SPATIAL DATA IN R AND USING `sf`.
+#### Exercise
+This step should have given you an error -THIS IS VERY COMMON WORKING WITH SPATIAL DATA IN R AND USING `sf`.
 
-#### Fix for the error {.solution}
+##### Solution
 ```{r overlap6, message=FALSE, warning=FALSE, error=FALSE}
 pdx_simplified <- st_make_valid(pdx_simplified)
 pdx <- st_make_valid(pdx)
@@ -136,10 +136,10 @@ intersection_area %>%
            proportion = (new / orig) * 100)
 ```
 
-#### Why did I use `as.numeric` in the `mutate` statement above? {.challenge}
+#### Exercise
+Why did I use `as.numeric` in the `mutate` statement above?
  
-
-#### Answer {.solution}
+##### Solution
 Because `sf` will store area for features using `units` - which is convenient and forces you to be up front about units used, but you can't do calculations with attributes stored as units - have to convert them to numeric 
 
 #### All steps rolled into a function

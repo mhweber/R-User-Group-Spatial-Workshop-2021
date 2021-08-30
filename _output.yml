@@ -5,6 +5,7 @@ bookdown::gitbook:
     - css/bootstrap.min.css
   includes:
     after_body: _after_body.html
+    in_header: header.html
   config:
     toc:
       before: |
@@ -12,8 +13,6 @@ bookdown::gitbook:
       after: |
         <li><a href="https://github.com/mhweber/R-User-Group-Spatial-Workshop-2021" target="blank">Published with bookdown</a></li>
     download: ["pdf", "epub"]
-  includes:
-    in_header: header.html
 bookdown::pdf_book:
   includes:
     in_header: preamble.tex

@@ -33,14 +33,15 @@ str(r)
 r
 ```
 
-### Exploring raster objects {.challenge}
+### Exercise
+Exploring raster objects 
 
 1. what is the minimal data required to define a `RasterLayer`? 
 2. What is odd here about the CRS? 
 3. How do we pull out just the CRS for our r `rasterLayer`? 
 4. Building on this, what is the code to pull out just our xmin value in our extent, or bounding box?
 
-### Answer {.solution} 
+#### Solution
 
 1. number columns, number rows, and extent - though the `raster` package will use defaults if values aren't provided
 

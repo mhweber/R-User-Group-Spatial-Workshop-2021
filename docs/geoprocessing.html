@@ -53,6 +53,29 @@
 
 <link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<script>
+    $(document).ready(function () {
+        process_solutions();
+    });
+    function process_solutions() {
+        $("div.section[id^='solution']").each(function(i) {
+        var soln_wrapper_id = "cvxr_ex_" + i;
+        var solution_id = $(this).attr('id');
+        var button = $("<button onclick=\"toggle_solution('" + soln_wrapper_id + "')\">Show/Hide</button>");
+        var new_div = $("<div id='" + soln_wrapper_id + "' class='solution' style='display: none;'></div>");
+        var h = $(this).first();
+        var others = $(this).children().slice(1);
+        $(others).each(function() {
+            $(this).appendTo($(new_div));
+        });
+        $(button).insertAfter($(h));
+        $(new_div).insertAfter($(button));
+        })
+    }
+    function toggle_solution(el_id) {
+      $("#" + el_id).toggle();
+    } 
+</script>
 
 
 <style type="text/css">
@@ -167,14 +190,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.1" data-path="reading-in-spatial-data.html"><a href="reading-in-spatial-data.html#reading-in-vector-data"><i class="fa fa-check"></i><b>2.1</b> Reading in vector data</a>
 <ul>
 <li class="chapter" data-level="2.1.1" data-path="reading-in-spatial-data.html"><a href="reading-in-spatial-data.html#shapefiles"><i class="fa fa-check"></i><b>2.1.1</b> Shapefiles</a></li>
-<li class="chapter" data-level="2.1.2" data-path="reading-in-spatial-data.html"><a href="reading-in-spatial-data.html#st_read-versus-read_sf"><i class="fa fa-check"></i><b>2.1.2</b> <code>st_read</code> versus <code>read_sf</code></a></li>
-<li class="chapter" data-level="2.1.3" data-path="reading-in-spatial-data.html"><a href="reading-in-spatial-data.html#answer-3"><i class="fa fa-check"></i><b>2.1.3</b> Answer</a></li>
-<li class="chapter" data-level="2.1.4" data-path="reading-in-spatial-data.html"><a href="reading-in-spatial-data.html#geodatabases"><i class="fa fa-check"></i><b>2.1.4</b> Geodatabases</a></li>
-<li class="chapter" data-level="2.1.5" data-path="reading-in-spatial-data.html"><a href="reading-in-spatial-data.html#geopackages"><i class="fa fa-check"></i><b>2.1.5</b> Geopackages</a></li>
-<li class="chapter" data-level="2.1.6" data-path="reading-in-spatial-data.html"><a href="reading-in-spatial-data.html#open-spatial-data-sources"><i class="fa fa-check"></i><b>2.1.6</b> Open spatial data sources</a></li>
-<li class="chapter" data-level="2.1.7" data-path="reading-in-spatial-data.html"><a href="reading-in-spatial-data.html#spatial-data-from-r-packages"><i class="fa fa-check"></i><b>2.1.7</b> Spatial data from R packages</a></li>
-<li class="chapter" data-level="2.1.8" data-path="reading-in-spatial-data.html"><a href="reading-in-spatial-data.html#read-in-raster-data"><i class="fa fa-check"></i><b>2.1.8</b> Read in raster data</a></li>
-<li class="chapter" data-level="2.1.9" data-path="reading-in-spatial-data.html"><a href="reading-in-spatial-data.html#read-in-openstreetmap-data"><i class="fa fa-check"></i><b>2.1.9</b> Read in OpenStreetMap data</a></li>
+<li class="chapter" data-level="2.1.2" data-path="reading-in-spatial-data.html"><a href="reading-in-spatial-data.html#exercise"><i class="fa fa-check"></i><b>2.1.2</b> Exercise</a></li>
+<li class="chapter" data-level="2.1.3" data-path="reading-in-spatial-data.html"><a href="reading-in-spatial-data.html#geodatabases"><i class="fa fa-check"></i><b>2.1.3</b> Geodatabases</a></li>
+<li class="chapter" data-level="2.1.4" data-path="reading-in-spatial-data.html"><a href="reading-in-spatial-data.html#geopackages"><i class="fa fa-check"></i><b>2.1.4</b> Geopackages</a></li>
+<li class="chapter" data-level="2.1.5" data-path="reading-in-spatial-data.html"><a href="reading-in-spatial-data.html#open-spatial-data-sources"><i class="fa fa-check"></i><b>2.1.5</b> Open spatial data sources</a></li>
+<li class="chapter" data-level="2.1.6" data-path="reading-in-spatial-data.html"><a href="reading-in-spatial-data.html#spatial-data-from-r-packages"><i class="fa fa-check"></i><b>2.1.6</b> Spatial data from R packages</a></li>
+<li class="chapter" data-level="2.1.7" data-path="reading-in-spatial-data.html"><a href="reading-in-spatial-data.html#read-in-raster-data"><i class="fa fa-check"></i><b>2.1.7</b> Read in raster data</a></li>
+<li class="chapter" data-level="2.1.8" data-path="reading-in-spatial-data.html"><a href="reading-in-spatial-data.html#read-in-openstreetmap-data"><i class="fa fa-check"></i><b>2.1.8</b> Read in OpenStreetMap data</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="coordinate-reference-systems.html"><a href="coordinate-reference-systems.html"><i class="fa fa-check"></i><b>3</b> Coordinate reference systems</a>
@@ -192,10 +214,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="5" data-path="raster-data.html"><a href="raster-data.html"><i class="fa fa-check"></i><b>5</b> Raster data</a>
 <ul>
-<li class="chapter" data-level="5.0.1" data-path="raster-data.html"><a href="raster-data.html#exploring-raster-objects"><i class="fa fa-check"></i><b>5.0.1</b> Exploring raster objects</a></li>
-<li class="chapter" data-level="5.0.2" data-path="raster-data.html"><a href="raster-data.html#answer-4"><i class="fa fa-check"></i><b>5.0.2</b> Answer</a></li>
-<li class="chapter" data-level="5.0.3" data-path="raster-data.html"><a href="raster-data.html#manipulating-raster-objects"><i class="fa fa-check"></i><b>5.0.3</b> Manipulating <code>raster</code> objects</a></li>
-<li class="chapter" data-level="5.0.4" data-path="raster-data.html"><a href="raster-data.html#rasterbricks-and-rasterstacks"><i class="fa fa-check"></i><b>5.0.4</b> RasterBricks and Rasterstacks</a></li>
+<li class="chapter" data-level="5.0.1" data-path="raster-data.html"><a href="raster-data.html#exercise-1"><i class="fa fa-check"></i><b>5.0.1</b> Exercise</a></li>
+<li class="chapter" data-level="5.0.2" data-path="raster-data.html"><a href="raster-data.html#manipulating-raster-objects"><i class="fa fa-check"></i><b>5.0.2</b> Manipulating <code>raster</code> objects</a></li>
+<li class="chapter" data-level="5.0.3" data-path="raster-data.html"><a href="raster-data.html#rasterbricks-and-rasterstacks"><i class="fa fa-check"></i><b>5.0.3</b> RasterBricks and Rasterstacks</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="geoprocessing.html"><a href="geoprocessing.html"><i class="fa fa-check"></i><b>6</b> Geoprocessing</a>
 <ul>
@@ -372,12 +393,11 @@ Note that we could pull down <code>tidycensus</code> at tract level, but instead
 <span id="cb8-8"><a href="geoprocessing.html#cb8-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(NAME, intersect_area) <span class="sc">%&gt;%</span> </span>
 <span id="cb8-9"><a href="geoprocessing.html#cb8-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">st_drop_geometry</span>()</span></code></pre></div>
 </div>
-<div id="this-step-should-have-given-you-an-error" class="section level4 challenge" number="6.5.1.4">
-<h4><span class="header-section-number">6.5.1.4</span> This step should have given you an error</h4>
-<p>THIS IS VERY COMMON WORKING WITH SPATIAL DATA IN R AND USING <code>sf</code>.</p>
-</div>
-<div id="fix-for-the-error" class="section level4 solution" number="6.5.1.5">
-<h4><span class="header-section-number">6.5.1.5</span> Fix for the error</h4>
+<div id="exercise-2" class="section level4" number="6.5.1.4">
+<h4><span class="header-section-number">6.5.1.4</span> Exercise</h4>
+<p>This step should have given you an error -THIS IS VERY COMMON WORKING WITH SPATIAL DATA IN R AND USING <code>sf</code>.</p>
+<div id="solution-2" class="section level5" number="6.5.1.4.1">
+<h5><span class="header-section-number">6.5.1.4.1</span> Solution</h5>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="geoprocessing.html#cb9-1" aria-hidden="true" tabindex="-1"></a>pdx_simplified <span class="ot">&lt;-</span> <span class="fu">st_make_valid</span>(pdx_simplified)</span>
 <span id="cb9-2"><a href="geoprocessing.html#cb9-2" aria-hidden="true" tabindex="-1"></a>pdx <span class="ot">&lt;-</span> <span class="fu">st_make_valid</span>(pdx)</span>
 <span id="cb9-3"><a href="geoprocessing.html#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -407,15 +427,17 @@ Note that we could pull down <code>tidycensus</code> at tract level, but instead
 ##          orig         new proportion
 ## 1 17633108214 16524152114   93.71094</code></pre>
 </div>
-<div id="why-did-i-use-as.numeric-in-the-mutate-statement-above" class="section level4 challenge" number="6.5.1.6">
-<h4><span class="header-section-number">6.5.1.6</span> Why did I use <code>as.numeric</code> in the <code>mutate</code> statement above?</h4>
 </div>
-<div id="answer-5" class="section level4 solution" number="6.5.1.7">
-<h4><span class="header-section-number">6.5.1.7</span> Answer</h4>
+<div id="exercise-3" class="section level4" number="6.5.1.5">
+<h4><span class="header-section-number">6.5.1.5</span> Exercise</h4>
+<p>Why did I use <code>as.numeric</code> in the <code>mutate</code> statement above?</p>
+<div id="solution-3" class="section level5" number="6.5.1.5.1">
+<h5><span class="header-section-number">6.5.1.5.1</span> Solution</h5>
 <p>Because <code>sf</code> will store area for features using <code>units</code> - which is convenient and forces you to be up front about units used, but you can’t do calculations with attributes stored as units - have to convert them to numeric</p>
 </div>
-<div id="all-steps-rolled-into-a-function" class="section level4" number="6.5.1.8">
-<h4><span class="header-section-number">6.5.1.8</span> All steps rolled into a function</h4>
+</div>
+<div id="all-steps-rolled-into-a-function" class="section level4" number="6.5.1.6">
+<h4><span class="header-section-number">6.5.1.6</span> All steps rolled into a function</h4>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="geoprocessing.html#cb13-1" aria-hidden="true" tabindex="-1"></a>calculate_spatial_overlap <span class="ot">&lt;-</span> <span class="cf">function</span>(shape_new,</span>
 <span id="cb13-2"><a href="geoprocessing.html#cb13-2" aria-hidden="true" tabindex="-1"></a>                                      shape_old,</span>
 <span id="cb13-3"><a href="geoprocessing.html#cb13-3" aria-hidden="true" tabindex="-1"></a>                                      shared_column_name) {</span>
