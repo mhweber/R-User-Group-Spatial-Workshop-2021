@@ -1,9 +1,8 @@
 --- 
-title: "Fundamentals of Spatial Analysis in R"
+title: "Spatial Analysis in R"
 author: "Marc Weber"
 date: "`r Sys.Date()`"
-description: This is a draft of material for the Fundamentals of Spatial Analysis
-  in R workshop at the AWRA Spring Conference in Austin in March 2020.
+description: This is a draft of material for the R Spatial Workshop at the EPA R User Group Meeting in September 2021.
 documentclass: book
 site: bookdown::bookdown_site
 always_allow_html: yes

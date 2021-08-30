@@ -4,27 +4,27 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 6 Geoprocessing | Fundamentals of Spatial Analysis in R</title>
-  <meta name="description" content="This is a draft of material for the Fundamentals of Spatial Analysis in R workshop at the AWRA Spring Conference in Austin in March 2020." />
+  <title>Chapter 6 Geoprocessing | Spatial Analysis in R</title>
+  <meta name="description" content="This is a draft of material for the R Spatial Workshop at the EPA R User Group Meeting in September 2021." />
   <meta name="generator" content="bookdown 0.23 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 6 Geoprocessing | Fundamentals of Spatial Analysis in R" />
+  <meta property="og:title" content="Chapter 6 Geoprocessing | Spatial Analysis in R" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="This is a draft of material for the Fundamentals of Spatial Analysis in R workshop at the AWRA Spring Conference in Austin in March 2020." />
+  <meta property="og:description" content="This is a draft of material for the R Spatial Workshop at the EPA R User Group Meeting in September 2021." />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 6 Geoprocessing | Fundamentals of Spatial Analysis in R" />
+  <meta name="twitter:title" content="Chapter 6 Geoprocessing | Spatial Analysis in R" />
   
-  <meta name="twitter:description" content="This is a draft of material for the Fundamentals of Spatial Analysis in R workshop at the AWRA Spring Conference in Austin in March 2020." />
+  <meta name="twitter:description" content="This is a draft of material for the R Spatial Workshop at the EPA R User Group Meeting in September 2021." />
   
 
 <meta name="author" content="Marc Weber" />
 
 
-<meta name="date" content="2021-08-23" />
+<meta name="date" content="2021-08-30" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -53,22 +53,6 @@
 
 <link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
-<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
-<link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
-<script src="libs/leaflet-1.3.1/leaflet.js"></script>
-<link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
-<script src="libs/proj4-2.6.2/proj4.min.js"></script>
-<script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
-<link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
-<script src="libs/leaflet-binding-2.0.4.1/leaflet.js"></script>
-<script src="libs/leaflet-providers-1.9.0/leaflet-providers_1.9.0.js"></script>
-<script src="libs/leaflet-providers-plugin-2.0.4.1/leaflet-providers-plugin.js"></script>
-<link href="libs/HomeButton-0.0.1/home-button.css" rel="stylesheet" />
-<script src="libs/HomeButton-0.0.1/home-button.js"></script>
-<script src="libs/HomeButton-0.0.1/easy-button-src.min.js"></script>
-<script src="libs/clipboard-0.0.1/setClipboardText.js"></script>
-<link href="libs/mapviewCSS-0.0.1/mapview-popup.css" rel="stylesheet" />
-<link href="libs/mapviewCSS-0.0.1/mapview.css" rel="stylesheet" />
 
 
 <style type="text/css">
@@ -228,6 +212,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="6.4.1" data-path="geoprocessing.html"><a href="geoprocessing.html#dissolve"><i class="fa fa-check"></i><b>6.4.1</b> Dissolve</a></li>
 </ul></li>
+<li class="chapter" data-level="6.5" data-path="geoprocessing.html"><a href="geoprocessing.html#example-four"><i class="fa fa-check"></i><b>6.5</b> Example Four</a>
+<ul>
+<li class="chapter" data-level="6.5.1" data-path="geoprocessing.html"><a href="geoprocessing.html#spatial-overlap"><i class="fa fa-check"></i><b>6.5.1</b> Spatial Overlap</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="visualizing-spatial-data.html"><a href="visualizing-spatial-data.html"><i class="fa fa-check"></i><b>7</b> Visualizing Spatial Data</a>
 <ul>
@@ -258,7 +246,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Fundamentals of Spatial Analysis in R</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Spatial Analysis in R</a>
           </h1>
         </div>
 
@@ -277,16 +265,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="spatial-subsetting" class="section level3" number="6.2.1">
 <h3><span class="header-section-number">6.2.1</span> Spatial Subsetting</h3>
 <p>Let’s look at the bike paths and parks data in the <code>awra2020spatial</code> package. A typical spatial question we might ask of our data is ‘what trails go through parks in town?’ A great feature of <code>sf</code> is it supports spatial indexing:</p>
-<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb139-1"><a href="geoprocessing.html#cb139-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
-<span id="cb139-2"><a href="geoprocessing.html#cb139-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(awra2020spatial)</span>
-<span id="cb139-3"><a href="geoprocessing.html#cb139-3" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(parks)</span>
-<span id="cb139-4"><a href="geoprocessing.html#cb139-4" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(bike_paths)</span>
-<span id="cb139-5"><a href="geoprocessing.html#cb139-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb139-6"><a href="geoprocessing.html#cb139-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(bike_paths<span class="sc">$</span>geoms, <span class="at">col=</span><span class="st">&#39;green&#39;</span>, <span class="at">axes=</span>T)</span>
-<span id="cb139-7"><a href="geoprocessing.html#cb139-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(parks<span class="sc">$</span>geoms, <span class="at">col=</span><span class="st">&#39;blue&#39;</span>, <span class="at">add=</span>T)</span>
-<span id="cb139-8"><a href="geoprocessing.html#cb139-8" aria-hidden="true" tabindex="-1"></a>paths_in_parks <span class="ot">&lt;-</span> bike_paths[parks,]</span>
-<span id="cb139-9"><a href="geoprocessing.html#cb139-9" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(paths_in_parks<span class="sc">$</span>geoms, <span class="at">col=</span><span class="st">&#39;red&#39;</span>, <span class="at">lwd =</span> <span class="dv">2</span>, <span class="at">add=</span>T)</span>
-<span id="cb139-10"><a href="geoprocessing.html#cb139-10" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span>(<span class="at">main=</span><span class="st">&#39;Bike Paths in Parks in Austin&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="geoprocessing.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb1-2"><a href="geoprocessing.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(awra2020spatial)</span>
+<span id="cb1-3"><a href="geoprocessing.html#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(parks)</span>
+<span id="cb1-4"><a href="geoprocessing.html#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(bike_paths)</span>
+<span id="cb1-5"><a href="geoprocessing.html#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="geoprocessing.html#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(bike_paths<span class="sc">$</span>geoms, <span class="at">col=</span><span class="st">&#39;green&#39;</span>, <span class="at">axes=</span>T)</span>
+<span id="cb1-7"><a href="geoprocessing.html#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(parks<span class="sc">$</span>geoms, <span class="at">col=</span><span class="st">&#39;blue&#39;</span>, <span class="at">add=</span>T)</span>
+<span id="cb1-8"><a href="geoprocessing.html#cb1-8" aria-hidden="true" tabindex="-1"></a>paths_in_parks <span class="ot">&lt;-</span> bike_paths[parks,]</span>
+<span id="cb1-9"><a href="geoprocessing.html#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(paths_in_parks<span class="sc">$</span>geoms, <span class="at">col=</span><span class="st">&#39;red&#39;</span>, <span class="at">lwd =</span> <span class="dv">2</span>, <span class="at">add=</span>T)</span>
+<span id="cb1-10"><a href="geoprocessing.html#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span>(<span class="at">main=</span><span class="st">&#39;Bike Paths in Parks in Austin&#39;</span>)</span></code></pre></div>
 <p><img src="R-User-Group-Spatial-Workshop-2021_files/figure-html/subset-1.png" width="672" /></p>
 </div>
 </div>
@@ -295,13 +283,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="spatial-join" class="section level3" number="6.3.1">
 <h3><span class="header-section-number">6.3.1</span> Spatial Join</h3>
 <p>First we’ll use chained operations to select just a couple columns from both bike_paths and parks, and then we’ll do a spatial join operation in <code>sf</code>. Note again, when we do a select on just attribute column, the geometry column remains - geometry is sticky in <code>sf</code>!</p>
-<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb140-1"><a href="geoprocessing.html#cb140-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb140-2"><a href="geoprocessing.html#cb140-2" aria-hidden="true" tabindex="-1"></a>bike_paths <span class="ot">&lt;-</span> bike_paths <span class="sc">%&gt;%</span> </span>
-<span id="cb140-3"><a href="geoprocessing.html#cb140-3" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(ROUTE_NAME)</span>
-<span id="cb140-4"><a href="geoprocessing.html#cb140-4" aria-hidden="true" tabindex="-1"></a>parks <span class="ot">&lt;-</span> parks <span class="sc">%&gt;%</span> </span>
-<span id="cb140-5"><a href="geoprocessing.html#cb140-5" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(LOCATION_NAME, ZIPCODE,PARK_TYPE)</span>
-<span id="cb140-6"><a href="geoprocessing.html#cb140-6" aria-hidden="true" tabindex="-1"></a>parks_bike_paths <span class="ot">&lt;-</span> <span class="fu">st_join</span>(parks, bike_paths) <span class="co"># st_intersects is the default</span></span>
-<span id="cb140-7"><a href="geoprocessing.html#cb140-7" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(parks_bike_paths)</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="geoprocessing.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb2-2"><a href="geoprocessing.html#cb2-2" aria-hidden="true" tabindex="-1"></a>bike_paths <span class="ot">&lt;-</span> bike_paths <span class="sc">%&gt;%</span> </span>
+<span id="cb2-3"><a href="geoprocessing.html#cb2-3" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(ROUTE_NAME)</span>
+<span id="cb2-4"><a href="geoprocessing.html#cb2-4" aria-hidden="true" tabindex="-1"></a>parks <span class="ot">&lt;-</span> parks <span class="sc">%&gt;%</span> </span>
+<span id="cb2-5"><a href="geoprocessing.html#cb2-5" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(LOCATION_NAME, ZIPCODE,PARK_TYPE)</span>
+<span id="cb2-6"><a href="geoprocessing.html#cb2-6" aria-hidden="true" tabindex="-1"></a>parks_bike_paths <span class="ot">&lt;-</span> <span class="fu">st_join</span>(parks, bike_paths) <span class="co"># st_intersects is the default</span></span>
+<span id="cb2-7"><a href="geoprocessing.html#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(parks_bike_paths)</span></code></pre></div>
 <pre><code>## Rows: 744
 ## Columns: 5
 ## $ LOCATION_NAME &lt;chr&gt; &quot;Stratford Overlook Greenbelt&quot;, &quot;Highland Neighborhood P~
@@ -317,17 +305,149 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">6.4.1</span> Dissolve</h3>
 <p>We can perform a spatial dissolve in <code>sf</code> using <code>dplyr</code> <code>group_by</code> and <code>summarize</code> functions with an <code>sf</code> object!
 Note that we could pull down <code>tidycensus</code> at tract level, but instead we want to look at running a dissolve to get from block group to tract level</p>
-<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="geoprocessing.html#cb142-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb142-2"><a href="geoprocessing.html#cb142-2" aria-hidden="true" tabindex="-1"></a>parks<span class="sc">$</span>AREA <span class="ot">&lt;-</span> <span class="fu">st_area</span>(parks)</span>
-<span id="cb142-3"><a href="geoprocessing.html#cb142-3" aria-hidden="true" tabindex="-1"></a>parks_zip <span class="ot">&lt;-</span> parks <span class="sc">%&gt;%</span> </span>
-<span id="cb142-4"><a href="geoprocessing.html#cb142-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(ZIPCODE) <span class="sc">%&gt;%</span></span>
-<span id="cb142-5"><a href="geoprocessing.html#cb142-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">AREA =</span> <span class="fu">sum</span>(AREA)) <span class="sc">%&gt;%</span></span>
-<span id="cb142-6"><a href="geoprocessing.html#cb142-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">fill=</span>(ZIPCODE))) <span class="sc">+</span></span>
-<span id="cb142-7"><a href="geoprocessing.html#cb142-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Austin Parks by Zip Code&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb142-8"><a href="geoprocessing.html#cb142-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span>
-<span id="cb142-9"><a href="geoprocessing.html#cb142-9" aria-hidden="true" tabindex="-1"></a>parks_zip</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="geoprocessing.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb4-2"><a href="geoprocessing.html#cb4-2" aria-hidden="true" tabindex="-1"></a>parks<span class="sc">$</span>AREA <span class="ot">&lt;-</span> <span class="fu">st_area</span>(parks)</span>
+<span id="cb4-3"><a href="geoprocessing.html#cb4-3" aria-hidden="true" tabindex="-1"></a>parks_zip <span class="ot">&lt;-</span> parks <span class="sc">%&gt;%</span> </span>
+<span id="cb4-4"><a href="geoprocessing.html#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(ZIPCODE) <span class="sc">%&gt;%</span></span>
+<span id="cb4-5"><a href="geoprocessing.html#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">AREA =</span> <span class="fu">sum</span>(AREA)) <span class="sc">%&gt;%</span></span>
+<span id="cb4-6"><a href="geoprocessing.html#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">fill=</span>(ZIPCODE))) <span class="sc">+</span></span>
+<span id="cb4-7"><a href="geoprocessing.html#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Austin Parks by Zip Code&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb4-8"><a href="geoprocessing.html#cb4-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span>
+<span id="cb4-9"><a href="geoprocessing.html#cb4-9" aria-hidden="true" tabindex="-1"></a>parks_zip</span></code></pre></div>
 <p><img src="R-User-Group-Spatial-Workshop-2021_files/figure-html/dissolve-1.png" width="672" /></p>
+</div>
+</div>
+<div id="example-four" class="section level2" number="6.5">
+<h2><span class="header-section-number">6.5</span> Example Four</h2>
+<div id="spatial-overlap" class="section level3" number="6.5.1">
+<h3><span class="header-section-number">6.5.1</span> Spatial Overlap</h3>
+<p>Here’s a fun example using material posted by Nicholas Tierney <a href="https://www.njtierney.com/post/2021/08/21/how-much-one-shapefile-overlaps-another/">here</a> that he put together based on <a href="https://gis.stackexchange.com/questions/362466/calculate-percentage-overlap-of-2-sets-of-polygons-in-r">this Stack Overflow discussion</a>.</p>
+<p>First we’ll extract the Portland Oregon metropolitan area using the <code>tidycensus</code> and <code>tigris</code> packages</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="geoprocessing.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb5-2"><a href="geoprocessing.html#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidycensus)</span>
+<span id="cb5-3"><a href="geoprocessing.html#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb5-4"><a href="geoprocessing.html#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tigris)</span>
+<span id="cb5-5"><a href="geoprocessing.html#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="geoprocessing.html#cb5-6" aria-hidden="true" tabindex="-1"></a>tracts <span class="ot">&lt;-</span> <span class="fu">get_acs</span>(<span class="at">geography =</span> <span class="st">&quot;tract&quot;</span>, <span class="at">variables =</span> <span class="st">&quot;DP04_0134&quot;</span>, </span>
+<span id="cb5-7"><a href="geoprocessing.html#cb5-7" aria-hidden="true" tabindex="-1"></a>                <span class="at">state =</span> <span class="st">&quot;OR&quot;</span>, <span class="at">geometry =</span> <span class="cn">TRUE</span>, <span class="at">progress_bar =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb5-8"><a href="geoprocessing.html#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-9"><a href="geoprocessing.html#cb5-9" aria-hidden="true" tabindex="-1"></a>pdx <span class="ot">&lt;-</span> <span class="fu">core_based_statistical_areas</span>(<span class="at">cb =</span> <span class="cn">TRUE</span>, <span class="at">progress_bar =</span> <span class="cn">FALSE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb5-10"><a href="geoprocessing.html#cb5-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(GEOID <span class="sc">==</span> <span class="st">&quot;38900&quot;</span>)</span>
+<span id="cb5-11"><a href="geoprocessing.html#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb5-12"><a href="geoprocessing.html#cb5-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> pdx,</span>
+<span id="cb5-13"><a href="geoprocessing.html#cb5-13" aria-hidden="true" tabindex="-1"></a>          <span class="at">fill =</span> <span class="st">&quot;forestgreen&quot;</span>) </span></code></pre></div>
+<p><img src="R-User-Group-Spatial-Workshop-2021_files/figure-html/overlap-1.png" width="672" /></p>
+<div id="next-well-create-a-dummy-spatial-polygon-file-to-compare-area-with-using-the-rmapshaper-package-to-simplify-the-border-of-the-pdx-metropolitan-polygon" class="section level4" number="6.5.1.1">
+<h4><span class="header-section-number">6.5.1.1</span> Next we’ll create a dummy spatial polygon file to compare area with using the <code>rmapshaper</code> package to simplify the border of the PDX metropolitan polygon</h4>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="geoprocessing.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rmapshaper) </span>
+<span id="cb6-2"><a href="geoprocessing.html#cb6-2" aria-hidden="true" tabindex="-1"></a>pdx_simplified <span class="ot">&lt;-</span> pdx <span class="sc">%&gt;%</span> </span>
+<span id="cb6-3"><a href="geoprocessing.html#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ms_simplify</span>(<span class="at">keep =</span> <span class="fl">0.01</span>)</span></code></pre></div>
+</div>
+<div id="then-we-can-overlay-polygons-in-ggplot-to-see-how-similar-they-are-showing-the-original-census-pdx-metropolitan-area-in-green-and-new-simplified-polygon-in-red" class="section level4" number="6.5.1.2">
+<h4><span class="header-section-number">6.5.1.2</span> Then we can overlay polygons in ggplot to see how similar they are, showing the original census PDX metropolitan area in green, and new simplified polygon in red</h4>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="geoprocessing.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb7-2"><a href="geoprocessing.html#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> pdx,</span>
+<span id="cb7-3"><a href="geoprocessing.html#cb7-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">fill =</span> <span class="st">&quot;forestgreen&quot;</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span> </span>
+<span id="cb7-4"><a href="geoprocessing.html#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> pdx_simplified, </span>
+<span id="cb7-5"><a href="geoprocessing.html#cb7-5" aria-hidden="true" tabindex="-1"></a>          <span class="at">fill =</span> <span class="st">&quot;firebrick&quot;</span>,</span>
+<span id="cb7-6"><a href="geoprocessing.html#cb7-6" aria-hidden="true" tabindex="-1"></a>          <span class="at">alpha =</span> <span class="fl">0.5</span>)</span></code></pre></div>
+<p><img src="R-User-Group-Spatial-Workshop-2021_files/figure-html/overlap3-1.png" width="672" /></p>
+</div>
+<div id="now-that-we-have-an-original-and-simplified-polygon-to-compare-the-process-we-want-to-use-is" class="section level4" number="6.5.1.3">
+<h4><span class="header-section-number">6.5.1.3</span> Now that we have an original and simplified polygon to compare, the process we want to use is:</h4>
+<ul>
+<li>Calculate original metro area polygon area</li>
+<li>Calculate the intersection of these two areas - original and simplified (st_intersection)</li>
+<li>Calculate that area (st_area)</li>
+<li>Then only keep the relevant data again</li>
+</ul>
+<p>We’ll run the steps then combine into a function</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="geoprocessing.html#cb8-1" aria-hidden="true" tabindex="-1"></a>original_area <span class="ot">&lt;-</span> pdx <span class="sc">%&gt;%</span> </span>
+<span id="cb8-2"><a href="geoprocessing.html#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">original_area =</span> <span class="fu">st_area</span>(.)) <span class="sc">%&gt;%</span> </span>
+<span id="cb8-3"><a href="geoprocessing.html#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(NAME, original_area) <span class="sc">%&gt;%</span> </span>
+<span id="cb8-4"><a href="geoprocessing.html#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">st_drop_geometry</span>()</span>
+<span id="cb8-5"><a href="geoprocessing.html#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-6"><a href="geoprocessing.html#cb8-6" aria-hidden="true" tabindex="-1"></a>intersection_area <span class="ot">&lt;-</span> <span class="fu">st_intersection</span>(pdx, pdx_simplified) <span class="sc">%&gt;%</span> </span>
+<span id="cb8-7"><a href="geoprocessing.html#cb8-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">intersect_area =</span> <span class="fu">st_area</span>(.)) <span class="sc">%&gt;%</span> </span>
+<span id="cb8-8"><a href="geoprocessing.html#cb8-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(NAME, intersect_area) <span class="sc">%&gt;%</span> </span>
+<span id="cb8-9"><a href="geoprocessing.html#cb8-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">st_drop_geometry</span>()</span></code></pre></div>
+</div>
+<div id="this-step-should-have-given-you-an-error" class="section level4 challenge" number="6.5.1.4">
+<h4><span class="header-section-number">6.5.1.4</span> This step should have given you an error</h4>
+<p>THIS IS VERY COMMON WORKING WITH SPATIAL DATA IN R AND USING <code>sf</code>.</p>
+</div>
+<div id="fix-for-the-error" class="section level4 solution" number="6.5.1.5">
+<h4><span class="header-section-number">6.5.1.5</span> Fix for the error</h4>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="geoprocessing.html#cb9-1" aria-hidden="true" tabindex="-1"></a>pdx_simplified <span class="ot">&lt;-</span> <span class="fu">st_make_valid</span>(pdx_simplified)</span>
+<span id="cb9-2"><a href="geoprocessing.html#cb9-2" aria-hidden="true" tabindex="-1"></a>pdx <span class="ot">&lt;-</span> <span class="fu">st_make_valid</span>(pdx)</span>
+<span id="cb9-3"><a href="geoprocessing.html#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="geoprocessing.html#cb9-4" aria-hidden="true" tabindex="-1"></a>original_area <span class="ot">&lt;-</span> pdx <span class="sc">%&gt;%</span> </span>
+<span id="cb9-5"><a href="geoprocessing.html#cb9-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">original_area =</span> <span class="fu">st_area</span>(.)) <span class="sc">%&gt;%</span> </span>
+<span id="cb9-6"><a href="geoprocessing.html#cb9-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(NAME, original_area) <span class="sc">%&gt;%</span> </span>
+<span id="cb9-7"><a href="geoprocessing.html#cb9-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">st_drop_geometry</span>()</span>
+<span id="cb9-8"><a href="geoprocessing.html#cb9-8" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb9-9"><a href="geoprocessing.html#cb9-9" aria-hidden="true" tabindex="-1"></a>intersection_area <span class="ot">&lt;-</span> <span class="fu">st_intersection</span>(pdx, pdx_simplified) <span class="sc">%&gt;%</span> </span>
+<span id="cb9-10"><a href="geoprocessing.html#cb9-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">intersect_area =</span> <span class="fu">st_area</span>(.)) <span class="sc">%&gt;%</span> </span>
+<span id="cb9-11"><a href="geoprocessing.html#cb9-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(NAME, intersect_area) <span class="sc">%&gt;%</span> </span>
+<span id="cb9-12"><a href="geoprocessing.html#cb9-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">st_drop_geometry</span>()</span>
+<span id="cb9-13"><a href="geoprocessing.html#cb9-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-14"><a href="geoprocessing.html#cb9-14" aria-hidden="true" tabindex="-1"></a><span class="co"># show the area of intersection</span></span>
+<span id="cb9-15"><a href="geoprocessing.html#cb9-15" aria-hidden="true" tabindex="-1"></a>intersection_area</span></code></pre></div>
+<pre><code>##                                  NAME    intersect_area
+## 1 Portland-Vancouver-Hillsboro, OR-WA 16524152114 [m^2]</code></pre>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="geoprocessing.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># show the proportion of overlap</span></span>
+<span id="cb11-2"><a href="geoprocessing.html#cb11-2" aria-hidden="true" tabindex="-1"></a>intersection_area <span class="sc">%&gt;%</span> </span>
+<span id="cb11-3"><a href="geoprocessing.html#cb11-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">left_join</span>(original_area, </span>
+<span id="cb11-4"><a href="geoprocessing.html#cb11-4" aria-hidden="true" tabindex="-1"></a>              <span class="at">by =</span> <span class="st">&quot;NAME&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb11-5"><a href="geoprocessing.html#cb11-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">orig =</span> <span class="fu">as.numeric</span>(original_area),</span>
+<span id="cb11-6"><a href="geoprocessing.html#cb11-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">new =</span> <span class="fu">as.numeric</span>(intersect_area),</span>
+<span id="cb11-7"><a href="geoprocessing.html#cb11-7" aria-hidden="true" tabindex="-1"></a>           <span class="at">proportion =</span> (new <span class="sc">/</span> orig) <span class="sc">*</span> <span class="dv">100</span>)</span></code></pre></div>
+<pre><code>##                                  NAME    intersect_area     original_area
+## 1 Portland-Vancouver-Hillsboro, OR-WA 16524152114 [m^2] 17633108214 [m^2]
+##          orig         new proportion
+## 1 17633108214 16524152114   93.71094</code></pre>
+</div>
+<div id="why-did-i-use-as.numeric-in-the-mutate-statement-above" class="section level4 challenge" number="6.5.1.6">
+<h4><span class="header-section-number">6.5.1.6</span> Why did I use <code>as.numeric</code> in the <code>mutate</code> statement above?</h4>
+</div>
+<div id="answer-5" class="section level4 solution" number="6.5.1.7">
+<h4><span class="header-section-number">6.5.1.7</span> Answer</h4>
+<p>Because <code>sf</code> will store area for features using <code>units</code> - which is convenient and forces you to be up front about units used, but you can’t do calculations with attributes stored as units - have to convert them to numeric</p>
+</div>
+<div id="all-steps-rolled-into-a-function" class="section level4" number="6.5.1.8">
+<h4><span class="header-section-number">6.5.1.8</span> All steps rolled into a function</h4>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="geoprocessing.html#cb13-1" aria-hidden="true" tabindex="-1"></a>calculate_spatial_overlap <span class="ot">&lt;-</span> <span class="cf">function</span>(shape_new,</span>
+<span id="cb13-2"><a href="geoprocessing.html#cb13-2" aria-hidden="true" tabindex="-1"></a>                                      shape_old,</span>
+<span id="cb13-3"><a href="geoprocessing.html#cb13-3" aria-hidden="true" tabindex="-1"></a>                                      shared_column_name) {</span>
+<span id="cb13-4"><a href="geoprocessing.html#cb13-4" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb13-5"><a href="geoprocessing.html#cb13-5" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb13-6"><a href="geoprocessing.html#cb13-6" aria-hidden="true" tabindex="-1"></a>  intersection_area <span class="ot">&lt;-</span> <span class="fu">st_intersection</span>(shape_new, shape_old) <span class="sc">%&gt;%</span> </span>
+<span id="cb13-7"><a href="geoprocessing.html#cb13-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">intersect_area =</span> <span class="fu">st_area</span>(.)) <span class="sc">%&gt;%</span> </span>
+<span id="cb13-8"><a href="geoprocessing.html#cb13-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(shared_column_name, intersect_area) <span class="sc">%&gt;%</span> </span>
+<span id="cb13-9"><a href="geoprocessing.html#cb13-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">st_drop_geometry</span>()</span>
+<span id="cb13-10"><a href="geoprocessing.html#cb13-10" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb13-11"><a href="geoprocessing.html#cb13-11" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Create a fresh area variable</span></span>
+<span id="cb13-12"><a href="geoprocessing.html#cb13-12" aria-hidden="true" tabindex="-1"></a>  shape_old_areas <span class="ot">&lt;-</span> shape_old <span class="sc">%&gt;%</span> </span>
+<span id="cb13-13"><a href="geoprocessing.html#cb13-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">original_area =</span> <span class="fu">st_area</span>(.)) <span class="sc">%&gt;%</span> </span>
+<span id="cb13-14"><a href="geoprocessing.html#cb13-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(original_area, shared_column_name) <span class="sc">%&gt;%</span> </span>
+<span id="cb13-15"><a href="geoprocessing.html#cb13-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">st_drop_geometry</span>()</span>
+<span id="cb13-16"><a href="geoprocessing.html#cb13-16" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb13-17"><a href="geoprocessing.html#cb13-17" aria-hidden="true" tabindex="-1"></a>  intersection_area <span class="sc">%&gt;%</span> </span>
+<span id="cb13-18"><a href="geoprocessing.html#cb13-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">left_join</span>(shape_old_areas, </span>
+<span id="cb13-19"><a href="geoprocessing.html#cb13-19" aria-hidden="true" tabindex="-1"></a>              <span class="at">by =</span> shared_column_name) <span class="sc">%&gt;%</span> </span>
+<span id="cb13-20"><a href="geoprocessing.html#cb13-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">orig =</span> <span class="fu">as.numeric</span>(original_area),</span>
+<span id="cb13-21"><a href="geoprocessing.html#cb13-21" aria-hidden="true" tabindex="-1"></a>           <span class="at">new =</span> <span class="fu">as.numeric</span>(intersect_area),</span>
+<span id="cb13-22"><a href="geoprocessing.html#cb13-22" aria-hidden="true" tabindex="-1"></a>           <span class="at">proportion =</span> (new <span class="sc">/</span> orig) <span class="sc">*</span> <span class="dv">100</span>)</span>
+<span id="cb13-23"><a href="geoprocessing.html#cb13-23" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb13-24"><a href="geoprocessing.html#cb13-24" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb13-25"><a href="geoprocessing.html#cb13-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-26"><a href="geoprocessing.html#cb13-26" aria-hidden="true" tabindex="-1"></a><span class="fu">calculate_spatial_overlap</span>(pdx, pdx_simplified, <span class="at">shared_column_name=</span><span class="st">&#39;NAME&#39;</span>)</span></code></pre></div>
+<pre><code>##                                  NAME    intersect_area     original_area
+## 1 Portland-Vancouver-Hillsboro, OR-WA 16524152114 [m^2] 17295383068 [m^2]
+##          orig         new proportion
+## 1 17295383068 16524152114   95.54083</code></pre>
 
+</div>
 </div>
 </div>
 </div>
