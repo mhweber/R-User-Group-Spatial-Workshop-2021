@@ -1,5 +1,7 @@
 # Raster data
 
+## Raster data with `terra`
+
 Support for gridded data in R in recent year has been best implemented with the `raster` package by Robert Hijmans. The `raster` package allows you to:
 
 * read and write almost any commonly used raster data format using `rgdal`
@@ -36,7 +38,7 @@ myrast
   - `ext()` returns spatial extent
   - `crs()` returns the coordinate reference system
 
-### Challenge {.challenge}
+### Exercise
 Exploring raster objects 
 
 1. what is the minimal data required to define a `SpatRaster`? 
@@ -44,7 +46,7 @@ Exploring raster objects
 3. How do we pull out just the CRS for our r `SpatRaster`? 
 4. Building on this, what is the code to pull out just our xmin value in our extent, or bounding box?
 
-#### Answer {.solution} 
+### Solution
 
 1. number columns, number rows, and extent - the `raster` package however will fill in defaults if values aren't provided
 ```{r raster-emptyexample, message=FALSE, warning=FALSE, error=FALSE}
@@ -148,3 +150,36 @@ map_crlkel = map_crlk +
 
 map_crlkel
 ```
+
+## Raster data with `stars`
+
+`stars` works with and stands for spatio-temporal arrays and can deal with more complex data types than either `raster` or `terra` such as rotated grids. It should be said though that `terra` does have improved functionality for using multilayer rasters than `raster` did. 
+
+`stars` integrates with `sf` and many sf functions have methods for `stars` objects (i.e. `st_bbox` and `st_transform`) - this makes sense since they are both written by Edzer Pebesma. `terra` unfortunately has poor / no integration with `sf` - this is a big issue for me personally and I will likely look to `stars` long-term for my raster processing.
+
+### Read a satellite image
+Basic example shown in [stars vignette](https://r-spatial.github.io/stars/articles/stars1.html) - using the 30m bands of a Landsat-7 image that comes with the `stars` package:
+```{r stars_1, message=FALSE, warning=FALSE, error=FALSE}
+library(stars)
+tif = system.file("tif/L7_ETMs.tif", package = "stars")
+ls7 = read_stars(tif)
+plot(ls7, axes = TRUE)
+```
+
+ls7 (landsat7) is an object with 3 dimensions (x,y and band) and 1 attribute
+```{r stars_2, message=FALSE, warning=FALSE, error=FALSE}
+ls7
+```
+
+Note when we plotted above that the `plot` method with `stars` uses histogram stretching across all bands - we can also do stretching for each band indivially:
+```{r stars_3, message=FALSE, warning=FALSE, error=FALSE}
+plot(ls7, join_zlim = FALSE)
+```
+
+`stars` uses [tidyverse methods spatio-temporal arrays](https://r-spatial.github.io/stars/articles/stars3.html) - an example of this is pulling out one band of an image using `slice`
+```{r stars_4, message=FALSE, warning=FALSE, error=FALSE}
+ls7 %>% dplyr::slice(band, 6) -> band6
+band6
+```
+
+This gives us a lower-dimensional array of just band 6 from the Landsat7 image.

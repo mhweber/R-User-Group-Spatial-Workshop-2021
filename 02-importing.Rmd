@@ -8,10 +8,10 @@
   + Geocoding data (we saw example of this at beginning)
 
 
-For reading and writing vector and raster data in R, the three primary packages you'll use are:
+For reading and writing vector and raster data in R, the several main packages we'll look at are:
 
- * `sf` or `rgdal` for vector formats such as [ESRI Shapefiles](https://en.wikipedia.org/wiki/Shapefile),  [GeoJSON](https://en.wikipedia.org/wiki/GeoJSON), and [GPX](https://en.wikipedia.org/wiki/GPS_Exchange_Format) - both packages use **OGR**, which is a library under the [GDAL](https://en.wikipedia.org/wiki/GDAL) source tree,under the hood
- * `raster` for raster formats such as [GeoTIFF](https://en.wikipedia.org/wiki/GeoTIFF) or [ESRI or ASCII grid](https://en.wikipedia.org/wiki/Esri_grid) using [GDAL](https://en.wikipedia.org/wiki/GDAL) under the hood
+ * `sf` or `rgdal` for vector formats such as [ESRI Shapefiles](https://en.wikipedia.org/wiki/Shapefile),  [GeoJSON](https://en.wikipedia.org/wiki/GeoJSON), and [GPX](https://en.wikipedia.org/wiki/GPS_Exchange_Format) - `sf` uses **OGR**, which is a library under the [GDAL](https://en.wikipedia.org/wiki/GDAL) source tree,under the hood
+ * `terra`, `raster`, or `stars` for raster formats such as [GeoTIFF](https://en.wikipedia.org/wiki/GeoTIFF) or [ESRI or ASCII grid](https://en.wikipedia.org/wiki/Esri_grid) using [GDAL](https://en.wikipedia.org/wiki/GDAL) under the hood
  
 We can quickly discover supported I/O vector formats either via `sf` or `rgdal`:
 ```{r message=FALSE, warning=FALSE, error=FALSE}
@@ -25,7 +25,6 @@ kable(head(st_drivers(what='vector'),n=5))
 
 As well as I/O raster formats via `sf`:
 ```{r message=FALSE, warning=FALSE, error=FALSE}
-library(knitr)
 print(paste0('There are ',st_drivers(what='raster') %>% nrow(), ' raster drivers available'))
 kable(head(st_drivers(what='raster'),n=5))
 ```
@@ -50,11 +49,11 @@ options(scipen=3)
 plot(citylims$geometry, axes=T, main='Oregon City Limits') # plot it!
 ```
 
-### Exercise
+#### Exercise
 `st_read` versus `read_sf` - above, I didn't pass any parameters to st_read - typically I would pass the parameters `quiet=TRUE` and `stringsAsFactors=FALSE` - why would this be a good practice in general?
 
-#### Solution
-`read_sf` is an `sf` alternative to st_read (see [this](https://keen-swartz-3146c4.netlify.com/intro.html#read) section 1.2.2). Try reading in `citylims` data above using `read_sf` and notice difference, and check out `help(read_sf)`.  `read_sf` and `write`sf` are simply aliases for st_read and st_write with modified default arguments.  Big differences are:
+##### Solution 
+`read_sf` is an `sf` alternative to st_read (see [this](https://keen-swartz-3146c4.netlify.com/intro.html#read) section 1.2.2). Try reading in `citylims` data above using `read_sf` and notice difference, and check out `help(read_sf)`.  `read_sf` and `write_sf` are simply aliases for st_read and st_write with modified default arguments.  Big differences are:
 
 - stringsAsFactors=FALSE
 - quiet=TRUE
@@ -79,12 +78,24 @@ ggplot(parks) + geom_sf()
 ### Geopackages
 Another spatial file format is the geopackage. Let's try a quick read and write of geopackage data.  First we'll read in a geopackage using data that comes with `sf` using `dplyr` syntax just to show something a bit different and use `read_sf` as an alternative to `st_read`.  You may want to try writing the data back out as a `geopackage` as well. 
 
-Quick question: What are a couple advantages of `geopackages` over `shapefiles`?
+
 ```{r geopackage_read, message=FALSE, warning=FALSE, error=FALSE}
 library(dplyr)
 nc <- system.file("gpkg/nc.gpkg", package="sf") %>% read_sf() # reads in
 glimpse(nc)
 ```
+
+#### Exercise
+What are a couple advantages of `geopackages` over `shapefiles`?
+
+#### Solution 
+Some thoughts [here](https://towardsdatascience.com/why-you-need-to-use-geopackage-files-instead-of-shapefile-or-geojson-7cb24fe56416), main ones probably:
+
+- geopackages avoid mult-file format of shapefiles
+- geopackages avoid the 2gb limit of shapefiles
+- geopackages are open-source and follow OGC standards
+- lighter in file size than shapefiles
+- geopackages avoid the 10-character limit to column headers in shapefile attribute tables (stored in archaic .dbf files)
 
 ### Open spatial data sources
 There is a wealth of open spatial data accessible online now via static URLs or APIs - a few examples include [Data.gov](https://catalog.data.gov/dataset?metadata_type=geospatial), NASA [SECAC Portal](http://sedac.ciesin.columbia.edu/), [Natural Earth](http://www.naturalearthdata.com/), [UNEP GEOdata](http://geodata.grid.unep.ch/), and countless others listed here at [Free GIS Data](https://freegisdata.rtwilson.com/)
@@ -113,7 +124,6 @@ Below is an example of pulling in US states using the `rnaturalearth` package - 
 ```{r naturalearth, , message=FALSE, warning=FALSE, error=FALSE}
 library(rnaturalearth)
 library(dplyr)
-library(ggplot2)
 states <- ne_states(country = 'United States of America')
 states_sf <- st_as_sf(states)
 states_sf %>%
@@ -121,7 +131,35 @@ states_sf %>%
   ggplot + geom_sf()
 ```
 
-### Read in raster data
+### Read in OpenStreetMap data
+The [osmdata](https://github.com/ropensci/osmdata) package is a fantastic resource for leveraging the OpenStreetMap (OSM) database.
+
+First we'll find available tags to get foot paths to plot
+```{r osmdata1 , message=FALSE, warning=FALSE, error=FALSE}
+library(osmdata)
+library(mapview)
+
+head(available_tags("highway")) # get rid of head when you run - just used to truncate output
+```
+
+```{r osmdata2 , message=FALSE, warning=FALSE, error=FALSE}
+footway <- opq(bbox = "corvallis oregon") %>% 
+  add_osm_feature(key = "highway", value = c("footway","cycleway","path", "path","pedestrian","track")) %>% 
+  osmdata_sf()
+footway <- footway$osm_lines
+
+rstrnts <- opq(bbox = "corvallis oregon") %>% 
+    add_osm_feature(key = "amenity", value = "restaurant") %>%
+    osmdata_sf()
+rstrnts <- rstrnts$osm_points
+
+mapview(footway$geometry) + mapview(rstrnts)
+```
+
+Take a minute and try pulling in data of your own for your own area and plotting using `osmdata`
+
+### Raster data
+### `raster` package
 Here we use the `getData` function in the `raster` package to download elevation into a `RasterLayer` and grab administrative boundaries from a database of global administrative boundaries - warning: sometimes `getData` function has trouble accessing the server and download can be a bit slow. Here we see as well how we can use vector spataio polygon data to crop raster data.
 ```{r rasterdata, message=FALSE, warning=FALSE, error=FALSE}
 library(raster)
@@ -135,32 +173,32 @@ plot(elev, add=TRUE)
 plot(Benton, add=TRUE)
 ```
 
-### Read in OpenStreetMap data
-The [osmdata](https://github.com/ropensci/osmdata) package is a fantastic resource for leveraging the OpenStreetMap (OSM) database.
-```{r osmdata , message=FALSE, warning=FALSE, error=FALSE}
-library(osmdata)
-library(mapview)
-
-footway <- opq(bbox = "corvallis oregon") %>% 
-  add_osm_feature(key = "highway", value = "footway") %>% 
-  osmdata_sf()
-footway <- footway$osm_lines
-mapview(footway$geometry)
+### `terra` package
+Load stock elevation .tif file that comes with package
+```{r terra_hist, message=FALSE, warning=FALSE, error=FALSE}
+library(terra)
+f <- system.file("ex/elev.tif", package="terra")
+elev <- rast(f)
+barplot(elev, digits=-1, las=2, ylab="Frequency")
 ```
 
-
-```{r osmdata2 , message=FALSE, warning=FALSE, error=FALSE}
-library(osmdata)
-library(mapview)
-rstrnts <- opq(bbox = "corvallis oregon") %>% 
-    add_osm_feature(key = "amenity", value = "restaurant") %>%
-    osmdata_sf()
-rstrnts <- rstrnts$osm_points
-
-mapview(rstrnts$geometry)
+```{r terra_plot, message=FALSE, warning=FALSE, error=FALSE}
+plot(elev)
 ```
 
-We often have flat files, locally on our machine or accessed elsewhere, that have coordinate information which we would like to make spatial:
+### `stars` package
+Load stock elevation .tif file that comes with package
+```{r stars_read, message=FALSE, warning=FALSE, error=FALSE}
+library(stars)
+tif = system.file("tif/L7_ETMs.tif", package = "stars")
+read_stars(tif) %>%
+  dplyr::slice(index = 1, along = "band") %>%
+  plot()
+```
+
+We'll get a sense for what 'slice' and 'index' above are doing in the [Raster data section](https://mhweber.github.io/R-User-Group-Spatial-Workshop-2021/raster-data.html)
+### Convert flat files to spatial
+We often have flat files, locally on our machine or accessed elsewhere, that have coordinate information which we would like to make spatial
 ```{r vector_drivers, message=FALSE, warning=FALSE, error=FALSE}
 library(devtools)
 library(readr)
@@ -175,5 +213,3 @@ gages_sf <- gages %>%
 
 ggplot() + geom_sf(data=gages_sf)
 ```
-
-

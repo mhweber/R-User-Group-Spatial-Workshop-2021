@@ -24,12 +24,14 @@ There is extensive documentation, blog posts and vignettes available for `sf` he
 
 A very handy page, if you're already familiar with the `sp` ecosystem, is the [Migrating](https://github.com/r-spatial/sf/wiki/migrating) page on the [sf GitHub wiki](https://github.com/r-spatial/sf/wiki).
 
+### `sf` Methods
 Here's a quick synopsis of available methods in `sf`:
 ```{r sf_methods, message=FALSE, warning=FALSE, error=FALSE}
 library(sf)
 methods(class = 'sf')
 ```
 
+### Exploring `sf`
 Let's start exploring `sf` using some data included in the awra2020spatial package.
 
 ```{r gages2, message=FALSE, warning=FALSE, error=FALSE}
@@ -65,9 +67,7 @@ Generic plotting works on `sf` objects - take a minute to play with ploting the 
 plot(bike_paths$geoms, axes=T)
 ```
 
-
-
-### Units in `sf`
+## Units in `sf`
 The `crs` in `sf` encodes the units of measure in information relating to spatial units of features - this can be both handy and very confusing for those new to it.  Consider the following:
 
 ```{r}
@@ -83,3 +83,4 @@ If we need to use the value elsewhere get rid of units
 ```{r}
 as.numeric(sum(st_length(bike_paths)))
 ```
+

@@ -17,11 +17,13 @@ knitr::include_graphics("images/WordCloud.png")
 ## Workshop agenda
   
   + 1:00pm - 1:30pm EDT: [Intro and quick review of basic R objects and methods](https://mhweber.github.io/R-User-Group-Spatial-Workshop-2021/index.html)
-  + 1:30pm - 2:00pm EDT: [Getting spatial data into R](https://mhweber.github.io/R-User-Group-Spatial-Workshop-2021/reading-in-spatial-data.html) 
+  + 1:30pm - 1:55pm EDT: [Getting spatial data into R](https://mhweber.github.io/R-User-Group-Spatial-Workshop-2021/reading-in-spatial-data.html)
+  + 1:55: 2:00 Break
   + 2:00pm - 2:30pm EDT: [Understanding vector and raster data in R and some example workflows](https://mhweber.github.io/R-User-Group-Spatial-Workshop-2021/index.html#spatial-data-in-r)
-  + 2:30: 2:40 Break
+  + 2:30: 2:45 Break
   + 2:45pm - 3:00pm EDT: [Understanding coordinate reference systems (CRS)](https://mhweber.github.io/R-User-Group-Spatial-Workshop-2021/coordinate-reference-systems.html)
-  + 3:00pm - 3:30pm EDT: [Vector data with sf](https://mhweber.github.io/R-User-Group-Spatial-Workshop-2021/vector-data-with-sf.html)
+  + 3:00pm - 3:25pm EDT: [Vector data with sf](https://mhweber.github.io/R-User-Group-Spatial-Workshop-2021/vector-data-with-sf.html)
+  + 3:25pm - 3:33pm Break
   + 3:30pm - 4:30pm EDT: [Raster data](https://mhweber.github.io/R-User-Group-Spatial-Workshop-2021/raster-data.html)
   + 4:30pm - 4:30pm EDT: [Geoprocessing](https://mhweber.github.io/R-User-Group-Spatial-Workshop-2021/geoprocessing.html)
   + 4:30pm - 5:00pm EDT: [Learning ways to map and visualize spatial data](https://mhweber.github.io/R-User-Group-Spatial-Workshop-2021/visualizing-spatial-data.html)
@@ -291,11 +293,11 @@ We have a 'raster' of cell values in columnns and rows - but what is lacking?
 
 You can do simple things with these spatial representations using basic R structures, but it breaks down quickly if you want to ask any spatial questions - for instance using the first example above, how would we figure out the nearest city to Corvallis? Or imagine the polygon is a county and we wanted to know what cities are within the county? Or how would we superimpose our cities on our raster cells?  Or extract the value of a cell at the location of a city?
 
-### Challenge {.challenge}
+### Exercise
 
 What information do we need to properly define spatial vector data and perform spatial operations?
 
-### Answer {.solution} 
+### Solution
 
 - A coordinate reference system (CRS)
 - A bounding box or extent
@@ -319,11 +321,12 @@ monthly_stats <- stats %>%
 ggplot(monthly_stats, aes(x=month, y=amount, group = package, colour = package)) + geom_line(size=1.5) + scale_colour_brewer(palette="Set1") + ggtitle("R Monthly Spatial Package \n Downloads since 2018")
 ```
 
-### How did we make this figure? {.challenge}
+### Exercise
+How did we make this figure? 
 
 Look at answer below, run code in your own code editor, see if it makes sense and ask questions
 
-### Answer {.solution} 
+### Solution 
 
 ```{r spatial packages 2, eval=FALSE}
 # devtools::install_github("metacran/cranlogs")
@@ -374,7 +377,8 @@ tex_cap <-tmaptools::geocode_OSM("Texas Capital USA",
   glimpse()
 ```
 
-### Run and examine code chunk above {.challenge}
+### Exercise
+Run and examine code chunk above 
 
 1. What is the double colon doing?
 2. What is the `geocode_OSM` function doing?
@@ -382,7 +386,7 @@ tex_cap <-tmaptools::geocode_OSM("Texas Capital USA",
 4. What is `glimpse`?  Is it useful compared to `head` function? 
 
 
-### Answer {.solution} 
+### Solution 
 1. It specifies using `geocode_OSM` from the `tmaptools` package. R gives namespace preference to packages in order loaded; some packages share function names; so it's good practice to disambiguate your functions with the double-colon
 2. It is looking up a named feature in OpenStreetMap and returning the coordinates (bonus - we'll delve into more in next section - what coordinate reference system are coordinates in and how to you find out?)
 3. You would translate code using the `>%>` operator from:
