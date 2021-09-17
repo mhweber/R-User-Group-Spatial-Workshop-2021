@@ -5,6 +5,7 @@
 * [**Geocomputation with R**](https://geocompr.robinlovelace.net/)
 * [**R Spatial Task View**](https://cran.r-project.org/web/views/Spatial.html)
 * [**Modern Geospatial Data Analysis with R by Zev Ross**](http://files.zevross.com/workshops/spatial/slides/html/0-deck-list.html)
+* [**SIGR2021 Summer School**](https://nowosad.github.io/SIGR2021/)
 * [**Spatial Data Science - Pebesma and Bivand**](https://keen-swartz-3146c4.netlify.com/)
 * [**Spatial Data Science Course- Prof. Adam Wilson**](http://adamwilson.us/SpatialDataScience/index.html)
 * [**Introduction to Mapping and Spatial Analysis with R**](https://cengel.github.io/rspatial/)
@@ -25,11 +26,14 @@
 
 ### R Raster Resources
 
+* [**terra**](https://github.com/rspatial/terra)
+* [Spatial Data Science with R and terra](https://rspatial.org/terra/index.html)
+* [**stars - spatiotemporal arrays**](https://r-spatial.github.io/stars/)
 * [Wageningen University **Intro to Raster**](http://geoscripting-wur.github.io/IntroToRaster/)
 * [Wageningen University **Advanced Raster Analysis**](https://geoscripting-wur.github.io/AdvancedRasterAnalysis/)
 * [**The Visual Raster Cheat Sheet GitHub Repo**](https://github.com/etiennebr/visualraster)
 * [**Rastervis**](https://oscarperpinan.github.io/rastervis/)
-* [**stars - spatiotemporal arrays**](https://r-spatial.github.io/stars/)
+
 
 ### R Mapping Resources
 

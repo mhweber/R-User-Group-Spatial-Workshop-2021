@@ -91,3 +91,8 @@ exercise-2
 solution-2
 exercise-3
 solution-3
+workshop-agenda
+challenge-1
+reading-existing-rasters-on-disk
+plotting-rasters-and-vectors-with-tmap
+multiband-rasters

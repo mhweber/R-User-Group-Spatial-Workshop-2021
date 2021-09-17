@@ -14,19 +14,26 @@ always_allow_html: yes
 knitr::include_graphics("images/WordCloud.png")
 ```
 
-- Workshop agenda
+## Workshop agenda
   
-  + Intro and quick review of basic R objects and methods
-  + Getting spatial data into R
-  + Understanding vector and raster data in R and some example workflows
-  + Understanding coordinate reference systems (CRS)
-  + Learning ways to map and visualize spatial data
-  + Along the way: overview of select `tidyverse` packages and syntax
-    - i.e. `ggplot2`, `dplyr`, `readr`, `tidyr`, the pipe operator %>% 
-  + Working with vector and raster data in R
+  + 1:00pm - 1:30pm EDT: [Intro and quick review of basic R objects and methods](https://mhweber.github.io/R-User-Group-Spatial-Workshop-2021/index.html)
+  + 1:30pm - 2:00pm EDT: [Getting spatial data into R](https://mhweber.github.io/R-User-Group-Spatial-Workshop-2021/reading-in-spatial-data.html) 
+  + 2:00pm - 2:30pm EDT: [Understanding vector and raster data in R and some example workflows](https://mhweber.github.io/R-User-Group-Spatial-Workshop-2021/index.html#spatial-data-in-r)
+  + 2:30: 2:40 Break
+  + 2:45pm - 3:00pm EDT: [Understanding coordinate reference systems (CRS)](https://mhweber.github.io/R-User-Group-Spatial-Workshop-2021/coordinate-reference-systems.html)
+  + 3:00pm - 3:30pm EDT: [Vector data with sf](https://mhweber.github.io/R-User-Group-Spatial-Workshop-2021/vector-data-with-sf.html)
+  + 3:30pm - 4:30pm EDT: [Raster data](https://mhweber.github.io/R-User-Group-Spatial-Workshop-2021/raster-data.html)
+  + 4:30pm - 4:30pm EDT: [Geoprocessing](https://mhweber.github.io/R-User-Group-Spatial-Workshop-2021/geoprocessing.html)
+  + 4:30pm - 5:00pm EDT: [Learning ways to map and visualize spatial data](https://mhweber.github.io/R-User-Group-Spatial-Workshop-2021/visualizing-spatial-data.html)
+  
+  
+  + Along the way we'll look at: 
+    
+    - Select `tidyverse` packages and syntax, i.e. `ggplot2`, `dplyr`, `readr`, `tidyr`, the pipe operator %>% 
+    - Working with vector and raster data in R
   + If this is all new, don't sweat it - google things, we'll answer questions as we go
-- This portion of workshop there is no expectation of experience with spatial analysis in R - if you already have some experience, you are sure to pick up new tricks - if you don't, we'll cover the basics
-- We have a limited time to cover a very broad topic, so I'll move quickly - ask questions as they come up, but if you get lost on steps we'll have time for discussion at the end and material will be available to peruse at your own speed later.
+  + There is no expectation of experience with spatial analysis in R - if you already have some experience, you are sure to pick up new tricks - if you don't, we'll cover the basics
+  + We have a limited time to cover a very broad topic, so I'll move quickly - ask questions as they come up, but if you get lost on steps we'll have time for discussion at the end and material will be available to peruse at your own speed later.
 
 ## Workshop Packages and Data
 - Packages you need installed
@@ -44,34 +51,39 @@ knitr::include_graphics("images/WordCloud.png")
   + `rgdal`
   + `leaflet`
   + `mapview`
-  + [awra2020spatial](https://github.com/mhweber/awra2020spatial) - data for this workshop contained in package
+  + `terra`
+  + `spDataLarge`
+  + [Rspatialworkshop](https://github.com/mhweber/Rspatialworkshop) - data for this workshop contained in package - install with: 
+    - library(devtools)
+    - install_github("mhweber/Rspatialworkshop")
   
 - Downloading content via Github
+  + From [the workshop GitHub repository](https://github.com/mhweber/R-User-Group-Spatial-Workshop-2021) clone the repository by [copying the clone link](https://github.com/mhweber/R-User-Group-Spatial-Workshop-2021.git)
+  + If you're not familiar with git and GitHub, simply choose to [download the zip file](https://github.com/mhweber/R-User-Group-Spatial-Workshop-2021/archive/refs/heads/master.zip) to have all the material locally
 
 - Using RMarkdown and RStudio
-
+  + R Markdown allows for reproducible reporting from R
+  + You write your document in markdown and embed executable code chunks using the knitr syntax
+  + You can update your document at any time by re-knitting the code chunks and convert your document to a number of formats (i.e. html, pdf, word documents)
+  + We will assume everyone in the workshop is familiar with using RStudio
 
 ## Overview 
 ```{r, fig.cap="History of R", echo=FALSE, out.width="150%"}
 knitr::include_graphics("images/History of R.png")
 ```
 
-What is R and why should we use R for spatial analysis? Let’s break that into two questions - first, what is R and why should we use it?
+Why use R for spatial analysis? 
 
-- A language and environment for statistical computing and graphics
 - R is lightweight, free, open-source and cross-platform
-- Works with contributed packages - currently 15,362 - extensibility
+- Works with contributed packages - currently 18,188 - extensibility
 - Automation and recording of workflow (reproducibility)
 - Optimized work flow - data manipulation, analysis and visualization all in one place
 - R does not alter underlying data - manipulation and visualization in memory
 - R is great for repetetive graphics
-
-Second, why use R for spatial, or GIS, work?
-
-- Spatial and statistical analysis in one environment
+- R is great for integrating different aspects of analysis - spatial and statistical analysis in one environment
 - Leverage statistical power of R (i.e.  modeling spatial data, data visualization, statistical exploration)
 - Can handle vector and raster data, as well as work with spatial databases and pretty much any data format spatial data comes in
-- R's GIS capabilities growing rapidly right now - new packages added monthly - currently about 200 spatial packages (depending on how you categorize)
+- R's GIS capabilities growing rapidly right now - new packages added monthly - currently about 275 spatial packages (depending on how you categorize)
 
 Some drawbacks to using R for GIS work
 
