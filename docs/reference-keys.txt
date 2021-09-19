@@ -115,3 +115,5 @@ exercise-4
 solution-4
 exercise-5
 solution-5
+downloading-content-via-github
+using-rmarkdown-and-rstudio

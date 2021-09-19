@@ -2,11 +2,12 @@
 
 ## Lesson Goals
 
-* Explore a couple mapping libraries in R
+* Explore a basics of several mapping libraries in R
+* Construct a couple example visualizations with spatial data in R
 
-R is fantastic for making publication quality static maps, and for generating repetitive graphics through scripts, and we've shown the use of base plotting and using `ggplot` for making maps already. There are also a number of packages in R that link R code to plotting libraries developed in Javascript (or other languages) for interactive plotting and web integration.
+R is fantastic for making publication quality static maps, and for generating repetitive graphics through scripts;  we've already seen how to make simple maps using base plotting,`ggplot`, and `tmap`. There are also a number of packages in R that link R code to plotting libraries developed in Javascript (or other languages) for interactive plotting and web integration.
 
-### Chorpleths with tmap
+## Chorpleths with `tmap`
 Load `tidycensus` - you'll need to set your Census API key. A key can be obtained from [here](http://api.census.gov/data/key_signup.html). Here we make a choropleth map of median household income in Travis county in Texas.
 ```{r}
 library(sf)
@@ -24,7 +25,7 @@ austin_tracts <- get_acs(state = 'TX', county = 'Travis', geography = "tract",
 tm_shape(austin_tracts) + tm_polygons("estimate")
 ```
 
-### Leaflet
+## `leaflet`
 [Leaflet](https://leafletjs.com/) is an extremely popular open-source javascript library for interactive web mapping, and the `leaflet` R package allows R users to create Leaflet maps from R. `Leaflet` can plot `sf` or `sp` objects, or x / y coordinates, and can plot points, lines or polygons. There are a number of [base layers you can choose from](http://leaflet-extras.github.io/leaflet-providers/preview/index.html).  It's worth spending some time exploring the excellent [Leaflet for R site](https://rstudio.github.io/leaflet/).
 
 Here we make the simplest of leaflet maps:
@@ -37,14 +38,67 @@ m <- leaflet() %>%
 m  # Print the map
 ```
 
-### mapview
+## `mapview`
 [Mapview](https://r-spatial.github.io/mapview/index.html) is a package designed for quick and easy interactive visualizations of spatial data - it makes use of `leaflet` but simplifies mapping functions compared to the `leaflet` package.  
 
 It's easy to layer features with `mapview` - you can supply a list of objects to `mapview` or use + syntax as with `ggplot`.
 ```{r message=FALSE, error=FALSE, warning=FALSE}
-library(awra2020spatial)
+library(Rspatialworkshop)
 library(mapview)
 data(bike_paths)
 data(parks)
 mapview(bike_paths) + parks
+```
+
+## Visualize site data
+Load a flat file with location data, convert to a spatial object, visualize with mapview and load web map layers alongside using `mapview` and underlying `leaflet` functionality
+
+First we load load an excel file containing coordinate information in a known projection and promote to an `sf` spatial data frame.
+```{r message=FALSE, error=FALSE, warning=FALSE}
+library(Rspatialworkshop)
+library(sf)
+library(dplyr)
+library(readxl)
+library(mapview)
+fpath <- system.file("extdata", "Station_Locations.xlsx", package="Rspatialworkshop")
+stations <- read_xlsx(fpath)
+glimpse(stations)
+summary(stations$x)
+# common clean up steps for spatial data - we can't use data missing coordinates so drop those records
+stations <- stations[complete.cases(stations),]
+# often spatial data in projected coordinates will have missing negative values for x values - common thing to fix:
+stations$x[stations$x > 0] <- 0 - stations$x[stations$x > 0]
+stations <- stations %>% 
+  st_as_sf(coords = c("x", "y"), remove = FALSE)
+
+# in this case we know the particular Albers projection and have the information as a proj string
+st_crs(stations) <- "+proj=aea +lat_1=29.5 +lat_2=45.5 +lat_0=23 +lon_0=-96 +x_0=0 +y_0=0 +ellps=GRS80 +datum=NAD83 +units=m +no_defs" 
+```
+
+Basic interactive map of our spatial stations with `mapview`:
+```{r message=FALSE, error=FALSE, warning=FALSE}
+mapview(stations)
+```
+
+We know of web mapping services for the  National Hydrography dataset - these are stream site locations so imagine we want to visualize how closely these sites match a known rivers and stream network:
+```{r message=FALSE, error=FALSE, warning=FALSE}
+library(leaflet)
+# create a mapview object with our stations:
+m <- mapview(stations, legend=FALSE)
+
+# we configure the map attribute of our mapview object - try:
+# 'attributes(m) 
+# to see those attributes
+
+#  The map attribute for mapview accepts leaflet methods - in this case we use addWMSTiles to add web map service tiles to the map
+m@map <- m@map %>% addWMSTiles(group = 'NHDPlus',
+                              "https://watersgeo.epa.gov/arcgis/services/NHDPlus_NP21/NHDSnapshot_NP21/MapServer/WmsServer?",
+                              layers  = 4,
+                              options = WMSTileOptions(format = "image/png", transparent = TRUE),
+                              attribution = "") %>% addWMSTiles(group = 'NHDPlusHR',
+                                                                "https://hydro.nationalmap.gov/arcgis/services/NHDPlus_HR/MapServer/WMSServer?",
+                                                                layers  = 9,
+                                                                options = WMSTileOptions(format = "image/png", transparent = TRUE),
+                                                                attribution = "")  %>% mapview:::mapViewLayersControl(names = c("NHDPlus","NHDPlusHR"))
+m
 ```
