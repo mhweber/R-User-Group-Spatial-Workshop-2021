@@ -187,7 +187,7 @@ plot(elev)
 ```
 
 ### `stars` package
-Load stock elevation .tif file that comes with package
+Load stock Landsat 7 .tif file that comes with package
 ```{r stars_read, message=FALSE, warning=FALSE, error=FALSE}
 library(stars)
 tif = system.file("tif/L7_ETMs.tif", package = "stars")
@@ -197,15 +197,25 @@ read_stars(tif) %>%
 ```
 
 We'll get a sense for what 'slice' and 'index' above are doing in the [Raster data section](https://mhweber.github.io/R-User-Group-Spatial-Workshop-2021/raster-data.html)
+
 ### Convert flat files to spatial
-We often have flat files, locally on our machine or accessed elsewhere, that have coordinate information which we would like to make spatial
+We often have flat files, locally on our machine or accessed elsewhere, that have coordinate information which we would like to make spatial. 
+
+In the steps below, we 
+
+  1. read in a .csv file of USGS gages in the PNW that have coordinate columns
+  2. Use `st_as_sf` function in `sf` to convert the data frame to an `sf` spatial simple feature collection by:
+      a. passing the coordinate columns to the coords parameter
+      b. specifying a coordinate reference system (CRS)
+      c. opting to retain the coordinate columns as attribute columns in the resulting `sf` feature collection.
+  3. Keep only the coordinates and station ID in resulting `sf` feature collection, and
+  4. Plotting our gages as spatial features with `ggplot2` using `geom_sf`.
+  
 ```{r vector_drivers, message=FALSE, warning=FALSE, error=FALSE}
-library(devtools)
 library(readr)
 library(ggplot2)
-# install_github("mhweber/awra2020spatial", force=TRUE)
-library(awra2020spatial)
-gages = read_csv(system.file("extdata/Gages_flowdata.csv", package = "awra2020spatial"))
+library(Rspatialworkshop)
+gages = read_csv(system.file("extdata/Gages_flowdata.csv", package = "Rspatialworkshop"))
 
 gages_sf <- gages %>%
   st_as_sf(coords = c("LON_SITE", "LAT_SITE"), crs = 4269, remove = FALSE) %>%

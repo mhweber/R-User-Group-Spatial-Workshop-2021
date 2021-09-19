@@ -9,8 +9,8 @@ R is fantastic for making publication quality static maps, and for generating re
 
 ## Chorpleths with `tmap`
 Load `tidycensus` - you'll need to set your Census API key. A key can be obtained from [here](http://api.census.gov/data/key_signup.html). Here we make a choropleth map of median household income in Travis county in Texas.
-```{r}
-library(sf)
+```{r message=FALSE, error=FALSE, warning=FALSE, results='hide'}
+library(sf,quietly = T)
 library(tidycensus)
 # census_api_key("YOUR API KEY GOES HERE")
 ```

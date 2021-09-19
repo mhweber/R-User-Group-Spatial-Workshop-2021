@@ -27,7 +27,7 @@ A very handy page, if you're already familiar with the `sp` ecosystem, is the [M
 ### `sf` Methods
 Here's a quick synopsis of available methods in `sf`:
 ```{r sf_methods, message=FALSE, warning=FALSE, error=FALSE}
-library(sf)
+library(sf,quietly = T)
 methods(class = 'sf')
 ```
 

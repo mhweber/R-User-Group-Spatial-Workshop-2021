@@ -16,7 +16,7 @@ knitr::include_graphics("images/WordCloud.png")
 
 ## Workshop agenda
   
-  + 1:00pm - 1:30pm EDT: [Intro and quick review of basic R objects and methods](https://mhweber.github.io/R-User-Group-Spatial-Workshop-2021/index.html)
+  + 1:00pm - 1:30pm EDT: [Intro and quick intro to R spatial objects and methods](https://mhweber.github.io/R-User-Group-Spatial-Workshop-2021/index.html)
   + 1:30pm - 1:55pm EDT: [Getting spatial data into R](https://mhweber.github.io/R-User-Group-Spatial-Workshop-2021/reading-in-spatial-data.html)
   + 1:55: 2:00 Break
   + 2:00pm - 2:30pm EDT: [Understanding vector and raster data in R and some example workflows](https://mhweber.github.io/R-User-Group-Spatial-Workshop-2021/index.html#spatial-data-in-r)
@@ -356,11 +356,11 @@ ggplot(monthly_stats, aes(x=month, y=amount, group = package, colour = package))
 knitr::include_graphics("images/Prehistoric.jpg")
 ```
 
-`sp` was the core vector spatial data package in R for a number of years, and while still used and while many packages still depend on the package, we will make a clean break in this workshop and focus entirely on the new `sf` package for working with vector data.
+`sp` was the core vector spatial data package in R for a number of years, and while still used and while many packages still depend on the package, we will focus entirely `sf` for working with vector data.
 
 This portion of the workshop will focus primarily on the following core packages for working with spatial data in R:
 - `sf` - The core package for working with vector data in R
-- `raster` - Still the primary spatial package for working with raster data in R
+- `terra` - The replacement package for `raster` which has been the primary spatial package for working with raster data in R
 - `mapview` - this is a wrapper package for R `leaflet` package and I find simpler and more intuitive
 - `ggolot` and `tmap` -  static plotting and thematic maping
 - `dplyr` - Not a spatial package, but `sf` is "tidy-compliant" and we will follow "tidy" workflows in this portion of the workshop for much or our examples
@@ -379,23 +379,23 @@ Here we'll use the `tmap` package and `tmaptools` to 'geocode' a named feature i
 library(tmap)
 library(tmaptools)
 library(dplyr)
-tex_cap <-tmaptools::geocode_OSM("Texas Capital USA", 
+my_town <-tmaptools::geocode_OSM("Corvallis OR USA", 
         as.sf = TRUE) %>% 
   glimpse()
 ```
 
 ### Exercise
-Run and examine code chunk above 
+Run and examine code chunk above and try geocoding examples you think of
 
 1. What is the double colon doing?
 2. What is the `geocode_OSM` function doing?
 3. Explain how the code runs together using the `%>%` chaining operator
-4. What is `glimpse`?  Is it useful compared to `head` function? 
+4. What is `glimpse`?  Is it useful compared to `head` function?
 
 
 ### Solution 
 1. It specifies using `geocode_OSM` from the `tmaptools` package. R gives namespace preference to packages in order loaded; some packages share function names; so it's good practice to disambiguate your functions with the double-colon
-2. It is looking up a named feature in OpenStreetMap and returning the coordinates (bonus - we'll delve into more in next section - what coordinate reference system are coordinates in and how to you find out?)
+2. It is looking up a named feature in OpenStreetMap and returning the coordinates (bonus - we'll delve into more in next section - what coordinate reference system are coordinates in and how do you find out?)
 3. You would translate code using the `>%>` operator from:
   - do this `%>%` do that `%>%`  do that
   
@@ -407,23 +407,23 @@ Run and examine code chunk above
 
 
 ### Choropleth map
-The excellent `tigris` package can be used to get census boundaries such as states and counties as vector `sf` objects in R
-```{r tmap example, fig.width=8, results='hide'}
-library(sf)
+The `tigris` package can be used to get census boundaries such as states and counties as vector `sf` objects in R
+```{r tmap example, fig.width=8, results='hide', message=FALSE, error=FALSE, warning=FALSE, results='hide'}
 library(tigris)
-counties <- counties("Texas", cb = TRUE)
+library(sf, quietly = T)
+counties <- counties("Oregon", cb = TRUE)
 counties$area <- as.numeric(st_area(counties))
 glimpse(counties)
 
 tm_shape(counties) +
   tm_polygons("area", 
               style="quantile", 
-              title="Texas Counties Area")
+              title="Area of Oregon Counties")
 ```
 
 ### Interactive mapping
-```{r mapview example, fig.width=8}
+```{r mapview example, fig.width=8,message=FALSE, error=FALSE, warning=FALSE, results='hide'}
 library(mapview)
-mapview(tex_cap, col="red", col.regions = "red") + mapview(counties, alpha.regions = .1)
+mapview(my_town, col="red", col.regions = "red") + mapview(counties, alpha.regions = .1)
 ```
 
