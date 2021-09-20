@@ -22,7 +22,7 @@ We know with precision that the measure of these two are 6,378,137 meters and 6,
 
 More precisely that an *ellipsoid*, though, we know that earth is a *geoid* - it is not perfectly smooth - and modelling the the undulations due to changes in gravitational pull for different locations is crucial to accuracy in a GIS. This is where a *datum* comes in - we match the geoid to the ellipsoid to best match local conditions.  We have many datums to choose from based on location of interest - in the US we would typically choose *NAD83*
 
-### Why you need to know about CRS working with spatial data in R:
+## Why you need to know about CRS working with spatial data in R:
 ```{r crs_fail, message=FALSE, warning=FALSE, error=FALSE}
 library(awra2020spatial)
 library(readr)
@@ -51,7 +51,7 @@ There is no 'on-the-fly' projection in R - you need to make sure you specify the
   + projInfo(type='ellps')
   + projInfo(type='proj')
 
-### Changes to CRS recently in R in `sf`
+## Changes to CRS recently in R in `sf`
 
 It's important to [understand recent changes](https://www.r-spatial.org/r/2020/03/17/wkt.html#crs-objects-in-sf) in handling of `crs` in `sf`
 Prior to `sf` 0.9, `crs` were represented as lists with two components:
@@ -112,7 +112,7 @@ x$proj4string
 ## [1] "+proj=longlat +datum=WGS84 +no_defs"
 ```
 
-### Projected coordinate systems
+## Projected coordinate systems
 Typically we want to work with data that is projected. Projected coordinate systems (which are based on Cartesian coordinates) have: an origin, an x axis, a y axis, and a linear unit of measure. Going from geographic coordinates to a projected coordinate reference systems requires mathematical transformations. 
 
 Four spatial properties of projected coordinate systems that are subject to distortion are: *shape*, *area*, *distance* and *direction*. A map that preserves shape is called *conformal*; one that preserves area is called *equal-area*; one that preserves distance is called *equidistant*; and one that preserves direction is called *azimuthal* (from [https://mgimond.github.io/Spatial/coordinate-systems.html](https://mgimond.github.io/Spatial/coordinate-systems.html).

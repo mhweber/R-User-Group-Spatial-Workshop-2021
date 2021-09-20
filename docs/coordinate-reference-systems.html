@@ -209,12 +209,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="3" data-path="coordinate-reference-systems.html"><a href="coordinate-reference-systems.html"><i class="fa fa-check"></i><b>3</b> Coordinate reference systems</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="coordinate-reference-systems.html"><a href="coordinate-reference-systems.html#lesson-objectives"><i class="fa fa-check"></i><b>3.1</b> Lesson Objectives</a>
-<ul>
-<li class="chapter" data-level="3.1.1" data-path="coordinate-reference-systems.html"><a href="coordinate-reference-systems.html#why-you-need-to-know-about-crs-working-with-spatial-data-in-r"><i class="fa fa-check"></i><b>3.1.1</b> Why you need to know about CRS working with spatial data in R:</a></li>
-<li class="chapter" data-level="3.1.2" data-path="coordinate-reference-systems.html"><a href="coordinate-reference-systems.html#changes-to-crs-recently-in-r-in-sf"><i class="fa fa-check"></i><b>3.1.2</b> Changes to CRS recently in R in <code>sf</code></a></li>
-<li class="chapter" data-level="3.1.3" data-path="coordinate-reference-systems.html"><a href="coordinate-reference-systems.html#projected-coordinate-systems"><i class="fa fa-check"></i><b>3.1.3</b> Projected coordinate systems</a></li>
-</ul></li>
+<li class="chapter" data-level="3.1" data-path="coordinate-reference-systems.html"><a href="coordinate-reference-systems.html#lesson-objectives"><i class="fa fa-check"></i><b>3.1</b> Lesson Objectives</a></li>
+<li class="chapter" data-level="3.2" data-path="coordinate-reference-systems.html"><a href="coordinate-reference-systems.html#why-you-need-to-know-about-crs-working-with-spatial-data-in-r"><i class="fa fa-check"></i><b>3.2</b> Why you need to know about CRS working with spatial data in R:</a></li>
+<li class="chapter" data-level="3.3" data-path="coordinate-reference-systems.html"><a href="coordinate-reference-systems.html#changes-to-crs-recently-in-r-in-sf"><i class="fa fa-check"></i><b>3.3</b> Changes to CRS recently in R in <code>sf</code></a></li>
+<li class="chapter" data-level="3.4" data-path="coordinate-reference-systems.html"><a href="coordinate-reference-systems.html#projected-coordinate-systems"><i class="fa fa-check"></i><b>3.4</b> Projected coordinate systems</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="vector-data-with-sf.html"><a href="vector-data-with-sf.html"><i class="fa fa-check"></i><b>4</b> Vector data with <code>sf</code></a>
 <ul>
@@ -322,8 +320,9 @@ Figure 3.1: Source: <a href="https://mgimond.github.io/Spatial/coordinate-system
 - semi-minor axis (polar radius)</p>
 <p>We know with precision that the measure of these two are 6,378,137 meters and 6,356,752 meters respectively.</p>
 <p>More precisely that an <em>ellipsoid</em>, though, we know that earth is a <em>geoid</em> - it is not perfectly smooth - and modelling the the undulations due to changes in gravitational pull for different locations is crucial to accuracy in a GIS. This is where a <em>datum</em> comes in - we match the geoid to the ellipsoid to best match local conditions. We have many datums to choose from based on location of interest - in the US we would typically choose <em>NAD83</em></p>
-<div id="why-you-need-to-know-about-crs-working-with-spatial-data-in-r" class="section level3" number="3.1.1">
-<h3><span class="header-section-number">3.1.1</span> Why you need to know about CRS working with spatial data in R:</h3>
+</div>
+<div id="why-you-need-to-know-about-crs-working-with-spatial-data-in-r" class="section level2" number="3.2">
+<h2><span class="header-section-number">3.2</span> Why you need to know about CRS working with spatial data in R:</h2>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="coordinate-reference-systems.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(awra2020spatial)</span>
 <span id="cb1-2"><a href="coordinate-reference-systems.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
 <span id="cb1-3"><a href="coordinate-reference-systems.html#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
@@ -352,8 +351,8 @@ Figure 3.1: Source: <a href="https://mgimond.github.io/Spatial/coordinate-system
 </ul></li>
 </ul>
 </div>
-<div id="changes-to-crs-recently-in-r-in-sf" class="section level3" number="3.1.2">
-<h3><span class="header-section-number">3.1.2</span> Changes to CRS recently in R in <code>sf</code></h3>
+<div id="changes-to-crs-recently-in-r-in-sf" class="section level2" number="3.3">
+<h2><span class="header-section-number">3.3</span> Changes to CRS recently in R in <code>sf</code></h2>
 <p>It’s important to <a href="https://www.r-spatial.org/r/2020/03/17/wkt.html#crs-objects-in-sf">understand recent changes</a> in handling of <code>crs</code> in <code>sf</code>
 Prior to <code>sf</code> 0.9, <code>crs</code> were represented as lists with two components:
 - <code>epsg</code> (European Petroleum Survey Group ) code, which could be NA
@@ -403,8 +402,8 @@ x$proj4string
 
 ## [1] &quot;+proj=longlat +datum=WGS84 +no_defs&quot;</code></pre>
 </div>
-<div id="projected-coordinate-systems" class="section level3" number="3.1.3">
-<h3><span class="header-section-number">3.1.3</span> Projected coordinate systems</h3>
+<div id="projected-coordinate-systems" class="section level2" number="3.4">
+<h2><span class="header-section-number">3.4</span> Projected coordinate systems</h2>
 <p>Typically we want to work with data that is projected. Projected coordinate systems (which are based on Cartesian coordinates) have: an origin, an x axis, a y axis, and a linear unit of measure. Going from geographic coordinates to a projected coordinate reference systems requires mathematical transformations.</p>
 <p>Four spatial properties of projected coordinate systems that are subject to distortion are: <em>shape</em>, <em>area</em>, <em>distance</em> and <em>direction</em>. A map that preserves shape is called <em>conformal</em>; one that preserves area is called <em>equal-area</em>; one that preserves distance is called <em>equidistant</em>; and one that preserves direction is called <em>azimuthal</em> (from <a href="https://mgimond.github.io/Spatial/coordinate-systems.html">https://mgimond.github.io/Spatial/coordinate-systems.html</a>.</p>
 <p>The takeaway from all this is you need to be aware of the <code>crs</code> for your objects in R, make sure they are projected if appropriate and in a projection that optimizes properties you are interested in, and objects you are analyzing or mapping together need to be in same <code>crs</code>.</p>
@@ -488,7 +487,6 @@ x$proj4string
 <span id="cb12-7"><a href="coordinate-reference-systems.html#cb12-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() </span></code></pre></div>
 <p><img src="R-User-Group-Spatial-Workshop-2021_files/figure-html/crs_fix-1.png" width="672" /></p>
 
-</div>
 </div>
 </div>
 <script src="js/jquery.min.js"></script>
