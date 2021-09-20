@@ -103,17 +103,17 @@ intersection_area <- st_intersection(pdx, pdx_simplified) %>%
     st_drop_geometry()
 ```
 
-### Challenge {.challenge}
+### Exercise
 This step should have given you an error -THIS IS VERY COMMON WORKING WITH SPATIAL DATA IN R AND USING `sf`.
 
-#### Answer {.solution}
+### Solution
 ```{r overlap6, message=FALSE, warning=FALSE, error=FALSE}
 pdx_simplified <- st_make_valid(pdx_simplified)
 pdx <- st_make_valid(pdx)
 
 original_area <- pdx %>% 
     mutate(original_area = st_area(.)) %>% 
-    select(NAME, original_area) %>% 
+    dplyr::select(NAME, original_area) %>% 
     st_drop_geometry()
     
 intersection_area <- st_intersection(pdx, pdx_simplified) %>% 

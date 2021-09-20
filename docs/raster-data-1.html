@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 5 Raster data | Spatial Analysis in R</title>
+  <title>Chapter 5 Raster data | Spatial Data and Analysis in R</title>
   <meta name="description" content="This is a draft of material for the R Spatial Workshop at the EPA R User Group Meeting in September 2021." />
   <meta name="generator" content="bookdown 0.23 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 5 Raster data | Spatial Analysis in R" />
+  <meta property="og:title" content="Chapter 5 Raster data | Spatial Data and Analysis in R" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 5 Raster data | Spatial Analysis in R" />
+  <meta name="twitter:title" content="Chapter 5 Raster data | Spatial Data and Analysis in R" />
   
   <meta name="twitter:description" content="This is a draft of material for the R Spatial Workshop at the EPA R User Group Meeting in September 2021." />
   
@@ -24,7 +24,7 @@
 <meta name="author" content="Marc Weber" />
 
 
-<meta name="date" content="2021-09-17" />
+<meta name="date" content="2021-09-20" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -159,31 +159,33 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">Fundamentals of Spatial Analysis in R</a></li>
+<li><a href="./">Spatial Data and Analysis in R</a></li>
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#workshop-agenda"><i class="fa fa-check"></i><b>1.1</b> Workshop agenda</a></li>
 <li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#workshop-packages-and-data"><i class="fa fa-check"></i><b>1.2</b> Workshop Packages and Data</a></li>
-<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#overview"><i class="fa fa-check"></i><b>1.3</b> Overview</a></li>
-<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#r-basics-review"><i class="fa fa-check"></i><b>1.4</b> R Basics Review</a></li>
-<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#spatial-data-in-r"><i class="fa fa-check"></i><b>1.5</b> Spatial Data in R</a>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#downloading-content-via-github"><i class="fa fa-check"></i><b>1.3</b> Downloading content via Github</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#using-rmarkdown-and-rstudio"><i class="fa fa-check"></i><b>1.4</b> Using RMarkdown and RStudio</a></li>
+<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#overview"><i class="fa fa-check"></i><b>1.5</b> Overview</a></li>
+<li class="chapter" data-level="1.6" data-path="index.html"><a href="index.html#r-basics-review"><i class="fa fa-check"></i><b>1.6</b> R Basics Review</a></li>
+<li class="chapter" data-level="1.7" data-path="index.html"><a href="index.html#spatial-data-in-r"><i class="fa fa-check"></i><b>1.7</b> Spatial Data in R</a>
 <ul>
-<li class="chapter" data-level="1.5.1" data-path="index.html"><a href="index.html#exercise"><i class="fa fa-check"></i><b>1.5.1</b> Exercise</a></li>
-<li class="chapter" data-level="1.5.2" data-path="index.html"><a href="index.html#solution"><i class="fa fa-check"></i><b>1.5.2</b> Solution</a></li>
-<li class="chapter" data-level="1.5.3" data-path="index.html"><a href="index.html#r-spatial-package-landscape"><i class="fa fa-check"></i><b>1.5.3</b> R Spatial Package Landscape</a></li>
-<li class="chapter" data-level="1.5.4" data-path="index.html"><a href="index.html#exercise-1"><i class="fa fa-check"></i><b>1.5.4</b> Exercise</a></li>
-<li class="chapter" data-level="1.5.5" data-path="index.html"><a href="index.html#solution-1"><i class="fa fa-check"></i><b>1.5.5</b> Solution</a></li>
-<li class="chapter" data-level="1.5.6" data-path="index.html"><a href="index.html#primary-r-spatial-packages"><i class="fa fa-check"></i><b>1.5.6</b> Primary R spatial packages</a></li>
+<li class="chapter" data-level="1.7.1" data-path="index.html"><a href="index.html#exercise"><i class="fa fa-check"></i><b>1.7.1</b> Exercise</a></li>
+<li class="chapter" data-level="1.7.2" data-path="index.html"><a href="index.html#solution"><i class="fa fa-check"></i><b>1.7.2</b> Solution</a></li>
+<li class="chapter" data-level="1.7.3" data-path="index.html"><a href="index.html#r-spatial-package-landscape"><i class="fa fa-check"></i><b>1.7.3</b> R Spatial Package Landscape</a></li>
+<li class="chapter" data-level="1.7.4" data-path="index.html"><a href="index.html#exercise-1"><i class="fa fa-check"></i><b>1.7.4</b> Exercise</a></li>
+<li class="chapter" data-level="1.7.5" data-path="index.html"><a href="index.html#solution-1"><i class="fa fa-check"></i><b>1.7.5</b> Solution</a></li>
+<li class="chapter" data-level="1.7.6" data-path="index.html"><a href="index.html#primary-r-spatial-packages"><i class="fa fa-check"></i><b>1.7.6</b> Primary R spatial packages</a></li>
 </ul></li>
-<li class="chapter" data-level="1.6" data-path="index.html"><a href="index.html#quick-examples"><i class="fa fa-check"></i><b>1.6</b> Quick examples</a>
+<li class="chapter" data-level="1.8" data-path="index.html"><a href="index.html#quick-examples"><i class="fa fa-check"></i><b>1.8</b> Quick examples</a>
 <ul>
-<li class="chapter" data-level="1.6.1" data-path="index.html"><a href="index.html#geocoding-example-with-tmaptools-using-open-street-map"><i class="fa fa-check"></i><b>1.6.1</b> Geocoding example with tmaptools using open street map</a></li>
-<li class="chapter" data-level="1.6.2" data-path="index.html"><a href="index.html#exercise-2"><i class="fa fa-check"></i><b>1.6.2</b> Exercise</a></li>
-<li class="chapter" data-level="1.6.3" data-path="index.html"><a href="index.html#solution-2"><i class="fa fa-check"></i><b>1.6.3</b> Solution</a></li>
-<li class="chapter" data-level="1.6.4" data-path="index.html"><a href="index.html#choropleth-map"><i class="fa fa-check"></i><b>1.6.4</b> Choropleth map</a></li>
-<li class="chapter" data-level="1.6.5" data-path="index.html"><a href="index.html#interactive-mapping"><i class="fa fa-check"></i><b>1.6.5</b> Interactive mapping</a></li>
+<li class="chapter" data-level="1.8.1" data-path="index.html"><a href="index.html#geocoding-example-with-tmaptools-using-open-street-map"><i class="fa fa-check"></i><b>1.8.1</b> Geocoding example with tmaptools using open street map</a></li>
+<li class="chapter" data-level="1.8.2" data-path="index.html"><a href="index.html#exercise-2"><i class="fa fa-check"></i><b>1.8.2</b> Exercise</a></li>
+<li class="chapter" data-level="1.8.3" data-path="index.html"><a href="index.html#solution-2"><i class="fa fa-check"></i><b>1.8.3</b> Solution</a></li>
+<li class="chapter" data-level="1.8.4" data-path="index.html"><a href="index.html#choropleth-map"><i class="fa fa-check"></i><b>1.8.4</b> Choropleth map</a></li>
+<li class="chapter" data-level="1.8.5" data-path="index.html"><a href="index.html#interactive-mapping"><i class="fa fa-check"></i><b>1.8.5</b> Interactive mapping</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="reading-in-spatial-data.html"><a href="reading-in-spatial-data.html"><i class="fa fa-check"></i><b>2</b> Reading in Spatial Data</a>
@@ -196,12 +198,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.1.4" data-path="reading-in-spatial-data.html"><a href="reading-in-spatial-data.html#open-spatial-data-sources"><i class="fa fa-check"></i><b>2.1.4</b> Open spatial data sources</a></li>
 <li class="chapter" data-level="2.1.5" data-path="reading-in-spatial-data.html"><a href="reading-in-spatial-data.html#spatial-data-from-r-packages"><i class="fa fa-check"></i><b>2.1.5</b> Spatial data from R packages</a></li>
 <li class="chapter" data-level="2.1.6" data-path="reading-in-spatial-data.html"><a href="reading-in-spatial-data.html#read-in-openstreetmap-data"><i class="fa fa-check"></i><b>2.1.6</b> Read in OpenStreetMap data</a></li>
-<li class="chapter" data-level="2.1.7" data-path="reading-in-spatial-data.html"><a href="reading-in-spatial-data.html#raster-data"><i class="fa fa-check"></i><b>2.1.7</b> Raster data</a></li>
-<li class="chapter" data-level="2.1.8" data-path="reading-in-spatial-data.html"><a href="reading-in-spatial-data.html#raster-package"><i class="fa fa-check"></i><b>2.1.8</b> <code>raster</code> package</a></li>
-<li class="chapter" data-level="2.1.9" data-path="reading-in-spatial-data.html"><a href="reading-in-spatial-data.html#terra-package"><i class="fa fa-check"></i><b>2.1.9</b> <code>terra</code> package</a></li>
-<li class="chapter" data-level="2.1.10" data-path="reading-in-spatial-data.html"><a href="reading-in-spatial-data.html#stars-package"><i class="fa fa-check"></i><b>2.1.10</b> <code>stars</code> package</a></li>
-<li class="chapter" data-level="2.1.11" data-path="reading-in-spatial-data.html"><a href="reading-in-spatial-data.html#convert-flat-files-to-spatial"><i class="fa fa-check"></i><b>2.1.11</b> Convert flat files to spatial</a></li>
 </ul></li>
+<li class="chapter" data-level="2.2" data-path="reading-in-spatial-data.html"><a href="reading-in-spatial-data.html#raster-data"><i class="fa fa-check"></i><b>2.2</b> Raster data</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="reading-in-spatial-data.html"><a href="reading-in-spatial-data.html#raster-package"><i class="fa fa-check"></i><b>2.2.1</b> <code>raster</code> package</a></li>
+<li class="chapter" data-level="2.2.2" data-path="reading-in-spatial-data.html"><a href="reading-in-spatial-data.html#terra-package"><i class="fa fa-check"></i><b>2.2.2</b> <code>terra</code> package</a></li>
+<li class="chapter" data-level="2.2.3" data-path="reading-in-spatial-data.html"><a href="reading-in-spatial-data.html#stars-package"><i class="fa fa-check"></i><b>2.2.3</b> <code>stars</code> package</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="reading-in-spatial-data.html"><a href="reading-in-spatial-data.html#convert-flat-files-to-spatial"><i class="fa fa-check"></i><b>2.3</b> Convert flat files to spatial</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="coordinate-reference-systems.html"><a href="coordinate-reference-systems.html"><i class="fa fa-check"></i><b>3</b> Coordinate reference systems</a>
 <ul>
@@ -233,6 +237,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="5.2.1" data-path="raster-data-1.html"><a href="raster-data-1.html#read-a-satellite-image"><i class="fa fa-check"></i><b>5.2.1</b> Read a satellite image</a></li>
 </ul></li>
+<li class="chapter" data-level="5.3" data-path="raster-data-1.html"><a href="raster-data-1.html#raster-operations"><i class="fa fa-check"></i><b>5.3</b> Raster Operations</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="raster-data-1.html"><a href="raster-data-1.html#projecting"><i class="fa fa-check"></i><b>5.3.1</b> Projecting</a></li>
+<li class="chapter" data-level="5.3.2" data-path="raster-data-1.html"><a href="raster-data-1.html#cropping"><i class="fa fa-check"></i><b>5.3.2</b> Cropping</a></li>
+<li class="chapter" data-level="5.3.3" data-path="raster-data-1.html"><a href="raster-data-1.html#map-algebra"><i class="fa fa-check"></i><b>5.3.3</b> Map Algebra</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="geoprocessing.html"><a href="geoprocessing.html"><i class="fa fa-check"></i><b>6</b> Geoprocessing</a>
 <ul>
@@ -248,26 +258,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.5.1" data-path="geoprocessing.html"><a href="geoprocessing.html#next-well-create-a-dummy-spatial-polygon-file-to-compare-area-with-using-the-rmapshaper-package-to-simplify-the-border-of-the-pdx-metropolitan-polygon"><i class="fa fa-check"></i><b>6.5.1</b> Next we’ll create a dummy spatial polygon file to compare area with using the <code>rmapshaper</code> package to simplify the border of the PDX metropolitan polygon</a></li>
 <li class="chapter" data-level="6.5.2" data-path="geoprocessing.html"><a href="geoprocessing.html#then-we-can-overlay-polygons-in-ggplot-to-see-how-similar-they-are-showing-the-original-census-pdx-metropolitan-area-in-green-and-new-simplified-polygon-in-red"><i class="fa fa-check"></i><b>6.5.2</b> Then we can overlay polygons in ggplot to see how similar they are, showing the original census PDX metropolitan area in green, and new simplified polygon in red</a></li>
 <li class="chapter" data-level="6.5.3" data-path="geoprocessing.html"><a href="geoprocessing.html#now-that-we-have-an-original-and-simplified-polygon-to-compare-the-process-we-want-to-use-is"><i class="fa fa-check"></i><b>6.5.3</b> Now that we have an original and simplified polygon to compare, the process we want to use is:</a></li>
-<li class="chapter" data-level="6.5.4" data-path="geoprocessing.html"><a href="geoprocessing.html#challenge"><i class="fa fa-check"></i><b>6.5.4</b> Challenge</a></li>
-<li class="chapter" data-level="6.5.5" data-path="geoprocessing.html"><a href="geoprocessing.html#challenge-1"><i class="fa fa-check"></i><b>6.5.5</b> Challenge</a></li>
+<li class="chapter" data-level="6.5.4" data-path="geoprocessing.html"><a href="geoprocessing.html#exercise-8"><i class="fa fa-check"></i><b>6.5.4</b> Exercise</a></li>
+<li class="chapter" data-level="6.5.5" data-path="geoprocessing.html"><a href="geoprocessing.html#solution-8"><i class="fa fa-check"></i><b>6.5.5</b> Solution</a></li>
+<li class="chapter" data-level="6.5.6" data-path="geoprocessing.html"><a href="geoprocessing.html#challenge"><i class="fa fa-check"></i><b>6.5.6</b> Challenge</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="visualizing-spatial-data.html"><a href="visualizing-spatial-data.html"><i class="fa fa-check"></i><b>7</b> Visualizing Spatial Data</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="visualizing-spatial-data.html"><a href="visualizing-spatial-data.html#lesson-goals-1"><i class="fa fa-check"></i><b>7.1</b> Lesson Goals</a>
-<ul>
-<li class="chapter" data-level="7.1.1" data-path="visualizing-spatial-data.html"><a href="visualizing-spatial-data.html#chorpleths-with-tmap"><i class="fa fa-check"></i><b>7.1.1</b> Chorpleths with tmap</a></li>
-<li class="chapter" data-level="7.1.2" data-path="visualizing-spatial-data.html"><a href="visualizing-spatial-data.html#leaflet"><i class="fa fa-check"></i><b>7.1.2</b> Leaflet</a></li>
-<li class="chapter" data-level="7.1.3" data-path="visualizing-spatial-data.html"><a href="visualizing-spatial-data.html#mapview"><i class="fa fa-check"></i><b>7.1.3</b> mapview</a></li>
-</ul></li>
+<li class="chapter" data-level="7.1" data-path="visualizing-spatial-data.html"><a href="visualizing-spatial-data.html#lesson-goals-1"><i class="fa fa-check"></i><b>7.1</b> Lesson Goals</a></li>
+<li class="chapter" data-level="7.2" data-path="visualizing-spatial-data.html"><a href="visualizing-spatial-data.html#chorpleths-with-tmap"><i class="fa fa-check"></i><b>7.2</b> Chorpleths with <code>tmap</code></a></li>
+<li class="chapter" data-level="7.3" data-path="visualizing-spatial-data.html"><a href="visualizing-spatial-data.html#leaflet"><i class="fa fa-check"></i><b>7.3</b> <code>leaflet</code></a></li>
+<li class="chapter" data-level="7.4" data-path="visualizing-spatial-data.html"><a href="visualizing-spatial-data.html#mapview"><i class="fa fa-check"></i><b>7.4</b> <code>mapview</code></a></li>
+<li class="chapter" data-level="7.5" data-path="visualizing-spatial-data.html"><a href="visualizing-spatial-data.html#visualize-site-data"><i class="fa fa-check"></i><b>7.5</b> Visualize site data</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a>
 <ul>
-<li class="chapter" data-level="7.1.4" data-path="references.html"><a href="references.html#r-spatial-resources"><i class="fa fa-check"></i><b>7.1.4</b> R Spatial Resources</a></li>
-<li class="chapter" data-level="7.1.5" data-path="references.html"><a href="references.html#r-vector-processing-simple-features-resources"><i class="fa fa-check"></i><b>7.1.5</b> R Vector Processing / Simple Features Resources</a></li>
-<li class="chapter" data-level="7.1.6" data-path="references.html"><a href="references.html#r-raster-resources"><i class="fa fa-check"></i><b>7.1.6</b> R Raster Resources</a></li>
-<li class="chapter" data-level="7.1.7" data-path="references.html"><a href="references.html#r-mapping-resources"><i class="fa fa-check"></i><b>7.1.7</b> R Mapping Resources</a></li>
-<li class="chapter" data-level="7.1.8" data-path="references.html"><a href="references.html#general-r-resources"><i class="fa fa-check"></i><b>7.1.8</b> General R Resources</a></li>
+<li class="chapter" data-level="7.5.1" data-path="references.html"><a href="references.html#r-spatial-resources"><i class="fa fa-check"></i><b>7.5.1</b> R Spatial Resources</a></li>
+<li class="chapter" data-level="7.5.2" data-path="references.html"><a href="references.html#r-vector-processing-simple-features-resources"><i class="fa fa-check"></i><b>7.5.2</b> R Vector Processing / Simple Features Resources</a></li>
+<li class="chapter" data-level="7.5.3" data-path="references.html"><a href="references.html#r-raster-resources"><i class="fa fa-check"></i><b>7.5.3</b> R Raster Resources</a></li>
+<li class="chapter" data-level="7.5.4" data-path="references.html"><a href="references.html#r-mapping-resources"><i class="fa fa-check"></i><b>7.5.4</b> R Mapping Resources</a></li>
+<li class="chapter" data-level="7.5.5" data-path="references.html"><a href="references.html#general-r-resources"><i class="fa fa-check"></i><b>7.5.5</b> General R Resources</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/mhweber/R-User-Group-Spatial-Workshop-2021" target="blank">Published with bookdown</a></li>
@@ -281,7 +291,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Spatial Analysis in R</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Spatial Data and Analysis in R</a>
           </h1>
         </div>
 
@@ -365,7 +375,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb13-2"><a href="raster-data-1.html#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="co"># str(myrast)</span></span>
 <span id="cb13-3"><a href="raster-data-1.html#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="co"># names(myrast@ptr)</span></span>
 <span id="cb13-4"><a href="raster-data-1.html#cb13-4" aria-hidden="true" tabindex="-1"></a>myrast<span class="sc">@</span>ptr<span class="sc">$</span>extent</span></code></pre></div>
-<pre><code>## C++ object &lt;000000001954fb90&gt; of class &#39;SpatExtent&#39; &lt;000000001930a950&gt;</code></pre>
+<pre><code>## C++ object &lt;000000001955f6d0&gt; of class &#39;SpatExtent&#39; &lt;0000000014352d80&gt;</code></pre>
 </div>
 <div id="manipulating-raster-objects" class="section level3" number="5.1.3">
 <h3><span class="header-section-number">5.1.3</span> Manipulating <code>raster</code> objects</h3>
@@ -382,8 +392,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## coord. ref. : +proj=longlat +datum=WGS84 +no_defs 
 ## source      : memory 
 ## name        :       lyr.1 
-## min value   : 0.001735749 
-## max value   :   0.9536106</code></pre>
+## min value   : 0.001017156 
+## max value   :   0.9964106</code></pre>
 <p>An important point to make here is that objects in the <code>terra</code> package (and previously in <code>raster</code>) can be either in memory or on disk - note the value for our <code>spatRaster</code> r of ‘source’. If this were a large raster on disk, the value would be the path to the file on disk.</p>
 <div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="raster-data-1.html#cb19-1" aria-hidden="true" tabindex="-1"></a>myrast<span class="sc">@</span>ptr<span class="sc">$</span>inMemory</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
@@ -399,108 +409,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><img src="R-User-Group-Spatial-Workshop-2021_files/figure-html/plot%20raster-1.png" width="672" /></p>
 <p>We can also overwrite the cell values for our raster:</p>
 <div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="raster-data-1.html#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">values</span>(myrast) <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">ncell</span>(myrast)</span>
-<span id="cb28-2"><a href="raster-data-1.html#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">values</span>(myrast)</span></code></pre></div>
-<pre><code>##        lyr.1
-##   [1,]     1
-##   [2,]     2
-##   [3,]     3
-##   [4,]     4
-##   [5,]     5
-##   [6,]     6
-##   [7,]     7
-##   [8,]     8
-##   [9,]     9
-##  [10,]    10
-##  [11,]    11
-##  [12,]    12
-##  [13,]    13
-##  [14,]    14
-##  [15,]    15
-##  [16,]    16
-##  [17,]    17
-##  [18,]    18
-##  [19,]    19
-##  [20,]    20
-##  [21,]    21
-##  [22,]    22
-##  [23,]    23
-##  [24,]    24
-##  [25,]    25
-##  [26,]    26
-##  [27,]    27
-##  [28,]    28
-##  [29,]    29
-##  [30,]    30
-##  [31,]    31
-##  [32,]    32
-##  [33,]    33
-##  [34,]    34
-##  [35,]    35
-##  [36,]    36
-##  [37,]    37
-##  [38,]    38
-##  [39,]    39
-##  [40,]    40
-##  [41,]    41
-##  [42,]    42
-##  [43,]    43
-##  [44,]    44
-##  [45,]    45
-##  [46,]    46
-##  [47,]    47
-##  [48,]    48
-##  [49,]    49
-##  [50,]    50
-##  [51,]    51
-##  [52,]    52
-##  [53,]    53
-##  [54,]    54
-##  [55,]    55
-##  [56,]    56
-##  [57,]    57
-##  [58,]    58
-##  [59,]    59
-##  [60,]    60
-##  [61,]    61
-##  [62,]    62
-##  [63,]    63
-##  [64,]    64
-##  [65,]    65
-##  [66,]    66
-##  [67,]    67
-##  [68,]    68
-##  [69,]    69
-##  [70,]    70
-##  [71,]    71
-##  [72,]    72
-##  [73,]    73
-##  [74,]    74
-##  [75,]    75
-##  [76,]    76
-##  [77,]    77
-##  [78,]    78
-##  [79,]    79
-##  [80,]    80
-##  [81,]    81
-##  [82,]    82
-##  [83,]    83
-##  [84,]    84
-##  [85,]    85
-##  [86,]    86
-##  [87,]    87
-##  [88,]    88
-##  [89,]    89
-##  [90,]    90
-##  [91,]    91
-##  [92,]    92
-##  [93,]    93
-##  [94,]    94
-##  [95,]    95
-##  [96,]    96
-##  [97,]    97
-##  [98,]    98
-##  [99,]    99
-## [100,]   100</code></pre>
+<span id="cb28-2"><a href="raster-data-1.html#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">values</span>(myrast)[<span class="dv">1</span><span class="sc">:</span><span class="dv">15</span>]</span></code></pre></div>
+<pre><code>##  [1]  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15</code></pre>
 <p>You can access raster values via direct indexing or line, column indexing - take a minute to see how this works using raster r we just created - the syntax is:</p>
 <div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="raster-data-1.html#cb30-1" aria-hidden="true" tabindex="-1"></a>myrast[i]</span>
 <span id="cb30-2"><a href="raster-data-1.html#cb30-2" aria-hidden="true" tabindex="-1"></a>myrast[line, column]</span></code></pre></div>
@@ -546,18 +456,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">5.1.6</span> Plotting rasters and vectors with tmap</h3>
 <p>Bring in boundary and elevation of Crater Lake NP (datasets in Rspatialworkshop package) and plot with tmap</p>
 <div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="raster-data-1.html#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(Rspatialworkshop)</span>
-<span id="cb43-2"><a href="raster-data-1.html#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(terra)</span>
-<span id="cb43-3"><a href="raster-data-1.html#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tmap)</span>
-<span id="cb43-4"><a href="raster-data-1.html#cb43-4" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(CraterLake)</span>
-<span id="cb43-5"><a href="raster-data-1.html#cb43-5" aria-hidden="true" tabindex="-1"></a>raster_filepath <span class="ot">&lt;-</span> <span class="fu">system.file</span>(<span class="st">&quot;extdata&quot;</span>, <span class="st">&quot;elevation.tif&quot;</span>, <span class="at">package =</span> <span class="st">&quot;Rspatialworkshop&quot;</span>)</span>
-<span id="cb43-6"><a href="raster-data-1.html#cb43-6" aria-hidden="true" tabindex="-1"></a>elevation <span class="ot">&lt;-</span> <span class="fu">rast</span>(raster_filepath)</span>
-<span id="cb43-7"><a href="raster-data-1.html#cb43-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-8"><a href="raster-data-1.html#cb43-8" aria-hidden="true" tabindex="-1"></a>map_crlk <span class="ot">&lt;-</span> <span class="fu">tm_shape</span>(CraterLake) <span class="sc">+</span> <span class="fu">tm_polygons</span>(<span class="at">lwd =</span> <span class="dv">2</span>)</span>
-<span id="cb43-9"><a href="raster-data-1.html#cb43-9" aria-hidden="true" tabindex="-1"></a>map_crlkel <span class="ot">=</span> map_crlk <span class="sc">+</span></span>
-<span id="cb43-10"><a href="raster-data-1.html#cb43-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_shape</span>(elevation) <span class="sc">+</span> <span class="fu">tm_raster</span>(<span class="at">alpha =</span> <span class="fl">0.7</span>,<span class="at">palette =</span> <span class="fu">terrain.colors</span>(<span class="dv">12</span>)) <span class="sc">+</span> <span class="fu">tm_layout</span>(<span class="at">legend.position =</span> <span class="fu">c</span>(<span class="st">&quot;left&quot;</span>,<span class="st">&quot;bottom&quot;</span>),</span>
-<span id="cb43-11"><a href="raster-data-1.html#cb43-11" aria-hidden="true" tabindex="-1"></a>          <span class="at">legend.width =</span> <span class="dv">1</span>)</span>
-<span id="cb43-12"><a href="raster-data-1.html#cb43-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-13"><a href="raster-data-1.html#cb43-13" aria-hidden="true" tabindex="-1"></a>map_crlkel</span></code></pre></div>
+<span id="cb43-2"><a href="raster-data-1.html#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tmap)</span>
+<span id="cb43-3"><a href="raster-data-1.html#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(CraterLake)</span>
+<span id="cb43-4"><a href="raster-data-1.html#cb43-4" aria-hidden="true" tabindex="-1"></a>raster_filepath <span class="ot">&lt;-</span> <span class="fu">system.file</span>(<span class="st">&quot;extdata&quot;</span>, <span class="st">&quot;elevation.tif&quot;</span>, <span class="at">package =</span> <span class="st">&quot;Rspatialworkshop&quot;</span>)</span>
+<span id="cb43-5"><a href="raster-data-1.html#cb43-5" aria-hidden="true" tabindex="-1"></a>elevation <span class="ot">&lt;-</span> <span class="fu">rast</span>(raster_filepath)</span>
+<span id="cb43-6"><a href="raster-data-1.html#cb43-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-7"><a href="raster-data-1.html#cb43-7" aria-hidden="true" tabindex="-1"></a>map_crlk <span class="ot">&lt;-</span> <span class="fu">tm_shape</span>(CraterLake) <span class="sc">+</span> <span class="fu">tm_polygons</span>(<span class="at">lwd =</span> <span class="dv">2</span>)</span>
+<span id="cb43-8"><a href="raster-data-1.html#cb43-8" aria-hidden="true" tabindex="-1"></a>map_crlkel <span class="ot">=</span> map_crlk <span class="sc">+</span></span>
+<span id="cb43-9"><a href="raster-data-1.html#cb43-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_shape</span>(elevation) <span class="sc">+</span> <span class="fu">tm_raster</span>(<span class="at">alpha =</span> <span class="fl">0.7</span>,<span class="at">palette =</span> <span class="fu">terrain.colors</span>(<span class="dv">12</span>)) <span class="sc">+</span> <span class="fu">tm_layout</span>(<span class="at">legend.position =</span> <span class="fu">c</span>(<span class="st">&quot;left&quot;</span>,<span class="st">&quot;bottom&quot;</span>),</span>
+<span id="cb43-10"><a href="raster-data-1.html#cb43-10" aria-hidden="true" tabindex="-1"></a>          <span class="at">legend.width =</span> <span class="dv">1</span>)</span>
+<span id="cb43-11"><a href="raster-data-1.html#cb43-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-12"><a href="raster-data-1.html#cb43-12" aria-hidden="true" tabindex="-1"></a>map_crlkel</span></code></pre></div>
 <p><img src="R-User-Group-Spatial-Workshop-2021_files/figure-html/tmap_raster_plot-1.png" width="672" /></p>
 </div>
 </div>
@@ -601,7 +510,196 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## x    1 349  288776  28.5 UTM Zone 25, Southern Hem... FALSE   NULL [x]
 ## y    1 352 9120761 -28.5 UTM Zone 25, Southern Hem... FALSE   NULL [y]</code></pre>
 <p>This gives us a lower-dimensional array of just band 6 from the Landsat7 image.</p>
+</div>
+</div>
+<div id="raster-operations" class="section level2" number="5.3">
+<h2><span class="header-section-number">5.3</span> Raster Operations</h2>
+<div id="projecting" class="section level3" number="5.3.1">
+<h3><span class="header-section-number">5.3.1</span> Projecting</h3>
+<p>For spatial operations in R, raster or vector, we always need to make sure objects are in an appropriate CRS and in the same CRS as one another.</p>
+<p>We’ll use the elevation data and Crater Lake polygon feature in the <code>Rspatialworkshop</code> package for this example.</p>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="raster-data-1.html#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(Rspatialworkshop)</span>
+<span id="cb52-2"><a href="raster-data-1.html#cb52-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(CraterLake)</span>
+<span id="cb52-3"><a href="raster-data-1.html#cb52-3" aria-hidden="true" tabindex="-1"></a>raster_filepath <span class="ot">&lt;-</span> <span class="fu">system.file</span>(<span class="st">&quot;extdata&quot;</span>, <span class="st">&quot;elevation.tif&quot;</span>, <span class="at">package =</span> <span class="st">&quot;Rspatialworkshop&quot;</span>)</span>
+<span id="cb52-4"><a href="raster-data-1.html#cb52-4" aria-hidden="true" tabindex="-1"></a>elevation <span class="ot">&lt;-</span> <span class="fu">rast</span>(raster_filepath)</span></code></pre></div>
+<div id="exercise-6" class="section level4" number="5.3.1.1">
+<h4><span class="header-section-number">5.3.1.1</span> Exercise</h4>
+<ol style="list-style-type: decimal">
+<li>Find the projection of both the Crater Lake spatial polygon feature and the elevation raster</li>
+<li>Are they the same? Should we project one to the other, or apply a new projection?</li>
+</ol>
+</div>
+<div id="solution-6" class="section level4" number="5.3.1.2">
+<h4><span class="header-section-number">5.3.1.2</span> Solution</h4>
+<ol style="list-style-type: decimal">
+<li>Check the CRS of each feature and test for equality</li>
+</ol>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="raster-data-1.html#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">crs</span>(elevation)</span></code></pre></div>
+<pre><code>## [1] &quot;GEOGCRS[\&quot;WGS 84\&quot;,\n    DATUM[\&quot;World Geodetic System 1984\&quot;,\n        ELLIPSOID[\&quot;WGS 84\&quot;,6378137,298.257223563,\n            LENGTHUNIT[\&quot;metre\&quot;,1]]],\n    PRIMEM[\&quot;Greenwich\&quot;,0,\n        ANGLEUNIT[\&quot;degree\&quot;,0.0174532925199433]],\n    CS[ellipsoidal,2],\n        AXIS[\&quot;geodetic latitude (Lat)\&quot;,north,\n            ORDER[1],\n            ANGLEUNIT[\&quot;degree\&quot;,0.0174532925199433]],\n        AXIS[\&quot;geodetic longitude (Lon)\&quot;,east,\n            ORDER[2],\n            ANGLEUNIT[\&quot;degree\&quot;,0.0174532925199433]],\n    ID[\&quot;EPSG\&quot;,4326]]&quot;</code></pre>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="raster-data-1.html#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">st_crs</span>(CraterLake)</span></code></pre></div>
+<pre><code>## Coordinate Reference System:
+##   User input: WGS 84 
+##   wkt:
+## GEOGCRS[&quot;WGS 84&quot;,
+##     DATUM[&quot;World Geodetic System 1984&quot;,
+##         ELLIPSOID[&quot;WGS 84&quot;,6378137,298.257223563,
+##             LENGTHUNIT[&quot;metre&quot;,1]]],
+##     PRIMEM[&quot;Greenwich&quot;,0,
+##         ANGLEUNIT[&quot;degree&quot;,0.0174532925199433]],
+##     CS[ellipsoidal,2],
+##         AXIS[&quot;geodetic latitude (Lat)&quot;,north,
+##             ORDER[1],
+##             ANGLEUNIT[&quot;degree&quot;,0.0174532925199433]],
+##         AXIS[&quot;geodetic longitude (Lon)&quot;,east,
+##             ORDER[2],
+##             ANGLEUNIT[&quot;degree&quot;,0.0174532925199433]],
+##     ID[&quot;EPSG&quot;,4326]]</code></pre>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="raster-data-1.html#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fu">st_crs</span>(CraterLake) <span class="sc">==</span> <span class="fu">crs</span>(elevation)</span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="raster-data-1.html#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="fu">st_crs</span>(CraterLake)<span class="sc">$</span>wkt <span class="sc">==</span> <span class="fu">crs</span>(elevation)</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li>They share the same EPSG code, but are parameterized slightly differently for each - the <code>crs</code> function in <code>terra</code> does not include the <code>input</code> list item that <code>st_crs</code> in <code>sf</code> does - they are the same though as demonstrated when specifying the <code>wkt</code> item only from <code>st_crs(CraterLake)</code></li>
+<li>Each feature is in WGS84, an unprojected CRS - for most operations, we would prefer to have them in a projected CRS</li>
+</ol>
+</div>
+<div id="exercise-7" class="section level4" number="5.3.1.3">
+<h4><span class="header-section-number">5.3.1.3</span> Exercise</h4>
+<p>Find an appropriate area-preserving projection using <a href="https://projectionwizard.org/#">Projection Wizard</a> or <a href="https://spatialreference.org/">spatialreference.org</a> or any means you prefer and project both Crater Lake and elevation to this CRS.</p>
+</div>
+<div id="solution-7" class="section level4" number="5.3.1.4">
+<h4><span class="header-section-number">5.3.1.4</span> Solution</h4>
+<p>Here I’ll apply a custom Transverse Mercator I found the WKT representation for using Projection Wizard. Another good projection would be <a href="https://spatialreference.org/ref/epsg/3157/">UTM zone 10N</a> or <a href="https://spatialreference.org/ref/epsg/2153/">UTM zone 11N</a></p>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="raster-data-1.html#cb61-1" aria-hidden="true" tabindex="-1"></a>tranvmerc <span class="ot">&lt;-</span> <span class="st">&#39;PROJCS[&quot;ProjWiz_Custom_Transverse_Mercator&quot;, GEOGCS[&quot;GCS_WGS_1984&quot;, DATUM[&quot;D_WGS_1984&quot;, SPHEROID[&quot;WGS_1984&quot;,6378137.0,298.257223563]], PRIMEM[&quot;Greenwich&quot;,0.0], UNIT[&quot;Degree&quot;,0.0174532925199433]],PROJECTION[&quot;Transverse_Mercator&quot;],PARAMETER[&quot;False_Easting&quot;,500000],PARAMETER[&quot;False_Northing&quot;,0.0],PARAMETER[&quot;Central_Meridian&quot;,-483.2226562],PARAMETER[&quot;Scale_Factor&quot;,0.9996],PARAMETER[&quot;Latitude_Of_Origin&quot;,0.0],UNIT[&quot;Meter&quot;,1.0]]&#39;</span></span>
+<span id="cb61-2"><a href="raster-data-1.html#cb61-2" aria-hidden="true" tabindex="-1"></a>elevation_tm <span class="ot">&lt;-</span> <span class="fu">project</span>(elevation, tranvmerc, <span class="at">method =</span> <span class="st">&quot;bilinear&quot;</span>)</span>
+<span id="cb61-3"><a href="raster-data-1.html#cb61-3" aria-hidden="true" tabindex="-1"></a><span class="fu">crs</span>(elevation_tm)</span></code></pre></div>
+<pre><code>## [1] &quot;PROJCRS[\&quot;ProjWiz_Custom_Transverse_Mercator\&quot;,\n    BASEGEOGCRS[\&quot;WGS 84\&quot;,\n        DATUM[\&quot;World Geodetic System 1984\&quot;,\n            ELLIPSOID[\&quot;WGS 84\&quot;,6378137,298.257223563,\n                LENGTHUNIT[\&quot;metre\&quot;,1]],\n            ID[\&quot;EPSG\&quot;,6326]],\n        PRIMEM[\&quot;Greenwich\&quot;,0,\n            ANGLEUNIT[\&quot;Degree\&quot;,0.0174532925199433]]],\n    CONVERSION[\&quot;unnamed\&quot;,\n        METHOD[\&quot;Transverse Mercator\&quot;,\n            ID[\&quot;EPSG\&quot;,9807]],\n        PARAMETER[\&quot;Latitude of natural origin\&quot;,0,\n            ANGLEUNIT[\&quot;Degree\&quot;,0.0174532925199433],\n            ID[\&quot;EPSG\&quot;,8801]],\n        PARAMETER[\&quot;Longitude of natural origin\&quot;,-483.2226562,\n            ANGLEUNIT[\&quot;Degree\&quot;,0.0174532925199433],\n            ID[\&quot;EPSG\&quot;,8802]],\n        PARAMETER[\&quot;Scale factor at natural origin\&quot;,0.9996,\n            SCALEUNIT[\&quot;unity\&quot;,1],\n            ID[\&quot;EPSG\&quot;,8805]],\n        PARAMETER[\&quot;False easting\&quot;,500000,\n            LENGTHUNIT[\&quot;metre\&quot;,1],\n            ID[\&quot;EPSG\&quot;,8806]],\n        PARAMETER[\&quot;False northing\&quot;,0,\n            LENGTHUNIT[\&quot;metre\&quot;,1],\n            ID[\&quot;EPSG\&quot;,8807]]],\n    CS[Cartesian,2],\n        AXIS[\&quot;(E)\&quot;,east,\n            ORDER[1],\n            LENGTHUNIT[\&quot;metre\&quot;,1,\n                ID[\&quot;EPSG\&quot;,9001]]],\n        AXIS[\&quot;(N)\&quot;,north,\n            ORDER[2],\n            LENGTHUNIT[\&quot;metre\&quot;,1,\n                ID[\&quot;EPSG\&quot;,9001]]]]&quot;</code></pre>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="raster-data-1.html#cb63-1" aria-hidden="true" tabindex="-1"></a>CraterLake_tm <span class="ot">&lt;-</span> <span class="fu">st_transform</span>(CraterLake,tranvmerc)</span></code></pre></div>
+</div>
+</div>
+<div id="cropping" class="section level3" number="5.3.2">
+<h3><span class="header-section-number">5.3.2</span> Cropping</h3>
+<p>We can crop our elevation raster to just the bounding box of Crater Lake - using mask, we can clip it to the actual polygon boundary</p>
+<p>Let’s see what elevation and Crater Lake boundary look like prior to cropping and masking</p>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="raster-data-1.html#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(elevation_tm)</span>
+<span id="cb64-2"><a href="raster-data-1.html#cb64-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(CraterLake, <span class="at">add=</span><span class="cn">TRUE</span>, <span class="at">col=</span><span class="cn">NA</span>, <span class="at">border=</span><span class="st">&#39;blue&#39;</span>)</span></code></pre></div>
+<p><img src="R-User-Group-Spatial-Workshop-2021_files/figure-html/crop-1.png" width="672" /></p>
+<p>Here we use <code>crop</code> to crop the elevation raster to the bounding box of our Crater Lake polygon feature</p>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="raster-data-1.html#cb65-1" aria-hidden="true" tabindex="-1"></a>elev_crop <span class="ot">=</span> <span class="fu">crop</span>(elevation_tm, <span class="fu">vect</span>(CraterLake_tm))</span>
+<span id="cb65-2"><a href="raster-data-1.html#cb65-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(elev_crop)</span>
+<span id="cb65-3"><a href="raster-data-1.html#cb65-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(CraterLake_tm, <span class="at">add=</span><span class="cn">TRUE</span>, <span class="at">col=</span><span class="cn">NA</span>, <span class="at">border=</span><span class="st">&#39;blue&#39;</span>)</span></code></pre></div>
+<p><img src="R-User-Group-Spatial-Workshop-2021_files/figure-html/crop2-1.png" width="672" /></p>
+<p>And finally we can use <code>mask</code> to mask the raster to just inside the polygon outline of Crater Lake National Park.</p>
+<p><strong>Note</strong> - if you have a large raster, it makes a HUGE difference to use crop first, then mask - mask is a much more computationally intensive operation so it will pay off to crop first then mask.</p>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="raster-data-1.html#cb66-1" aria-hidden="true" tabindex="-1"></a>elev_mask <span class="ot">=</span> <span class="fu">mask</span>(elevation_tm, <span class="fu">vect</span>(CraterLake_tm))</span>
+<span id="cb66-2"><a href="raster-data-1.html#cb66-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(elev_mask)</span>
+<span id="cb66-3"><a href="raster-data-1.html#cb66-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(CraterLake_tm, <span class="at">add=</span><span class="cn">TRUE</span>, <span class="at">col=</span><span class="cn">NA</span>, <span class="at">border=</span><span class="st">&#39;blue&#39;</span>)</span></code></pre></div>
+<p><img src="R-User-Group-Spatial-Workshop-2021_files/figure-html/mask-1.png" width="672" /></p>
+</div>
+<div id="map-algebra" class="section level3" number="5.3.3">
+<h3><span class="header-section-number">5.3.3</span> Map Algebra</h3>
+<p>We can divide map algebra into a couple of categories:</p>
+<ol style="list-style-type: decimal">
+<li>Local - per-cell operations
+<ol style="list-style-type: lower-alpha">
+<li>raster calculator</li>
+<li>replacing values</li>
+<li>reclassifying</li>
+<li>calculating indices</li>
+</ol></li>
+<li>Focal (neighborhood operations) - summarizing output cell value as the result of a window (such as a3 x 3 input cell block)
+Zonal operations - summarizing raster values for some zones (either another raster or a vector feature)
+Global - summarizing values over entire raster(s)</li>
+</ol>
+<div id="local-operations" class="section level4" number="5.3.3.1">
+<h4><span class="header-section-number">5.3.3.1</span> Local Operations</h4>
+<p>Say we want to convert our elevation raster from meters to feet:</p>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="raster-data-1.html#cb67-1" aria-hidden="true" tabindex="-1"></a>elev_feet <span class="ot">=</span> elevation_tm <span class="sc">*</span> <span class="fl">3.28084</span></span>
+<span id="cb67-2"><a href="raster-data-1.html#cb67-2" aria-hidden="true" tabindex="-1"></a>elev_feet</span></code></pre></div>
+<pre><code>## class       : SpatRaster 
+## dimensions  : 983, 885, 1  (nrow, ncol, nlyr)
+## resolution  : 78.76912, 78.76912  (x, y)
+## extent      : 554177.8, 623888.5, 4714846, 4792276  (xmin, xmax, ymin, ymax)
+## coord. ref. : +proj=tmerc +lat_0=0 +lon_0=-483.2226562 +k=0.9996 +x_0=500000 +y_0=0 +datum=WGS84 +units=m +no_defs 
+## source      : memory 
+## name        : srtm_12_04 
+## min value   :   1853.287 
+## max value   :   8890.139</code></pre>
+<p>Our max value is 8890, which makes sense - the high point in Crater Lake National Park is Mount Scott at 8,929’.</p>
+<p>What if we want to make elevation bins, or classify some elevations as NA with our elevation raster?</p>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="raster-data-1.html#cb69-1" aria-hidden="true" tabindex="-1"></a>reclass <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">500</span>, <span class="dv">1</span>, <span class="dv">500</span>, <span class="dv">1000</span>, <span class="dv">2</span>, <span class="dv">1000</span>, <span class="dv">1500</span>, <span class="dv">3</span>, <span class="dv">1500</span> , <span class="dv">2000</span>, <span class="dv">4</span>, <span class="dv">2000</span>, <span class="dv">2700</span>, <span class="dv">5</span>), <span class="at">ncol =</span> <span class="dv">3</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb69-2"><a href="raster-data-1.html#cb69-2" aria-hidden="true" tabindex="-1"></a>reclass</span></code></pre></div>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]    0  500    1
+## [2,]  500 1000    2
+## [3,] 1000 1500    3
+## [4,] 1500 2000    4
+## [5,] 2000 2700    5</code></pre>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="raster-data-1.html#cb71-1" aria-hidden="true" tabindex="-1"></a>elev_recl <span class="ot">=</span> <span class="fu">classify</span>(elevation_tm, <span class="at">rcl =</span> reclass)</span>
+<span id="cb71-2"><a href="raster-data-1.html#cb71-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(elevation_tm)</span></code></pre></div>
+<p><img src="R-User-Group-Spatial-Workshop-2021_files/figure-html/local2-1.png" width="672" /></p>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="raster-data-1.html#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(elev_recl)</span></code></pre></div>
+<p><img src="R-User-Group-Spatial-Workshop-2021_files/figure-html/local2-2.png" width="672" /></p>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="raster-data-1.html#cb73-1" aria-hidden="true" tabindex="-1"></a>elev_new <span class="ot">=</span> elevation_tm</span>
+<span id="cb73-2"><a href="raster-data-1.html#cb73-2" aria-hidden="true" tabindex="-1"></a>elev_new[elev_new <span class="sc">&gt;</span> <span class="dv">2000</span>] <span class="ot">=</span> <span class="cn">NA</span></span>
+<span id="cb73-3"><a href="raster-data-1.html#cb73-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(elev_new)</span></code></pre></div>
+<p><img src="R-User-Group-Spatial-Workshop-2021_files/figure-html/local3-1.png" width="672" /></p>
+</div>
+<div id="focal-operations" class="section level4" number="5.3.3.2">
+<h4><span class="header-section-number">5.3.3.2</span> Focal Operations</h4>
+<p>A simple focal window operation</p>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="raster-data-1.html#cb74-1" aria-hidden="true" tabindex="-1"></a>elev_focal_mean <span class="ot">=</span> <span class="fu">focal</span>(elevation_tm, </span>
+<span id="cb74-2"><a href="raster-data-1.html#cb74-2" aria-hidden="true" tabindex="-1"></a>                   <span class="at">w =</span> <span class="fu">matrix</span>(<span class="dv">1</span>, <span class="at">nrow =</span> <span class="dv">25</span>, <span class="at">ncol =</span> <span class="dv">25</span>), </span>
+<span id="cb74-3"><a href="raster-data-1.html#cb74-3" aria-hidden="true" tabindex="-1"></a>                   <span class="at">fun =</span> mean)</span>
+<span id="cb74-4"><a href="raster-data-1.html#cb74-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(elev_focal_mean)</span></code></pre></div>
+<p><img src="R-User-Group-Spatial-Workshop-2021_files/figure-html/focal-1.png" width="672" /></p>
+</div>
+<div id="global-operations" class="section level4" number="5.3.3.3">
+<h4><span class="header-section-number">5.3.3.3</span> Global Operations</h4>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="raster-data-1.html#cb75-1" aria-hidden="true" tabindex="-1"></a>terra<span class="sc">::</span><span class="fu">global</span>(elev_mask, <span class="at">fun=</span><span class="st">&quot;mean&quot;</span>, <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span></code></pre></div>
+<pre><code>##                mean
+## srtm_12_04 1849.695</code></pre>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="raster-data-1.html#cb77-1" aria-hidden="true" tabindex="-1"></a>terra<span class="sc">::</span><span class="fu">global</span>(elev_mask, <span class="at">fun=</span><span class="st">&quot;sum&quot;</span>, <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span></code></pre></div>
+<pre><code>##                  sum
+## srtm_12_04 221711791</code></pre>
+</div>
+<div id="zonal-operations" class="section level4" number="5.3.3.4">
+<h4><span class="header-section-number">5.3.3.4</span> Zonal Operations</h4>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="raster-data-1.html#cb79-1" aria-hidden="true" tabindex="-1"></a>srtm_path <span class="ot">=</span> <span class="fu">system.file</span>(<span class="st">&quot;raster/srtm.tif&quot;</span>, <span class="at">package =</span> <span class="st">&quot;spDataLarge&quot;</span>)</span>
+<span id="cb79-2"><a href="raster-data-1.html#cb79-2" aria-hidden="true" tabindex="-1"></a>srtm_path</span></code></pre></div>
+<pre><code>## [1] &quot;C:/Users/mweber/R/library/spDataLarge/raster/srtm.tif&quot;</code></pre>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="raster-data-1.html#cb81-1" aria-hidden="true" tabindex="-1"></a>srtm <span class="ot">=</span> <span class="fu">rast</span>(srtm_path)</span>
+<span id="cb81-2"><a href="raster-data-1.html#cb81-2" aria-hidden="true" tabindex="-1"></a>srtm</span></code></pre></div>
+<pre><code>## class       : SpatRaster 
+## dimensions  : 457, 465, 1  (nrow, ncol, nlyr)
+## resolution  : 0.0008333333, 0.0008333333  (x, y)
+## extent      : -113.2396, -112.8521, 37.13208, 37.51292  (xmin, xmax, ymin, ymax)
+## coord. ref. : +proj=longlat +datum=WGS84 +no_defs 
+## source      : srtm.tif 
+## name        : srtm 
+## min value   : 1024 
+## max value   : 2892</code></pre>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="raster-data-1.html#cb83-1" aria-hidden="true" tabindex="-1"></a>nlcd <span class="ot">=</span> <span class="fu">rast</span>(<span class="fu">system.file</span>(<span class="st">&quot;raster/nlcd2011.tif&quot;</span>, <span class="at">package =</span> <span class="st">&quot;spDataLarge&quot;</span>))</span>
+<span id="cb83-2"><a href="raster-data-1.html#cb83-2" aria-hidden="true" tabindex="-1"></a>srtm_utm <span class="ot">=</span> <span class="fu">project</span>(srtm, nlcd, <span class="at">method =</span> <span class="st">&quot;bilinear&quot;</span>)</span>
+<span id="cb83-3"><a href="raster-data-1.html#cb83-3" aria-hidden="true" tabindex="-1"></a>srtm_zonal <span class="ot">=</span> <span class="fu">zonal</span>(srtm_utm, nlcd, <span class="at">na.rm =</span> <span class="cn">TRUE</span>, <span class="at">fun =</span> <span class="st">&quot;mean&quot;</span>)</span>
+<span id="cb83-4"><a href="raster-data-1.html#cb83-4" aria-hidden="true" tabindex="-1"></a>srtm_zonal</span></code></pre></div>
+<pre><code>##    nlcd2011     srtm
+## 1        11 2227.060
+## 2        21 1713.980
+## 3        22 1642.077
+## 4        23 1569.632
+## 5        31 1854.069
+## 6        41 2361.121
+## 7        42 1867.068
+## 8        43 2500.253
+## 9        52 1650.966
+## 10       71 1644.359
+## 11       81 1284.106
+## 12       82 1417.671
+## 13       90 1254.168
+## 14       95 1909.590</code></pre>
 
+</div>
 </div>
 </div>
 </div>

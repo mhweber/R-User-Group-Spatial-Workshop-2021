@@ -118,3 +118,17 @@ solution-5
 downloading-content-via-github
 using-rmarkdown-and-rstudio
 visualize-site-data
+raster-operations
+projecting
+exercise-6
+solution-6
+exercise-7
+solution-7
+cropping
+map-algebra
+exercise-8
+solution-8
+local-operations
+focal-operations
+global-operations
+zonal-operations

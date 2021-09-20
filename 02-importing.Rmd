@@ -158,7 +158,7 @@ mapview(footway$geometry) + mapview(rstrnts)
 
 Take a minute and try pulling in data of your own for your own area and plotting using `osmdata`
 
-### Raster data
+## Raster data
 ### `raster` package
 Here we use the `getData` function in the `raster` package to download elevation into a `RasterLayer` and grab administrative boundaries from a database of global administrative boundaries - warning: sometimes `getData` function has trouble accessing the server and download can be a bit slow. Here we see as well how we can use vector spataio polygon data to crop raster data.
 ```{r rasterdata, message=FALSE, warning=FALSE, error=FALSE}
@@ -198,7 +198,7 @@ read_stars(tif) %>%
 
 We'll get a sense for what 'slice' and 'index' above are doing in the [Raster data section](https://mhweber.github.io/R-User-Group-Spatial-Workshop-2021/raster-data.html)
 
-### Convert flat files to spatial
+## Convert flat files to spatial
 We often have flat files, locally on our machine or accessed elsewhere, that have coordinate information which we would like to make spatial. 
 
 In the steps below, we 

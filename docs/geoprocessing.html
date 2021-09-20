@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 6 Geoprocessing | Spatial Analysis in R</title>
+  <title>Chapter 6 Geoprocessing | Spatial Data and Analysis in R</title>
   <meta name="description" content="This is a draft of material for the R Spatial Workshop at the EPA R User Group Meeting in September 2021." />
   <meta name="generator" content="bookdown 0.23 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 6 Geoprocessing | Spatial Analysis in R" />
+  <meta property="og:title" content="Chapter 6 Geoprocessing | Spatial Data and Analysis in R" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 6 Geoprocessing | Spatial Analysis in R" />
+  <meta name="twitter:title" content="Chapter 6 Geoprocessing | Spatial Data and Analysis in R" />
   
   <meta name="twitter:description" content="This is a draft of material for the R Spatial Workshop at the EPA R User Group Meeting in September 2021." />
   
@@ -24,14 +24,14 @@
 <meta name="author" content="Marc Weber" />
 
 
-<meta name="date" content="2021-08-30" />
+<meta name="date" content="2021-09-20" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="raster-data.html"/>
+<link rel="prev" href="raster-data-1.html"/>
 <link rel="next" href="visualizing-spatial-data.html"/>
 <script src="libs/header-attrs-2.10/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -159,30 +159,33 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">Fundamentals of Spatial Analysis in R</a></li>
+<li><a href="./">Spatial Data and Analysis in R</a></li>
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
 <ul>
-<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#workshop-packages-and-data"><i class="fa fa-check"></i><b>1.1</b> Workshop Packages and Data</a></li>
-<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#overview"><i class="fa fa-check"></i><b>1.2</b> Overview</a></li>
-<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#r-basics-review"><i class="fa fa-check"></i><b>1.3</b> R Basics Review</a></li>
-<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#spatial-data-in-r"><i class="fa fa-check"></i><b>1.4</b> Spatial Data in R</a>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#workshop-agenda"><i class="fa fa-check"></i><b>1.1</b> Workshop agenda</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#workshop-packages-and-data"><i class="fa fa-check"></i><b>1.2</b> Workshop Packages and Data</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#downloading-content-via-github"><i class="fa fa-check"></i><b>1.3</b> Downloading content via Github</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#using-rmarkdown-and-rstudio"><i class="fa fa-check"></i><b>1.4</b> Using RMarkdown and RStudio</a></li>
+<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#overview"><i class="fa fa-check"></i><b>1.5</b> Overview</a></li>
+<li class="chapter" data-level="1.6" data-path="index.html"><a href="index.html#r-basics-review"><i class="fa fa-check"></i><b>1.6</b> R Basics Review</a></li>
+<li class="chapter" data-level="1.7" data-path="index.html"><a href="index.html#spatial-data-in-r"><i class="fa fa-check"></i><b>1.7</b> Spatial Data in R</a>
 <ul>
-<li class="chapter" data-level="1.4.1" data-path="index.html"><a href="index.html#challenge"><i class="fa fa-check"></i><b>1.4.1</b> Challenge</a></li>
-<li class="chapter" data-level="1.4.2" data-path="index.html"><a href="index.html#answer"><i class="fa fa-check"></i><b>1.4.2</b> Answer</a></li>
-<li class="chapter" data-level="1.4.3" data-path="index.html"><a href="index.html#r-spatial-package-landscape"><i class="fa fa-check"></i><b>1.4.3</b> R Spatial Package Landscape</a></li>
-<li class="chapter" data-level="1.4.4" data-path="index.html"><a href="index.html#how-did-we-make-this-figure"><i class="fa fa-check"></i><b>1.4.4</b> How did we make this figure?</a></li>
-<li class="chapter" data-level="1.4.5" data-path="index.html"><a href="index.html#answer-1"><i class="fa fa-check"></i><b>1.4.5</b> Answer</a></li>
-<li class="chapter" data-level="1.4.6" data-path="index.html"><a href="index.html#primary-r-spatial-packages"><i class="fa fa-check"></i><b>1.4.6</b> Primary R spatial packages</a></li>
+<li class="chapter" data-level="1.7.1" data-path="index.html"><a href="index.html#exercise"><i class="fa fa-check"></i><b>1.7.1</b> Exercise</a></li>
+<li class="chapter" data-level="1.7.2" data-path="index.html"><a href="index.html#solution"><i class="fa fa-check"></i><b>1.7.2</b> Solution</a></li>
+<li class="chapter" data-level="1.7.3" data-path="index.html"><a href="index.html#r-spatial-package-landscape"><i class="fa fa-check"></i><b>1.7.3</b> R Spatial Package Landscape</a></li>
+<li class="chapter" data-level="1.7.4" data-path="index.html"><a href="index.html#exercise-1"><i class="fa fa-check"></i><b>1.7.4</b> Exercise</a></li>
+<li class="chapter" data-level="1.7.5" data-path="index.html"><a href="index.html#solution-1"><i class="fa fa-check"></i><b>1.7.5</b> Solution</a></li>
+<li class="chapter" data-level="1.7.6" data-path="index.html"><a href="index.html#primary-r-spatial-packages"><i class="fa fa-check"></i><b>1.7.6</b> Primary R spatial packages</a></li>
 </ul></li>
-<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#quick-examples"><i class="fa fa-check"></i><b>1.5</b> Quick examples</a>
+<li class="chapter" data-level="1.8" data-path="index.html"><a href="index.html#quick-examples"><i class="fa fa-check"></i><b>1.8</b> Quick examples</a>
 <ul>
-<li class="chapter" data-level="1.5.1" data-path="index.html"><a href="index.html#geocoding-example-with-tmaptools-using-open-street-map"><i class="fa fa-check"></i><b>1.5.1</b> Geocoding example with tmaptools using open street map</a></li>
-<li class="chapter" data-level="1.5.2" data-path="index.html"><a href="index.html#run-and-examine-code-chunk-above"><i class="fa fa-check"></i><b>1.5.2</b> Run and examine code chunk above</a></li>
-<li class="chapter" data-level="1.5.3" data-path="index.html"><a href="index.html#answer-2"><i class="fa fa-check"></i><b>1.5.3</b> Answer</a></li>
-<li class="chapter" data-level="1.5.4" data-path="index.html"><a href="index.html#choropleth-map"><i class="fa fa-check"></i><b>1.5.4</b> Choropleth map</a></li>
-<li class="chapter" data-level="1.5.5" data-path="index.html"><a href="index.html#interactive-mapping"><i class="fa fa-check"></i><b>1.5.5</b> Interactive mapping</a></li>
+<li class="chapter" data-level="1.8.1" data-path="index.html"><a href="index.html#geocoding-example-with-tmaptools-using-open-street-map"><i class="fa fa-check"></i><b>1.8.1</b> Geocoding example with tmaptools using open street map</a></li>
+<li class="chapter" data-level="1.8.2" data-path="index.html"><a href="index.html#exercise-2"><i class="fa fa-check"></i><b>1.8.2</b> Exercise</a></li>
+<li class="chapter" data-level="1.8.3" data-path="index.html"><a href="index.html#solution-2"><i class="fa fa-check"></i><b>1.8.3</b> Solution</a></li>
+<li class="chapter" data-level="1.8.4" data-path="index.html"><a href="index.html#choropleth-map"><i class="fa fa-check"></i><b>1.8.4</b> Choropleth map</a></li>
+<li class="chapter" data-level="1.8.5" data-path="index.html"><a href="index.html#interactive-mapping"><i class="fa fa-check"></i><b>1.8.5</b> Interactive mapping</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="reading-in-spatial-data.html"><a href="reading-in-spatial-data.html"><i class="fa fa-check"></i><b>2</b> Reading in Spatial Data</a>
@@ -190,14 +193,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.1" data-path="reading-in-spatial-data.html"><a href="reading-in-spatial-data.html#reading-in-vector-data"><i class="fa fa-check"></i><b>2.1</b> Reading in vector data</a>
 <ul>
 <li class="chapter" data-level="2.1.1" data-path="reading-in-spatial-data.html"><a href="reading-in-spatial-data.html#shapefiles"><i class="fa fa-check"></i><b>2.1.1</b> Shapefiles</a></li>
-<li class="chapter" data-level="2.1.2" data-path="reading-in-spatial-data.html"><a href="reading-in-spatial-data.html#exercise"><i class="fa fa-check"></i><b>2.1.2</b> Exercise</a></li>
-<li class="chapter" data-level="2.1.3" data-path="reading-in-spatial-data.html"><a href="reading-in-spatial-data.html#geodatabases"><i class="fa fa-check"></i><b>2.1.3</b> Geodatabases</a></li>
-<li class="chapter" data-level="2.1.4" data-path="reading-in-spatial-data.html"><a href="reading-in-spatial-data.html#geopackages"><i class="fa fa-check"></i><b>2.1.4</b> Geopackages</a></li>
-<li class="chapter" data-level="2.1.5" data-path="reading-in-spatial-data.html"><a href="reading-in-spatial-data.html#open-spatial-data-sources"><i class="fa fa-check"></i><b>2.1.5</b> Open spatial data sources</a></li>
-<li class="chapter" data-level="2.1.6" data-path="reading-in-spatial-data.html"><a href="reading-in-spatial-data.html#spatial-data-from-r-packages"><i class="fa fa-check"></i><b>2.1.6</b> Spatial data from R packages</a></li>
-<li class="chapter" data-level="2.1.7" data-path="reading-in-spatial-data.html"><a href="reading-in-spatial-data.html#read-in-raster-data"><i class="fa fa-check"></i><b>2.1.7</b> Read in raster data</a></li>
-<li class="chapter" data-level="2.1.8" data-path="reading-in-spatial-data.html"><a href="reading-in-spatial-data.html#read-in-openstreetmap-data"><i class="fa fa-check"></i><b>2.1.8</b> Read in OpenStreetMap data</a></li>
+<li class="chapter" data-level="2.1.2" data-path="reading-in-spatial-data.html"><a href="reading-in-spatial-data.html#geodatabases"><i class="fa fa-check"></i><b>2.1.2</b> Geodatabases</a></li>
+<li class="chapter" data-level="2.1.3" data-path="reading-in-spatial-data.html"><a href="reading-in-spatial-data.html#geopackages"><i class="fa fa-check"></i><b>2.1.3</b> Geopackages</a></li>
+<li class="chapter" data-level="2.1.4" data-path="reading-in-spatial-data.html"><a href="reading-in-spatial-data.html#open-spatial-data-sources"><i class="fa fa-check"></i><b>2.1.4</b> Open spatial data sources</a></li>
+<li class="chapter" data-level="2.1.5" data-path="reading-in-spatial-data.html"><a href="reading-in-spatial-data.html#spatial-data-from-r-packages"><i class="fa fa-check"></i><b>2.1.5</b> Spatial data from R packages</a></li>
+<li class="chapter" data-level="2.1.6" data-path="reading-in-spatial-data.html"><a href="reading-in-spatial-data.html#read-in-openstreetmap-data"><i class="fa fa-check"></i><b>2.1.6</b> Read in OpenStreetMap data</a></li>
 </ul></li>
+<li class="chapter" data-level="2.2" data-path="reading-in-spatial-data.html"><a href="reading-in-spatial-data.html#raster-data"><i class="fa fa-check"></i><b>2.2</b> Raster data</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="reading-in-spatial-data.html"><a href="reading-in-spatial-data.html#raster-package"><i class="fa fa-check"></i><b>2.2.1</b> <code>raster</code> package</a></li>
+<li class="chapter" data-level="2.2.2" data-path="reading-in-spatial-data.html"><a href="reading-in-spatial-data.html#terra-package"><i class="fa fa-check"></i><b>2.2.2</b> <code>terra</code> package</a></li>
+<li class="chapter" data-level="2.2.3" data-path="reading-in-spatial-data.html"><a href="reading-in-spatial-data.html#stars-package"><i class="fa fa-check"></i><b>2.2.3</b> <code>stars</code> package</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="reading-in-spatial-data.html"><a href="reading-in-spatial-data.html#convert-flat-files-to-spatial"><i class="fa fa-check"></i><b>2.3</b> Convert flat files to spatial</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="coordinate-reference-systems.html"><a href="coordinate-reference-systems.html"><i class="fa fa-check"></i><b>3</b> Coordinate reference systems</a>
 <ul>
@@ -210,13 +218,31 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="4" data-path="vector-data-with-sf.html"><a href="vector-data-with-sf.html"><i class="fa fa-check"></i><b>4</b> Vector data with <code>sf</code></a>
 <ul>
-<li class="chapter" data-level="4.0.1" data-path="vector-data-with-sf.html"><a href="vector-data-with-sf.html#units-in-sf"><i class="fa fa-check"></i><b>4.0.1</b> Units in <code>sf</code></a></li>
+<li class="chapter" data-level="4.0.1" data-path="vector-data-with-sf.html"><a href="vector-data-with-sf.html#sf-methods"><i class="fa fa-check"></i><b>4.0.1</b> <code>sf</code> Methods</a></li>
+<li class="chapter" data-level="4.0.2" data-path="vector-data-with-sf.html"><a href="vector-data-with-sf.html#exploring-sf"><i class="fa fa-check"></i><b>4.0.2</b> Exploring <code>sf</code></a></li>
+<li class="chapter" data-level="4.1" data-path="vector-data-with-sf.html"><a href="vector-data-with-sf.html#units-in-sf"><i class="fa fa-check"></i><b>4.1</b> Units in <code>sf</code></a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="raster-data.html"><a href="raster-data.html"><i class="fa fa-check"></i><b>5</b> Raster data</a>
+<li class="chapter" data-level="5" data-path="raster-data-1.html"><a href="raster-data-1.html"><i class="fa fa-check"></i><b>5</b> Raster data</a>
 <ul>
-<li class="chapter" data-level="5.0.1" data-path="raster-data.html"><a href="raster-data.html#exercise-1"><i class="fa fa-check"></i><b>5.0.1</b> Exercise</a></li>
-<li class="chapter" data-level="5.0.2" data-path="raster-data.html"><a href="raster-data.html#manipulating-raster-objects"><i class="fa fa-check"></i><b>5.0.2</b> Manipulating <code>raster</code> objects</a></li>
-<li class="chapter" data-level="5.0.3" data-path="raster-data.html"><a href="raster-data.html#rasterbricks-and-rasterstacks"><i class="fa fa-check"></i><b>5.0.3</b> RasterBricks and Rasterstacks</a></li>
+<li class="chapter" data-level="5.1" data-path="raster-data-1.html"><a href="raster-data-1.html#raster-data-with-terra"><i class="fa fa-check"></i><b>5.1</b> Raster data with <code>terra</code></a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="raster-data-1.html"><a href="raster-data-1.html#exercise-5"><i class="fa fa-check"></i><b>5.1.1</b> Exercise</a></li>
+<li class="chapter" data-level="5.1.2" data-path="raster-data-1.html"><a href="raster-data-1.html#solution-5"><i class="fa fa-check"></i><b>5.1.2</b> Solution</a></li>
+<li class="chapter" data-level="5.1.3" data-path="raster-data-1.html"><a href="raster-data-1.html#manipulating-raster-objects"><i class="fa fa-check"></i><b>5.1.3</b> Manipulating <code>raster</code> objects</a></li>
+<li class="chapter" data-level="5.1.4" data-path="raster-data-1.html"><a href="raster-data-1.html#reading-existing-rasters-on-disk"><i class="fa fa-check"></i><b>5.1.4</b> Reading existing rasters on disk</a></li>
+<li class="chapter" data-level="5.1.5" data-path="raster-data-1.html"><a href="raster-data-1.html#multiband-rasters"><i class="fa fa-check"></i><b>5.1.5</b> Multiband rasters</a></li>
+<li class="chapter" data-level="5.1.6" data-path="raster-data-1.html"><a href="raster-data-1.html#plotting-rasters-and-vectors-with-tmap"><i class="fa fa-check"></i><b>5.1.6</b> Plotting rasters and vectors with tmap</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="raster-data-1.html"><a href="raster-data-1.html#raster-data-with-stars"><i class="fa fa-check"></i><b>5.2</b> Raster data with <code>stars</code></a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="raster-data-1.html"><a href="raster-data-1.html#read-a-satellite-image"><i class="fa fa-check"></i><b>5.2.1</b> Read a satellite image</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="raster-data-1.html"><a href="raster-data-1.html#raster-operations"><i class="fa fa-check"></i><b>5.3</b> Raster Operations</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="raster-data-1.html"><a href="raster-data-1.html#projecting"><i class="fa fa-check"></i><b>5.3.1</b> Projecting</a></li>
+<li class="chapter" data-level="5.3.2" data-path="raster-data-1.html"><a href="raster-data-1.html#cropping"><i class="fa fa-check"></i><b>5.3.2</b> Cropping</a></li>
+<li class="chapter" data-level="5.3.3" data-path="raster-data-1.html"><a href="raster-data-1.html#map-algebra"><i class="fa fa-check"></i><b>5.3.3</b> Map Algebra</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="geoprocessing.html"><a href="geoprocessing.html"><i class="fa fa-check"></i><b>6</b> Geoprocessing</a>
 <ul>
@@ -225,35 +251,33 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="6.2.1" data-path="geoprocessing.html"><a href="geoprocessing.html#spatial-subsetting"><i class="fa fa-check"></i><b>6.2.1</b> Spatial Subsetting</a></li>
 </ul></li>
-<li class="chapter" data-level="6.3" data-path="geoprocessing.html"><a href="geoprocessing.html#example-two"><i class="fa fa-check"></i><b>6.3</b> Example two</a>
+<li class="chapter" data-level="6.3" data-path="geoprocessing.html"><a href="geoprocessing.html#spatial-join"><i class="fa fa-check"></i><b>6.3</b> Spatial Join</a></li>
+<li class="chapter" data-level="6.4" data-path="geoprocessing.html"><a href="geoprocessing.html#dissolve"><i class="fa fa-check"></i><b>6.4</b> Dissolve</a></li>
+<li class="chapter" data-level="6.5" data-path="geoprocessing.html"><a href="geoprocessing.html#spatial-overlap"><i class="fa fa-check"></i><b>6.5</b> Spatial Overlap</a>
 <ul>
-<li class="chapter" data-level="6.3.1" data-path="geoprocessing.html"><a href="geoprocessing.html#spatial-join"><i class="fa fa-check"></i><b>6.3.1</b> Spatial Join</a></li>
-</ul></li>
-<li class="chapter" data-level="6.4" data-path="geoprocessing.html"><a href="geoprocessing.html#example-three"><i class="fa fa-check"></i><b>6.4</b> Example Three</a>
-<ul>
-<li class="chapter" data-level="6.4.1" data-path="geoprocessing.html"><a href="geoprocessing.html#dissolve"><i class="fa fa-check"></i><b>6.4.1</b> Dissolve</a></li>
-</ul></li>
-<li class="chapter" data-level="6.5" data-path="geoprocessing.html"><a href="geoprocessing.html#example-four"><i class="fa fa-check"></i><b>6.5</b> Example Four</a>
-<ul>
-<li class="chapter" data-level="6.5.1" data-path="geoprocessing.html"><a href="geoprocessing.html#spatial-overlap"><i class="fa fa-check"></i><b>6.5.1</b> Spatial Overlap</a></li>
+<li class="chapter" data-level="6.5.1" data-path="geoprocessing.html"><a href="geoprocessing.html#next-well-create-a-dummy-spatial-polygon-file-to-compare-area-with-using-the-rmapshaper-package-to-simplify-the-border-of-the-pdx-metropolitan-polygon"><i class="fa fa-check"></i><b>6.5.1</b> Next we’ll create a dummy spatial polygon file to compare area with using the <code>rmapshaper</code> package to simplify the border of the PDX metropolitan polygon</a></li>
+<li class="chapter" data-level="6.5.2" data-path="geoprocessing.html"><a href="geoprocessing.html#then-we-can-overlay-polygons-in-ggplot-to-see-how-similar-they-are-showing-the-original-census-pdx-metropolitan-area-in-green-and-new-simplified-polygon-in-red"><i class="fa fa-check"></i><b>6.5.2</b> Then we can overlay polygons in ggplot to see how similar they are, showing the original census PDX metropolitan area in green, and new simplified polygon in red</a></li>
+<li class="chapter" data-level="6.5.3" data-path="geoprocessing.html"><a href="geoprocessing.html#now-that-we-have-an-original-and-simplified-polygon-to-compare-the-process-we-want-to-use-is"><i class="fa fa-check"></i><b>6.5.3</b> Now that we have an original and simplified polygon to compare, the process we want to use is:</a></li>
+<li class="chapter" data-level="6.5.4" data-path="geoprocessing.html"><a href="geoprocessing.html#exercise-8"><i class="fa fa-check"></i><b>6.5.4</b> Exercise</a></li>
+<li class="chapter" data-level="6.5.5" data-path="geoprocessing.html"><a href="geoprocessing.html#solution-8"><i class="fa fa-check"></i><b>6.5.5</b> Solution</a></li>
+<li class="chapter" data-level="6.5.6" data-path="geoprocessing.html"><a href="geoprocessing.html#challenge"><i class="fa fa-check"></i><b>6.5.6</b> Challenge</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="visualizing-spatial-data.html"><a href="visualizing-spatial-data.html"><i class="fa fa-check"></i><b>7</b> Visualizing Spatial Data</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="visualizing-spatial-data.html"><a href="visualizing-spatial-data.html#lesson-goals-1"><i class="fa fa-check"></i><b>7.1</b> Lesson Goals</a>
-<ul>
-<li class="chapter" data-level="7.1.1" data-path="visualizing-spatial-data.html"><a href="visualizing-spatial-data.html#chorpleths-with-tmap"><i class="fa fa-check"></i><b>7.1.1</b> Chorpleths with tmap</a></li>
-<li class="chapter" data-level="7.1.2" data-path="visualizing-spatial-data.html"><a href="visualizing-spatial-data.html#leaflet"><i class="fa fa-check"></i><b>7.1.2</b> Leaflet</a></li>
-<li class="chapter" data-level="7.1.3" data-path="visualizing-spatial-data.html"><a href="visualizing-spatial-data.html#mapview"><i class="fa fa-check"></i><b>7.1.3</b> mapview</a></li>
-</ul></li>
+<li class="chapter" data-level="7.1" data-path="visualizing-spatial-data.html"><a href="visualizing-spatial-data.html#lesson-goals-1"><i class="fa fa-check"></i><b>7.1</b> Lesson Goals</a></li>
+<li class="chapter" data-level="7.2" data-path="visualizing-spatial-data.html"><a href="visualizing-spatial-data.html#chorpleths-with-tmap"><i class="fa fa-check"></i><b>7.2</b> Chorpleths with <code>tmap</code></a></li>
+<li class="chapter" data-level="7.3" data-path="visualizing-spatial-data.html"><a href="visualizing-spatial-data.html#leaflet"><i class="fa fa-check"></i><b>7.3</b> <code>leaflet</code></a></li>
+<li class="chapter" data-level="7.4" data-path="visualizing-spatial-data.html"><a href="visualizing-spatial-data.html#mapview"><i class="fa fa-check"></i><b>7.4</b> <code>mapview</code></a></li>
+<li class="chapter" data-level="7.5" data-path="visualizing-spatial-data.html"><a href="visualizing-spatial-data.html#visualize-site-data"><i class="fa fa-check"></i><b>7.5</b> Visualize site data</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a>
 <ul>
-<li class="chapter" data-level="7.1.4" data-path="references.html"><a href="references.html#r-spatial-resources"><i class="fa fa-check"></i><b>7.1.4</b> R Spatial Resources</a></li>
-<li class="chapter" data-level="7.1.5" data-path="references.html"><a href="references.html#r-vector-processing-simple-features-resources"><i class="fa fa-check"></i><b>7.1.5</b> R Vector Processing / Simple Features Resources</a></li>
-<li class="chapter" data-level="7.1.6" data-path="references.html"><a href="references.html#r-raster-resources"><i class="fa fa-check"></i><b>7.1.6</b> R Raster Resources</a></li>
-<li class="chapter" data-level="7.1.7" data-path="references.html"><a href="references.html#r-mapping-resources"><i class="fa fa-check"></i><b>7.1.7</b> R Mapping Resources</a></li>
-<li class="chapter" data-level="7.1.8" data-path="references.html"><a href="references.html#general-r-resources"><i class="fa fa-check"></i><b>7.1.8</b> General R Resources</a></li>
+<li class="chapter" data-level="7.5.1" data-path="references.html"><a href="references.html#r-spatial-resources"><i class="fa fa-check"></i><b>7.5.1</b> R Spatial Resources</a></li>
+<li class="chapter" data-level="7.5.2" data-path="references.html"><a href="references.html#r-vector-processing-simple-features-resources"><i class="fa fa-check"></i><b>7.5.2</b> R Vector Processing / Simple Features Resources</a></li>
+<li class="chapter" data-level="7.5.3" data-path="references.html"><a href="references.html#r-raster-resources"><i class="fa fa-check"></i><b>7.5.3</b> R Raster Resources</a></li>
+<li class="chapter" data-level="7.5.4" data-path="references.html"><a href="references.html#r-mapping-resources"><i class="fa fa-check"></i><b>7.5.4</b> R Mapping Resources</a></li>
+<li class="chapter" data-level="7.5.5" data-path="references.html"><a href="references.html#general-r-resources"><i class="fa fa-check"></i><b>7.5.5</b> General R Resources</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/mhweber/R-User-Group-Spatial-Workshop-2021" target="blank">Published with bookdown</a></li>
@@ -267,7 +291,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Spatial Analysis in R</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Spatial Data and Analysis in R</a>
           </h1>
         </div>
 
@@ -279,7 +303,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">Chapter 6</span> Geoprocessing</h1>
 <div id="lesson-goals" class="section level2" number="6.1">
 <h2><span class="header-section-number">6.1</span> Lesson Goals</h2>
-<p>A quick look at a couple typical topological operations (spatial subsetting, spatial joins, dissolve) using <code>sf</code></p>
+<p>A quick look at a couple typical topological operations (spatial subsetting, spatial joins, dissolve) using <code>sf</code> - followed by a couple ‘real world’ spatial tasks</p>
 </div>
 <div id="example-one" class="section level2" number="6.2">
 <h2><span class="header-section-number">6.2</span> Example one</h2>
@@ -299,10 +323,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><img src="R-User-Group-Spatial-Workshop-2021_files/figure-html/subset-1.png" width="672" /></p>
 </div>
 </div>
-<div id="example-two" class="section level2" number="6.3">
-<h2><span class="header-section-number">6.3</span> Example two</h2>
-<div id="spatial-join" class="section level3" number="6.3.1">
-<h3><span class="header-section-number">6.3.1</span> Spatial Join</h3>
+<div id="spatial-join" class="section level2" number="6.3">
+<h2><span class="header-section-number">6.3</span> Spatial Join</h2>
 <p>First we’ll use chained operations to select just a couple columns from both bike_paths and parks, and then we’ll do a spatial join operation in <code>sf</code>. Note again, when we do a select on just attribute column, the geometry column remains - geometry is sticky in <code>sf</code>!</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="geoprocessing.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
 <span id="cb2-2"><a href="geoprocessing.html#cb2-2" aria-hidden="true" tabindex="-1"></a>bike_paths <span class="ot">&lt;-</span> bike_paths <span class="sc">%&gt;%</span> </span>
@@ -319,11 +341,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## $ ROUTE_NAME    &lt;chr&gt; NA, NA, NA, NA, NA, NA, &quot;TOWN LAKE HIKE &amp; BIKE TRAIL&quot;, &quot;~
 ## $ geoms         &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((-97.78802 3..., MULTIPOLYGO~</code></pre>
 </div>
-</div>
-<div id="example-three" class="section level2" number="6.4">
-<h2><span class="header-section-number">6.4</span> Example Three</h2>
-<div id="dissolve" class="section level3" number="6.4.1">
-<h3><span class="header-section-number">6.4.1</span> Dissolve</h3>
+<div id="dissolve" class="section level2" number="6.4">
+<h2><span class="header-section-number">6.4</span> Dissolve</h2>
 <p>We can perform a spatial dissolve in <code>sf</code> using <code>dplyr</code> <code>group_by</code> and <code>summarize</code> functions with an <code>sf</code> object!
 Note that we could pull down <code>tidycensus</code> at tract level, but instead we want to look at running a dissolve to get from block group to tract level</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="geoprocessing.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
@@ -337,11 +356,8 @@ Note that we could pull down <code>tidycensus</code> at tract level, but instead
 <span id="cb4-9"><a href="geoprocessing.html#cb4-9" aria-hidden="true" tabindex="-1"></a>parks_zip</span></code></pre></div>
 <p><img src="R-User-Group-Spatial-Workshop-2021_files/figure-html/dissolve-1.png" width="672" /></p>
 </div>
-</div>
-<div id="example-four" class="section level2" number="6.5">
-<h2><span class="header-section-number">6.5</span> Example Four</h2>
-<div id="spatial-overlap" class="section level3" number="6.5.1">
-<h3><span class="header-section-number">6.5.1</span> Spatial Overlap</h3>
+<div id="spatial-overlap" class="section level2" number="6.5">
+<h2><span class="header-section-number">6.5</span> Spatial Overlap</h2>
 <p>Here’s a fun example using material posted by Nicholas Tierney <a href="https://www.njtierney.com/post/2021/08/21/how-much-one-shapefile-overlaps-another/">here</a> that he put together based on <a href="https://gis.stackexchange.com/questions/362466/calculate-percentage-overlap-of-2-sets-of-polygons-in-r">this Stack Overflow discussion</a>.</p>
 <p>First we’ll extract the Portland Oregon metropolitan area using the <code>tidycensus</code> and <code>tigris</code> packages</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="geoprocessing.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
@@ -358,14 +374,14 @@ Note that we could pull down <code>tidycensus</code> at tract level, but instead
 <span id="cb5-12"><a href="geoprocessing.html#cb5-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> pdx,</span>
 <span id="cb5-13"><a href="geoprocessing.html#cb5-13" aria-hidden="true" tabindex="-1"></a>          <span class="at">fill =</span> <span class="st">&quot;forestgreen&quot;</span>) </span></code></pre></div>
 <p><img src="R-User-Group-Spatial-Workshop-2021_files/figure-html/overlap-1.png" width="672" /></p>
-<div id="next-well-create-a-dummy-spatial-polygon-file-to-compare-area-with-using-the-rmapshaper-package-to-simplify-the-border-of-the-pdx-metropolitan-polygon" class="section level4" number="6.5.1.1">
-<h4><span class="header-section-number">6.5.1.1</span> Next we’ll create a dummy spatial polygon file to compare area with using the <code>rmapshaper</code> package to simplify the border of the PDX metropolitan polygon</h4>
+<div id="next-well-create-a-dummy-spatial-polygon-file-to-compare-area-with-using-the-rmapshaper-package-to-simplify-the-border-of-the-pdx-metropolitan-polygon" class="section level3" number="6.5.1">
+<h3><span class="header-section-number">6.5.1</span> Next we’ll create a dummy spatial polygon file to compare area with using the <code>rmapshaper</code> package to simplify the border of the PDX metropolitan polygon</h3>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="geoprocessing.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rmapshaper) </span>
 <span id="cb6-2"><a href="geoprocessing.html#cb6-2" aria-hidden="true" tabindex="-1"></a>pdx_simplified <span class="ot">&lt;-</span> pdx <span class="sc">%&gt;%</span> </span>
 <span id="cb6-3"><a href="geoprocessing.html#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ms_simplify</span>(<span class="at">keep =</span> <span class="fl">0.01</span>)</span></code></pre></div>
 </div>
-<div id="then-we-can-overlay-polygons-in-ggplot-to-see-how-similar-they-are-showing-the-original-census-pdx-metropolitan-area-in-green-and-new-simplified-polygon-in-red" class="section level4" number="6.5.1.2">
-<h4><span class="header-section-number">6.5.1.2</span> Then we can overlay polygons in ggplot to see how similar they are, showing the original census PDX metropolitan area in green, and new simplified polygon in red</h4>
+<div id="then-we-can-overlay-polygons-in-ggplot-to-see-how-similar-they-are-showing-the-original-census-pdx-metropolitan-area-in-green-and-new-simplified-polygon-in-red" class="section level3" number="6.5.2">
+<h3><span class="header-section-number">6.5.2</span> Then we can overlay polygons in ggplot to see how similar they are, showing the original census PDX metropolitan area in green, and new simplified polygon in red</h3>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="geoprocessing.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
 <span id="cb7-2"><a href="geoprocessing.html#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> pdx,</span>
 <span id="cb7-3"><a href="geoprocessing.html#cb7-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">fill =</span> <span class="st">&quot;forestgreen&quot;</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span> </span>
@@ -374,8 +390,8 @@ Note that we could pull down <code>tidycensus</code> at tract level, but instead
 <span id="cb7-6"><a href="geoprocessing.html#cb7-6" aria-hidden="true" tabindex="-1"></a>          <span class="at">alpha =</span> <span class="fl">0.5</span>)</span></code></pre></div>
 <p><img src="R-User-Group-Spatial-Workshop-2021_files/figure-html/overlap3-1.png" width="672" /></p>
 </div>
-<div id="now-that-we-have-an-original-and-simplified-polygon-to-compare-the-process-we-want-to-use-is" class="section level4" number="6.5.1.3">
-<h4><span class="header-section-number">6.5.1.3</span> Now that we have an original and simplified polygon to compare, the process we want to use is:</h4>
+<div id="now-that-we-have-an-original-and-simplified-polygon-to-compare-the-process-we-want-to-use-is" class="section level3" number="6.5.3">
+<h3><span class="header-section-number">6.5.3</span> Now that we have an original and simplified polygon to compare, the process we want to use is:</h3>
 <ul>
 <li>Calculate original metro area polygon area</li>
 <li>Calculate the intersection of these two areas - original and simplified (st_intersection)</li>
@@ -393,17 +409,18 @@ Note that we could pull down <code>tidycensus</code> at tract level, but instead
 <span id="cb8-8"><a href="geoprocessing.html#cb8-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(NAME, intersect_area) <span class="sc">%&gt;%</span> </span>
 <span id="cb8-9"><a href="geoprocessing.html#cb8-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">st_drop_geometry</span>()</span></code></pre></div>
 </div>
-<div id="exercise-2" class="section level4" number="6.5.1.4">
-<h4><span class="header-section-number">6.5.1.4</span> Exercise</h4>
+<div id="exercise-8" class="section level3" number="6.5.4">
+<h3><span class="header-section-number">6.5.4</span> Exercise</h3>
 <p>This step should have given you an error -THIS IS VERY COMMON WORKING WITH SPATIAL DATA IN R AND USING <code>sf</code>.</p>
-<div id="solution-2" class="section level5" number="6.5.1.4.1">
-<h5><span class="header-section-number">6.5.1.4.1</span> Solution</h5>
+</div>
+<div id="solution-8" class="section level3" number="6.5.5">
+<h3><span class="header-section-number">6.5.5</span> Solution</h3>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="geoprocessing.html#cb9-1" aria-hidden="true" tabindex="-1"></a>pdx_simplified <span class="ot">&lt;-</span> <span class="fu">st_make_valid</span>(pdx_simplified)</span>
 <span id="cb9-2"><a href="geoprocessing.html#cb9-2" aria-hidden="true" tabindex="-1"></a>pdx <span class="ot">&lt;-</span> <span class="fu">st_make_valid</span>(pdx)</span>
 <span id="cb9-3"><a href="geoprocessing.html#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-4"><a href="geoprocessing.html#cb9-4" aria-hidden="true" tabindex="-1"></a>original_area <span class="ot">&lt;-</span> pdx <span class="sc">%&gt;%</span> </span>
 <span id="cb9-5"><a href="geoprocessing.html#cb9-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">original_area =</span> <span class="fu">st_area</span>(.)) <span class="sc">%&gt;%</span> </span>
-<span id="cb9-6"><a href="geoprocessing.html#cb9-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(NAME, original_area) <span class="sc">%&gt;%</span> </span>
+<span id="cb9-6"><a href="geoprocessing.html#cb9-6" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">select</span>(NAME, original_area) <span class="sc">%&gt;%</span> </span>
 <span id="cb9-7"><a href="geoprocessing.html#cb9-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">st_drop_geometry</span>()</span>
 <span id="cb9-8"><a href="geoprocessing.html#cb9-8" aria-hidden="true" tabindex="-1"></a>    </span>
 <span id="cb9-9"><a href="geoprocessing.html#cb9-9" aria-hidden="true" tabindex="-1"></a>intersection_area <span class="ot">&lt;-</span> <span class="fu">st_intersection</span>(pdx, pdx_simplified) <span class="sc">%&gt;%</span> </span>
@@ -427,17 +444,13 @@ Note that we could pull down <code>tidycensus</code> at tract level, but instead
 ##          orig         new proportion
 ## 1 17633108214 16524152114   93.71094</code></pre>
 </div>
-</div>
-<div id="exercise-3" class="section level4" number="6.5.1.5">
-<h4><span class="header-section-number">6.5.1.5</span> Exercise</h4>
+<div id="challenge" class="section level3 challenge" number="6.5.6">
+<h3><span class="header-section-number">6.5.6</span> Challenge</h3>
 <p>Why did I use <code>as.numeric</code> in the <code>mutate</code> statement above?</p>
-<div id="solution-3" class="section level5" number="6.5.1.5.1">
-<h5><span class="header-section-number">6.5.1.5.1</span> Solution</h5>
+<div id="answer" class="section level4 solution" number="6.5.6.1">
+<h4><span class="header-section-number">6.5.6.1</span> Answer</h4>
 <p>Because <code>sf</code> will store area for features using <code>units</code> - which is convenient and forces you to be up front about units used, but you can’t do calculations with attributes stored as units - have to convert them to numeric</p>
-</div>
-</div>
-<div id="all-steps-rolled-into-a-function" class="section level4" number="6.5.1.6">
-<h4><span class="header-section-number">6.5.1.6</span> All steps rolled into a function</h4>
+<p>All steps rolled into a function</p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="geoprocessing.html#cb13-1" aria-hidden="true" tabindex="-1"></a>calculate_spatial_overlap <span class="ot">&lt;-</span> <span class="cf">function</span>(shape_new,</span>
 <span id="cb13-2"><a href="geoprocessing.html#cb13-2" aria-hidden="true" tabindex="-1"></a>                                      shape_old,</span>
 <span id="cb13-3"><a href="geoprocessing.html#cb13-3" aria-hidden="true" tabindex="-1"></a>                                      shared_column_name) {</span>
@@ -481,7 +494,7 @@ Note that we could pull down <code>tidycensus</code> at tract level, but instead
           </div>
         </div>
       </div>
-<a href="raster-data.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="raster-data-1.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="visualizing-spatial-data.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
