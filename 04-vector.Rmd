@@ -24,18 +24,18 @@ There is extensive documentation, blog posts and vignettes available for `sf` he
 
 A very handy page, if you're already familiar with the `sp` ecosystem, is the [Migrating](https://github.com/r-spatial/sf/wiki/migrating) page on the [sf GitHub wiki](https://github.com/r-spatial/sf/wiki).
 
-### `sf` Methods
+## `sf` Methods
 Here's a quick synopsis of available methods in `sf`:
 ```{r sf_methods, message=FALSE, warning=FALSE, error=FALSE}
 library(sf,quietly = T)
 methods(class = 'sf')
 ```
 
-### Exploring `sf`
-Let's start exploring `sf` using some data included in the awra2020spatial package.
+## Exploring `sf`
+Let's start exploring `sf` using some data included in the `Rspatialworkshop` package.
 
-```{r gages2, message=FALSE, warning=FALSE, error=FALSE}
-library(awra2020spatial)
+```{r sf_explore, message=FALSE, warning=FALSE, error=FALSE}
+library(Rspatialworkshop)
 data(bike_paths)
 head(bike_paths[,c('ROUTE_CODE','ROUTE_NAME','geoms')])
 ```
@@ -62,25 +62,41 @@ Each polygon and its holes are held together by a set of parentheses, so:
 
 * Multipolygon(((list of coordinates))) indicates the exterior ring coordinates, going counter-clockwise in direction, without holes, of the first polygon.
 
-Generic plotting works on `sf` objects - take a minute to play with ploting the bike paths data frame - why do we specify `$geometry` in the plot call?
+Generic plotting works on `sf` objects - take a minute to play with plotting the bike paths data frame - why do we specify `$geometry` in the plot call?
 ```{r sf_plot, message=FALSE, warning=FALSE, error=FALSE}
 plot(bike_paths$geoms, axes=T)
+```
+
+## Converting other object types to `sf`
+We can convert foreign objects (regular data frames with coordinates, sp objects, maps package objects) to sf objects easily.
+
+Here we convert PNW states in older spatial format in the `maps` package to `sf` polygon objects, then read in a .csv of stream gage locations from the `Rspatialworkshop` package and convert to `sf` objects.
+```{r create_sf, message=FALSE, warning=FALSE, error=FALSE}
+library(readr)
+states <- sf::st_as_sf(maps::map("state",  region = c('oregon', 'washington', 'idaho'), plot = FALSE, fill = TRUE))
+fpath <- system.file("extdata", "Gages_flowdata.csv", package="Rspatialworkshop")
+gages <- read_csv(fpath,show_col_types = FALSE)
+gages <- gages %>% 
+  st_as_sf(coords = c("LON_SITE", "LAT_SITE"), crs=4269)
+plot(states$geom, axes=TRUE)
+plot(gages$geometry, add=TRUE, col='blue')
+title(main='StreamGages and PNW \n State Boundaries')
 ```
 
 ## Units in `sf`
 The `crs` in `sf` encodes the units of measure in information relating to spatial units of features - this can be both handy and very confusing for those new to it.  Consider the following:
 
-```{r}
+```{r units, message=FALSE, warning=FALSE, error=FALSE}
 (sum(st_length(bike_paths)))
 ```
  
 We can set units if we do manipulations as well using the `units` package  
-```{r}
+```{r units2, message=FALSE, warning=FALSE, error=FALSE}
 units::set_units(sum(st_length(bike_paths)),km)
 ```
 
 If we need to use the value elsewhere get rid of units 
-```{r}
+```{r units3, message=FALSE, warning=FALSE, error=FALSE}
 as.numeric(sum(st_length(bike_paths)))
 ```
 
