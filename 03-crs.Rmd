@@ -24,12 +24,12 @@ More precisely that an *ellipsoid*, though, we know that earth is a *geoid* - it
 
 ## Why you need to know about CRS working with spatial data in R:
 ```{r crs_fail, message=FALSE, warning=FALSE, error=FALSE}
-library(awra2020spatial)
+library(Rspatialworkshop)
 library(readr)
 library(sf)
 data(pnw)
 
-gages = read_csv(system.file("extdata/Gages_flowdata.csv", package = "awra2020spatial"))
+gages = read_csv(system.file("extdata/Gages_flowdata.csv", package = "Rspatialworkshop"),show_col_types = FALSE)
 
 gages_sf <- gages %>%
   st_as_sf(coords = c("LON_SITE", "LAT_SITE"), crs = 4269, remove = FALSE) %>%
