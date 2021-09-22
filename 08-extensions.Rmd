@@ -1,0 +1,20 @@
+# Extensions to work with GIS software in R
+
+
+## RQGIS
+There's a bit of overhead to install QGIS and configure RQGIS - I use QGIS but have not set up RQGIS myself, I recommend reading the description in [Geocomputation with R](https://geocompr.robinlovelace.net/gis.html#rqgis)
+
+## R-ArcGIS bridge
+See [this description](https://www.esri.com/en-us/arcgis/products/r-arcgis-bridge/get-started) describing how to link your R install to the R-ArcGIS bridge
+
+## Accessing Python toolbox using reticulate
+I use this all the time! Highly recommend if you want to integrate python workflows and libraries (including arcpy) with R workflows.
+```{r warning=FALSE, error=FALSE, message=FALSE, eval=TRUE}
+library(reticulate)
+
+```
+
+## R Whitebox Tools
+
+## rgee
+

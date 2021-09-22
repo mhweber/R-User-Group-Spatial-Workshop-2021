@@ -59,6 +59,7 @@ install.packages("terra")
 install.packages("spDataLarge")
 library(devtools)
 install_github("mhweber/Rspatialworkshop")
+install.packages("rmapshaper")
 ```
 
 ## Downloading content via Github

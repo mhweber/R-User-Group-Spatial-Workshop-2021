@@ -134,7 +134,7 @@ plot(landsat)
 ```
 
 ### Plotting rasters and vectors with tmap
-Bring in boundary and elevation of Crater Lake NP (datasets in Rspatialworkshop package) and plot with tmap
+Bring in boundary and elevation of Crater Lake NP (datasets in `Rspatialworkshop` package) and plot with tmap
 ```{r tmap_raster_plot, message=FALSE, warning=FALSE, error=FALSE}
 library(Rspatialworkshop)
 library(tmap)
@@ -152,7 +152,7 @@ map_crlkel
 
 ## Raster data with `stars`
 
-`stars` works with and stands for spatio-temporal arrays and can deal with more complex data types than either `raster` or `terra` such as rotated grids. It should be said though that `terra` does have improved functionality for using multilayer rasters than `raster` did. 
+`stars` works with and stands for spatio-temporal arrays and can deal with more complex data types than either `raster` or `terra` such as rotated grids.
 
 `stars` integrates with `sf` and many sf functions have methods for `stars` objects (i.e. `st_bbox` and `st_transform`) - this makes sense since they are both written by Edzer Pebesma. `terra` unfortunately has poor / no integration with `sf` - this is a big issue for me personally and I will likely look to `stars` long-term for my raster processing.
 
@@ -172,10 +172,10 @@ ls7
 
 Note when we plotted above that the `plot` method with `stars` uses histogram stretching across all bands - we can also do stretching for each band indivially:
 ```{r stars_3, message=FALSE, warning=FALSE, error=FALSE}
-plot(ls7, join_zlim = FALSE)
+plot(ls7, axes = TRUE, join_zlim = FALSE)
 ```
 
-`stars` uses [tidyverse methods spatio-temporal arrays](https://r-spatial.github.io/stars/articles/stars3.html) - an example of this is pulling out one band of an image using `slice`
+`stars` uses [tidyverse methods for spatio-temporal arrays](https://r-spatial.github.io/stars/articles/stars3.html) - an example of this is pulling out one band of an image using `slice`
 ```{r stars_4, message=FALSE, warning=FALSE, error=FALSE}
 ls7 %>% dplyr::slice(band, 6) -> band6
 band6
@@ -229,7 +229,7 @@ We can crop our elevation raster to just the bounding box of Crater Lake - using
 Let's see what elevation and Crater Lake boundary look like prior to cropping and masking
 ```{r crop, message=FALSE, warning=FALSE, error=FALSE}
 plot(elevation_tm)
-plot(CraterLake, add=TRUE, col=NA, border='blue')
+plot(CraterLake_tm, add=TRUE, col=NA, border='blue')
 ```
 
 Here we use `crop` to crop the elevation raster to the bounding box of our Crater Lake polygon feature
@@ -241,7 +241,17 @@ plot(CraterLake_tm, add=TRUE, col=NA, border='blue')
 
 And finally we can use `mask` to mask the raster to just inside the polygon outline of Crater Lake National Park.  
 
-**Note** - if you have a large raster, it makes a HUGE difference to use crop first, then mask - mask is a much more computationally intensive operation so it will pay off to crop first then mask.
+**Note** - if you have a large raster, it makes a HUGE difference to use crop first, then mask - mask is a much more computationally intensive operation so it will pay off to crop first then mask. An interesting twitter thread regarding this just the other day:
+
+```{r, echo=FALSE, out.width="150%"}
+knitr::include_graphics("images/tweet1.png")
+```
+
+```{r, echo=FALSE, out.width="150%"}
+knitr::include_graphics("images/tweet2.png")
+```
+
+
 ```{r mask, message=FALSE, warning=FALSE, error=FALSE}
 elev_mask = mask(elevation_tm, vect(CraterLake_tm))
 plot(elev_mask)
@@ -300,6 +310,7 @@ terra::global(elev_mask, fun="sum", na.rm=TRUE)
 ```
 
 #### Zonal Operations
+Here us demonstrate using the zonal function in terra to summarize a value raster of elevation, using an srtm.tif from `spDataLarge`, by the zones of NLCD classes using nlcd.tif raster also in the `spDataLarge` package.
 ```{r zonal, message=FALSE, warning=FALSE, error=FALSE}
 srtm_path = system.file("raster/srtm.tif", package = "spDataLarge")
 srtm_path
