@@ -160,3 +160,7 @@ exercise-10
 solution-10
 references
 converting-other-object-types-to-sf
+what-makes-up-a-crs
+the-ellipsoid-and-geoid
+exercise-11
+solution-11
