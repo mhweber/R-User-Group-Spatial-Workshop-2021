@@ -229,7 +229,7 @@ m
 We've used this in simple examples throughout the workshop using `geom_sf` with `ggplot2`.  If time we can try to make a polished map using `ggplot` using [this post as a guide](https://r-spatial.org/r/2018/10/25/ggplot2-sf-2.html).
 
 ### Exercise
-Using the example in post above, get counties for your state using `maps` package as shown in example, and geocode a couple cities in your state to plot as well using the geocoding from the [intro to the workshop using tmaptools](https://r-spatial.org/r/2018/10/25/ggplot2-sf-2.html).  Igonore the extra packages and some of the bells and whistles, just try adding a few of the ggplot parameters to make an interesting map
+Using the example in post above, get counties for your state using `maps` package as shown in example - igonore the extra packages and some of the bells and whistles in the blog post, just try using a few of their ideas and adding a few of the ggplot parameters to make an interesting map with counties.  Feel free to try adding some cities too if you want.
 
 ### Solution
 One idea
