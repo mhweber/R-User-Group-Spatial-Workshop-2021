@@ -167,3 +167,8 @@ solution-11
 access-python-objects-directly-from-r
 and-share-spatial-results-from-python
 tmap
+exercise-12
+solution-12
+exercise-13
+solution-13
+adding-web-map-services-in-mapview

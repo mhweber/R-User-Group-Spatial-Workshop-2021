@@ -20,9 +20,10 @@ The earth is a sphere, but more precisely, an *ellipsoid*, which is defined by t
 - semi-major axis (equatorial radius)
 - semi-minor axis (polar radius)
 
-We know with precision that the measure of these two are 6,378,137 meters and 6,356,752 meters respectively.
+The terms *speroid* and *ellipsoid* are used interchangeably.  One particular spheroid is distinguished from another by the lengths of the semimajor and semiminor axes. Both GRS80 and WGS84 spheroids use
+semimajor and semiminor axes of 6,378,137 meters and 6,356,752 meters respectively (the semiminor axis differs by thousandths of meters between the two).  You'll encounter older spheroid / ellipsoids out there such as Clark 1866.
 
-More precisely that an *ellipsoid*, though, we know that earth is a *geoid* - it is not perfectly smooth - and modelling the the undulations due to changes in gravitational pull for different locations is crucial to accuracy in a GIS. This is where a *datum* comes in - we match the geoid to the ellipsoid to best match local conditions.  We have many datums to choose from based on location of interest - in the US we would typically choose *NAD83*
+More precisely than an *ellipsoid*, though, we know that earth is a *geoid* - it is not perfectly smooth - and modelling the the undulations due to changes in gravitational pull for different locations is crucial to accuracy in a GIS. This is where a *datum* comes in - a datum is built on top of the selected spheroid and can incorporate local variations in elevation. We have many datums to choose from based on location of interest - in the US we would typically choose *NAD83*
 
 ## Why you need to know about CRS working with spatial data in R:
 ```{r crs_fail, message=FALSE, warning=FALSE, error=FALSE}

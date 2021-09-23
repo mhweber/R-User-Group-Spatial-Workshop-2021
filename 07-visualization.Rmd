@@ -86,6 +86,46 @@ tm_shape(World) +
     tm_facets(sync = TRUE, ncol = 2)
 ```
 
+We can again plot our elevation and Crater Lake boundary data in `tmap` as we did in the [Raster Section](https://mhweber.github.io/R-User-Group-Spatial-Workshop-2021/raster-data-1.html#plotting-rasters-and-vectors-with-tmap):
+```{r, message=FALSE, error=FALSE, warning=FALSE, results='hide'}
+library(Rspatialworkshop)
+library(terra)
+data(CraterLake)
+raster_filepath <- system.file("extdata", "elevation.tif", package = "Rspatialworkshop")
+elevation <- rast(raster_filepath)
+elevation <- terra::mask(elevation, vect(CraterLake))
+elevation <- project(elevation, '+proj=utm +zone=10 +ellps=GRS80 +units=m +no_defs')
+CraterLake <- st_transform(CraterLake, '+proj=utm +zone=10 +ellps=GRS80 +units=m +no_defs')
+map_crlk <- tm_shape(CraterLake) + tm_polygons(lwd = 2)
+map_crlkel = map_crlk +
+  tm_shape(elevation) + tm_raster(alpha = 0.7,palette = terrain.colors(12)) + tm_layout(legend.position = c("left","bottom"),
+          legend.width = 1)
+
+map_crlkel
+```
+
+### Exercise
+Look at some of the links in the `tmap` [GitHub repository](https://github.com/r-tmap/tmap/#reference) and specifically [tmap: get started!](https://cran.r-project.org/web/packages/tmap/vignettes/tmap-getstarted.html) and see what modifications to plotting elevation and the Crater Lake park boundary you can come up with
+
+### Solution
+Just an example incorporating a number of settings available in `tmap` to produce cartographic output
+```{r, message=FALSE, error=FALSE, warning=FALSE, results='hide'}
+tm_shape(elevation) +
+  tm_raster(title = "Elevation", 
+            style = "cont",
+            palette = "-Spectral") +
+  tm_shape(CraterLake) +
+  tm_borders(col = "black", 
+             lwd = 1)+ 
+  tm_scale_bar(breaks = c(0, 10, 20),
+               text.size = .5,
+               position = c("left", "bottom")) +
+  tm_grid(n.x = 4, n.y = 3) +
+  tm_compass(position = c("right", "top"), 
+             type = "arrow", 
+             size = 1.5)
+```
+
 ## `leaflet`
 [Leaflet](https://leafletjs.com/) is an extremely popular open-source javascript library for interactive web mapping, and the `leaflet` R package allows R users to create Leaflet maps from R. `Leaflet` can plot `sf` or `sp` objects, or x / y coordinates, and can plot points, lines or polygons. There are a number of [base layers you can choose from](http://leaflet-extras.github.io/leaflet-providers/preview/index.html).  It's worth spending some time exploring the excellent [Leaflet for R site](https://rstudio.github.io/leaflet/).
 
@@ -103,16 +143,37 @@ m  # Print the map
 [Mapview](https://r-spatial.github.io/mapview/index.html) is a package designed for quick and easy interactive visualizations of spatial data - it makes use of `leaflet` but simplifies mapping functions compared to the `leaflet` package.  
 
 It's easy to layer features with `mapview` - you can supply a list of objects to `mapview` or use + syntax as with `ggplot`.
-```{r message=FALSE, error=FALSE, warning=FALSE}
+
+Here we plot gages within Benton County:
+```{r message=FALSE, error=FALSE, warning=FALSE,, results='hide'}
 library(Rspatialworkshop)
 library(mapview)
-data(bike_paths)
-data(parks)
-mapview(bike_paths) + parks
+library(readr)
+library(sf)
+library(tigris)
+counties <- counties("Oregon", cb = TRUE)
+benton <- counties[counties$NAME=='Benton',]
+fpath <- system.file("extdata", "Gages_flowdata.csv", package="Rspatialworkshop")
+
+gages <- read_csv(fpath,show_col_types = FALSE)
+gages_sf <- gages %>%
+  st_as_sf(coords = c("LON_SITE", "LAT_SITE"), crs = 4269, remove = FALSE) 
+st_crs(gages_sf)==st_crs(benton)
+# remember spatial indexing?
+gages_benton <- gages_sf[benton,]
+mapview(gages_benton) + benton
 ```
 
-## Visualize site data
-Load a flat file with location data, convert to a spatial object, visualize with mapview and load web map layers alongside using `mapview` and underlying `leaflet` functionality
+### Exercise
+Glance through the [`mapview` basics](https://r-spatial.github.io/mapview/articles/articles/mapview_01-basics.html) and adjust legend and attributes.  Take a look at [`mapview` advanced controls](https://r-spatial.github.io/mapview/articles/articles/mapview_02-advanced.html) as well and try plotting stations and the county polygon together, this time modifying features such as thicker black outline and transparent fill for the county outline and colorizing gages by their average flow ('AVE').
+
+### Solution
+```{r message=FALSE, error=FALSE, warning=FALSE}
+mapview(gages_benton,zcol='AVE') + mapview(benton, alpha.regions=.07, color='black', lwd=2)
+```
+
+## Adding Web Map services in `mapview`
+We'll visualize data with mapview and load web map layers alongside using `mapview` and underlying `leaflet` functionality.
 
 First we load load an excel file containing coordinate information in a known projection and promote to an `sf` spatial data frame.
 ```{r message=FALSE, error=FALSE, warning=FALSE}

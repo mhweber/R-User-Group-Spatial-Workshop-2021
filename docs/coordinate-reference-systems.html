@@ -273,7 +273,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7" data-path="visualizing-spatial-data.html"><a href="visualizing-spatial-data.html"><i class="fa fa-check"></i><b>7</b> Visualizing Spatial Data</a>
 <ul>
 <li class="chapter" data-level="7.1" data-path="visualizing-spatial-data.html"><a href="visualizing-spatial-data.html#lesson-goals-1"><i class="fa fa-check"></i><b>7.1</b> Lesson Goals</a></li>
-<li class="chapter" data-level="7.2" data-path="visualizing-spatial-data.html"><a href="visualizing-spatial-data.html#chorpleths-with-tmap"><i class="fa fa-check"></i><b>7.2</b> Chorpleths with <code>tmap</code></a></li>
+<li class="chapter" data-level="7.2" data-path="visualizing-spatial-data.html"><a href="visualizing-spatial-data.html#tmap"><i class="fa fa-check"></i><b>7.2</b> <code>tmap</code></a></li>
 <li class="chapter" data-level="7.3" data-path="visualizing-spatial-data.html"><a href="visualizing-spatial-data.html#leaflet"><i class="fa fa-check"></i><b>7.3</b> <code>leaflet</code></a></li>
 <li class="chapter" data-level="7.4" data-path="visualizing-spatial-data.html"><a href="visualizing-spatial-data.html#mapview"><i class="fa fa-check"></i><b>7.4</b> <code>mapview</code></a></li>
 <li class="chapter" data-level="7.5" data-path="visualizing-spatial-data.html"><a href="visualizing-spatial-data.html#visualize-site-data"><i class="fa fa-check"></i><b>7.5</b> Visualize site data</a></li>
@@ -282,7 +282,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="8.1" data-path="extensions-to-work-with-gis-software-in-r.html"><a href="extensions-to-work-with-gis-software-in-r.html#rqgis"><i class="fa fa-check"></i><b>8.1</b> RQGIS</a></li>
 <li class="chapter" data-level="8.2" data-path="extensions-to-work-with-gis-software-in-r.html"><a href="extensions-to-work-with-gis-software-in-r.html#r-arcgis-bridge"><i class="fa fa-check"></i><b>8.2</b> R-ArcGIS bridge</a></li>
-<li class="chapter" data-level="8.3" data-path="extensions-to-work-with-gis-software-in-r.html"><a href="extensions-to-work-with-gis-software-in-r.html#accessing-python-toolbox-using-reticulate"><i class="fa fa-check"></i><b>8.3</b> Accessing Python toolbox using reticulate</a></li>
+<li class="chapter" data-level="8.3" data-path="extensions-to-work-with-gis-software-in-r.html"><a href="extensions-to-work-with-gis-software-in-r.html#accessing-python-toolbox-using-reticulate"><i class="fa fa-check"></i><b>8.3</b> Accessing Python toolbox using reticulate</a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="extensions-to-work-with-gis-software-in-r.html"><a href="extensions-to-work-with-gis-software-in-r.html#access-python-objects-directly-from-r"><i class="fa fa-check"></i><b>8.3.1</b> Access Python objects directly from R</a></li>
+<li class="chapter" data-level="8.3.2" data-path="extensions-to-work-with-gis-software-in-r.html"><a href="extensions-to-work-with-gis-software-in-r.html#and-share-spatial-results-from-python"><i class="fa fa-check"></i><b>8.3.2</b> And share spatial results from Python</a></li>
+</ul></li>
 <li class="chapter" data-level="8.4" data-path="extensions-to-work-with-gis-software-in-r.html"><a href="extensions-to-work-with-gis-software-in-r.html#r-whitebox-tools"><i class="fa fa-check"></i><b>8.4</b> R Whitebox Tools</a></li>
 <li class="chapter" data-level="8.5" data-path="extensions-to-work-with-gis-software-in-r.html"><a href="extensions-to-work-with-gis-software-in-r.html#rgee"><i class="fa fa-check"></i><b>8.5</b> rgee</a></li>
 </ul></li>
@@ -341,8 +345,9 @@ Figure 3.1: Source: <a href="https://mgimond.github.io/Spatial/coordinate-system
 <p>The earth is a sphere, but more precisely, an <em>ellipsoid</em>, which is defined by two radii:
 - semi-major axis (equatorial radius)
 - semi-minor axis (polar radius)</p>
-<p>We know with precision that the measure of these two are 6,378,137 meters and 6,356,752 meters respectively.</p>
-<p>More precisely that an <em>ellipsoid</em>, though, we know that earth is a <em>geoid</em> - it is not perfectly smooth - and modelling the the undulations due to changes in gravitational pull for different locations is crucial to accuracy in a GIS. This is where a <em>datum</em> comes in - we match the geoid to the ellipsoid to best match local conditions. We have many datums to choose from based on location of interest - in the US we would typically choose <em>NAD83</em></p>
+<p>The terms <em>speroid</em> and <em>ellipsoid</em> are used interchangeably. One particular spheroid is distinguished from another by the lengths of the semimajor and semiminor axes. Both GRS80 and WGS84 spheroids use
+semimajor and semiminor axes of 6,378,137 meters and 6,356,752 meters respectively (the semiminor axis differs by thousandths of meters between the two). You’ll encounter older spheroid / ellipsoids out there such as Clark 1866.</p>
+<p>More precisely than an <em>ellipsoid</em>, though, we know that earth is a <em>geoid</em> - it is not perfectly smooth - and modelling the the undulations due to changes in gravitational pull for different locations is crucial to accuracy in a GIS. This is where a <em>datum</em> comes in - a datum is built on top of the selected spheroid and can incorporate local variations in elevation. We have many datums to choose from based on location of interest - in the US we would typically choose <em>NAD83</em></p>
 </div>
 <div id="why-you-need-to-know-about-crs-working-with-spatial-data-in-r" class="section level2" number="3.4">
 <h2><span class="header-section-number">3.4</span> Why you need to know about CRS working with spatial data in R:</h2>
