@@ -172,3 +172,7 @@ solution-12
 exercise-13
 solution-13
 adding-web-map-services-in-mapview
+sf-objects
+ggplot2
+exercise-14
+solution-14

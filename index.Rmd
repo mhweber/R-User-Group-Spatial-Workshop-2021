@@ -424,7 +424,7 @@ tm_shape(counties) +
 ```
 
 ### Interactive mapping
-```{r mapview example, fig.width=8,message=FALSE, error=FALSE, warning=FALSE, results='hide'}
+```{r mapview example, fig.width=8,message=FALSE, error=FALSE, warning=FALSE}
 library(mapview)
 mapview(my_town, col="red", col.regions = "red") + mapview(counties, alpha.regions = .1)
 ```

@@ -224,3 +224,38 @@ m@map <- m@map %>% addWMSTiles(group = 'NHDPlus',
                                                                 attribution = "")  %>% mapview:::mapViewLayersControl(names = c("NHDPlus","NHDPlusHR"))
 m
 ```
+
+## `ggplot2`
+We've used this in simple examples throughout the workshop using `geom_sf` with `ggplot2`.  If time we can try to make a polished map using `ggplot` using [this post as a guide](https://r-spatial.org/r/2018/10/25/ggplot2-sf-2.html).
+
+### Exercise
+Using the example in post above, get counties for your state using `maps` package as shown in example, and geocode a couple cities in your state to plot as well using the geocoding from the [intro to the workshop using tmaptools](https://r-spatial.org/r/2018/10/25/ggplot2-sf-2.html).  Igonore the extra packages and some of the bells and whistles, just try adding a few of the ggplot parameters to make an interesting map
+
+### Solution
+One idea
+```{r message=FALSE, error=FALSE, warning=FALSE}
+library(tmap)
+library(tmaptools)
+library(maps)
+library(ggplot2)
+
+counties <- st_as_sf(map("county", plot = FALSE, fill = TRUE))
+counties <- subset(counties, grepl("oregon", counties$ID))
+counties$area <- as.numeric(st_area(counties))
+ggplot() +
+    geom_sf(data = counties, fill = NA, color = gray(.5))  +
+    coord_sf(xlim = c(-125, -115), ylim = c(41, 47), expand = FALSE)
+```
+
+```{r message=FALSE, error=FALSE, warning=FALSE}
+library(ggspatial)
+ggplot() +
+    geom_sf(data = counties, aes(fill = area))  +
+  scale_fill_viridis_c(trans = "sqrt", alpha = .4) +
+    coord_sf(xlim = c(-125, -115), ylim = c(41, 47), expand = FALSE) +
+    theme(panel.grid.major = element_line(color = gray(0.5), linetype = "dashed", 
+        size = 0.5), panel.background = element_rect(fill = "aliceblue")) +
+    annotation_scale(location = "bl", width_hint = 0.4) +
+    annotation_north_arrow(location = "tr", which_north = "true",
+        style = north_arrow_fancy_orienteering)
+```

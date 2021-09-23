@@ -24,6 +24,41 @@ There is extensive documentation, blog posts and vignettes available for `sf` he
 
 A very handy page, if you're already familiar with the `sp` ecosystem, is the [Migrating](https://github.com/r-spatial/sf/wiki/migrating) page on the [sf GitHub wiki](https://github.com/r-spatial/sf/wiki).
 
+## `sf` Objects
+There is a great breakdown of `sf` objects in this [blog post](https://www.jessesadler.com/post/simple-feature-objects/).  In `sf`, we have several types of objects:
+
+- `sfg`: geometry of a single feature
+- `sfc`: geometry column with the spatial attributes of the object printed above the data frame
+- attributes: non-geometry variables in the data frame
+- simple feature: a single simple feature with both geometry and attributes represented by a row in the data frame
+- `sf` object: a collection of simple features (rows) represented by a data frame
+
+We can create an `sfg` easily, which will have information about coordinates, dimension, and type of geometry:
+```{r sfg, message=FALSE, warning=FALSE, error=FALSE}
+library(sf)
+Corvallis <- st_point(c(-123.283, 44.566))
+class(Corvallis)
+```
+
+We can also create a MULTIPOINT `sfg` or a LINESTRING `sfg`:
+```{r sfg2, message=FALSE, warning=FALSE, error=FALSE}
+library(sf)
+multipoint_sfg <- st_multipoint(rbind(c(-123.283, 44.566), c(-125.866, 50.544)))
+linestring_sfg <- st_linestring(rbind(c(-123.283, 44.566), c(-125.866, 50.544))) 
+multipoint_sfg
+linestring_sfg
+```
+
+..And plot
+```{r sfg3, message=FALSE, warning=FALSE, error=FALSE}
+plot(multipoint_sfg, axes=TRUE)
+plot(linestring_sfg, col='red', add=TRUE)
+```
+
+Just as we saw in intro, these objects are not truly spatial because they still lack a coordinate reference system. 
+
+It should also be noted that `sf` objects can have both Z (height) and M (measurement) dimensions along with X and Y dimensions.  Certain operations won't work with M and Z dimensions (anyone who works with national hydrography data in `sf` will discover this quickly!) - often you need to use st_zm(x, drop=TRUE, what="ZM") for this.
+
 ## `sf` Methods
 Here's a quick synopsis of available methods in `sf`:
 ```{r sf_methods, message=FALSE, warning=FALSE, error=FALSE}
