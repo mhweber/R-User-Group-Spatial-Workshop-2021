@@ -228,6 +228,18 @@ m
 ## `ggplot2`
 We've used this in simple examples throughout the workshop using `geom_sf` with `ggplot2`.  If time we can try to make a polished map using `ggplot` using [this post as a guide](https://r-spatial.org/r/2018/10/25/ggplot2-sf-2.html).
 
+As we've seen, you can make a very simple map with `sf` features using `geom_sf` and a fill parameter
+```{r message=FALSE, error=FALSE, warning=FALSE}
+library(ggplot2)
+library(maps)
+library(sf)
+
+states <- st_as_sf(map("state", plot = FALSE, fill = TRUE))
+ggplot() + 
+  geom_sf(data=states,  color="blue", fill=NA)+ 
+  ggtitle(label = "The world's simplest ggplot2 map")
+```
+
 ### Exercise
 Using the example in post above, get counties for your state using `maps` package as shown in example - igonore the extra packages and some of the bells and whistles in the blog post, just try using a few of their ideas and adding a few of the ggplot parameters to make an interesting map with counties.  Feel free to try adding some cities too if you want.
 

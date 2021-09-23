@@ -16,17 +16,17 @@ knitr::include_graphics("images/WordCloud.png")
 
 ## Workshop agenda
   
-  + 1:00pm - 1:30pm EDT: [Intro and quick intro to R spatial objects and methods](https://mhweber.github.io/R-User-Group-Spatial-Workshop-2021/index.html)
-  + 1:30pm - 1:55pm EDT: [Getting spatial data into R](https://mhweber.github.io/R-User-Group-Spatial-Workshop-2021/reading-in-spatial-data.html)
-  + 1:55: 2:00 Break
-  + 2:00pm - 2:30pm EDT: [Understanding vector and raster data in R and some example workflows](https://mhweber.github.io/R-User-Group-Spatial-Workshop-2021/index.html#spatial-data-in-r)
-  + 2:30: 2:45 Break
-  + 2:45pm - 3:00pm EDT: [Understanding coordinate reference systems (CRS)](https://mhweber.github.io/R-User-Group-Spatial-Workshop-2021/coordinate-reference-systems.html)
-  + 3:00pm - 3:25pm EDT: [Vector data with sf](https://mhweber.github.io/R-User-Group-Spatial-Workshop-2021/vector-data-with-sf.html)
-  + 3:25pm - 3:33pm Break
-  + 3:30pm - 4:30pm EDT: [Raster data](https://mhweber.github.io/R-User-Group-Spatial-Workshop-2021/raster-data.html)
-  + 4:30pm - 4:30pm EDT: [Geoprocessing](https://mhweber.github.io/R-User-Group-Spatial-Workshop-2021/geoprocessing.html)
-  + 4:30pm - 5:00pm EDT: [Learning ways to map and visualize spatial data](https://mhweber.github.io/R-User-Group-Spatial-Workshop-2021/visualizing-spatial-data.html)
+  + 1:00pm - 1:45pm EDT: [Intro and quick intro to R spatial objects and methods](https://mhweber.github.io/R-User-Group-Spatial-Workshop-2021/index.html)
+  + 1:45pm - 2:15pm EDT: [Getting spatial data into R](https://mhweber.github.io/R-User-Group-Spatial-Workshop-2021/reading-in-spatial-data.html)
+  + 2:15pm - 2:20pm Break
+  + 2:20pm - 2:35pm EDT: [Understanding coordinate reference systems (CRS)](https://mhweber.github.io/R-User-Group-Spatial-Workshop-2021/coordinate-reference-systems.html)
+  + 2:35pm - 2:45pm Break
+  + 2:45pm - 3:15pm EDT: [Vector data with sf](https://mhweber.github.io/R-User-Group-Spatial-Workshop-2021/vector-data-with-sf.html)
+  + 3:15pm - 3:20pm Break
+  + 3:20pm - 3:45pm EDT: [Raster data](https://mhweber.github.io/R-User-Group-Spatial-Workshop-2021/raster-data.html)
+  + 3:45pm - 4:15pm EDT: [Geoprocessing](https://mhweber.github.io/R-User-Group-Spatial-Workshop-2021/geoprocessing.html)
+  + 4:15pm - 4:45pm EDT: [Learning ways to map and visualize spatial data](https://mhweber.github.io/R-User-Group-Spatial-Workshop-2021/visualizing-spatial-data.html)
+  + 4:45pm - 5:00pm EDT:[Extensions to work with GIS data in R](https://mhweber.github.io/R-User-Group-Spatial-Workshop-2021/extensions-to-work-with-gis-software-in-r.html) and questions
   
   
   + Along the way we'll look at: 

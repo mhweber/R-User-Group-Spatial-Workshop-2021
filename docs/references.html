@@ -24,7 +24,7 @@
 <meta name="author" content="Marc Weber" />
 
 
-<meta name="date" content="2021-09-22" />
+<meta name="date" content="2021-09-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -78,70 +78,6 @@
 </script>
 
 
-<style type="text/css">
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-</style>
 
 
 <link rel="stylesheet" href="css/style.css" type="text/css" />
@@ -210,22 +146,28 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3" data-path="coordinate-reference-systems.html"><a href="coordinate-reference-systems.html"><i class="fa fa-check"></i><b>3</b> Coordinate reference systems</a>
 <ul>
 <li class="chapter" data-level="3.1" data-path="coordinate-reference-systems.html"><a href="coordinate-reference-systems.html#lesson-objectives"><i class="fa fa-check"></i><b>3.1</b> Lesson Objectives</a></li>
-<li class="chapter" data-level="3.2" data-path="coordinate-reference-systems.html"><a href="coordinate-reference-systems.html#why-you-need-to-know-about-crs-working-with-spatial-data-in-r"><i class="fa fa-check"></i><b>3.2</b> Why you need to know about CRS working with spatial data in R:</a></li>
-<li class="chapter" data-level="3.3" data-path="coordinate-reference-systems.html"><a href="coordinate-reference-systems.html#changes-to-crs-recently-in-r-in-sf"><i class="fa fa-check"></i><b>3.3</b> Changes to CRS recently in R in <code>sf</code></a></li>
-<li class="chapter" data-level="3.4" data-path="coordinate-reference-systems.html"><a href="coordinate-reference-systems.html#projected-coordinate-systems"><i class="fa fa-check"></i><b>3.4</b> Projected coordinate systems</a></li>
+<li class="chapter" data-level="3.2" data-path="coordinate-reference-systems.html"><a href="coordinate-reference-systems.html#what-makes-up-a-crs"><i class="fa fa-check"></i><b>3.2</b> What makes up a CRS?</a></li>
+<li class="chapter" data-level="3.3" data-path="coordinate-reference-systems.html"><a href="coordinate-reference-systems.html#the-ellipsoid-and-geoid"><i class="fa fa-check"></i><b>3.3</b> The ellipsoid and geoid</a></li>
+<li class="chapter" data-level="3.4" data-path="coordinate-reference-systems.html"><a href="coordinate-reference-systems.html#why-you-need-to-know-about-crs-working-with-spatial-data-in-r"><i class="fa fa-check"></i><b>3.4</b> Why you need to know about CRS working with spatial data in R:</a></li>
+<li class="chapter" data-level="3.5" data-path="coordinate-reference-systems.html"><a href="coordinate-reference-systems.html#changes-to-crs-recently-in-r-in-sf"><i class="fa fa-check"></i><b>3.5</b> Changes to CRS recently in R in <code>sf</code></a></li>
+<li class="chapter" data-level="3.6" data-path="coordinate-reference-systems.html"><a href="coordinate-reference-systems.html#projected-coordinate-systems"><i class="fa fa-check"></i><b>3.6</b> Projected coordinate systems</a></li>
+<li class="chapter" data-level="3.7" data-path="coordinate-reference-systems.html"><a href="coordinate-reference-systems.html#exercise-5"><i class="fa fa-check"></i><b>3.7</b> Exercise</a></li>
+<li class="chapter" data-level="3.8" data-path="coordinate-reference-systems.html"><a href="coordinate-reference-systems.html#solution-5"><i class="fa fa-check"></i><b>3.8</b> Solution</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="vector-data-with-sf.html"><a href="vector-data-with-sf.html"><i class="fa fa-check"></i><b>4</b> Vector data with <code>sf</code></a>
 <ul>
-<li class="chapter" data-level="4.0.1" data-path="vector-data-with-sf.html"><a href="vector-data-with-sf.html#sf-methods"><i class="fa fa-check"></i><b>4.0.1</b> <code>sf</code> Methods</a></li>
-<li class="chapter" data-level="4.0.2" data-path="vector-data-with-sf.html"><a href="vector-data-with-sf.html#exploring-sf"><i class="fa fa-check"></i><b>4.0.2</b> Exploring <code>sf</code></a></li>
-<li class="chapter" data-level="4.1" data-path="vector-data-with-sf.html"><a href="vector-data-with-sf.html#units-in-sf"><i class="fa fa-check"></i><b>4.1</b> Units in <code>sf</code></a></li>
+<li class="chapter" data-level="4.1" data-path="vector-data-with-sf.html"><a href="vector-data-with-sf.html#sf-objects"><i class="fa fa-check"></i><b>4.1</b> <code>sf</code> Objects</a></li>
+<li class="chapter" data-level="4.2" data-path="vector-data-with-sf.html"><a href="vector-data-with-sf.html#sf-methods"><i class="fa fa-check"></i><b>4.2</b> <code>sf</code> Methods</a></li>
+<li class="chapter" data-level="4.3" data-path="vector-data-with-sf.html"><a href="vector-data-with-sf.html#exploring-sf"><i class="fa fa-check"></i><b>4.3</b> Exploring <code>sf</code></a></li>
+<li class="chapter" data-level="4.4" data-path="vector-data-with-sf.html"><a href="vector-data-with-sf.html#converting-other-object-types-to-sf"><i class="fa fa-check"></i><b>4.4</b> Converting other object types to <code>sf</code></a></li>
+<li class="chapter" data-level="4.5" data-path="vector-data-with-sf.html"><a href="vector-data-with-sf.html#units-in-sf"><i class="fa fa-check"></i><b>4.5</b> Units in <code>sf</code></a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="raster-data-1.html"><a href="raster-data-1.html"><i class="fa fa-check"></i><b>5</b> Raster data</a>
 <ul>
 <li class="chapter" data-level="5.1" data-path="raster-data-1.html"><a href="raster-data-1.html#raster-data-with-terra"><i class="fa fa-check"></i><b>5.1</b> Raster data with <code>terra</code></a>
 <ul>
-<li class="chapter" data-level="5.1.1" data-path="raster-data-1.html"><a href="raster-data-1.html#exercise-5"><i class="fa fa-check"></i><b>5.1.1</b> Exercise</a></li>
-<li class="chapter" data-level="5.1.2" data-path="raster-data-1.html"><a href="raster-data-1.html#solution-5"><i class="fa fa-check"></i><b>5.1.2</b> Solution</a></li>
+<li class="chapter" data-level="5.1.1" data-path="raster-data-1.html"><a href="raster-data-1.html#exercise-6"><i class="fa fa-check"></i><b>5.1.1</b> Exercise</a></li>
+<li class="chapter" data-level="5.1.2" data-path="raster-data-1.html"><a href="raster-data-1.html#solution-6"><i class="fa fa-check"></i><b>5.1.2</b> Solution</a></li>
 <li class="chapter" data-level="5.1.3" data-path="raster-data-1.html"><a href="raster-data-1.html#manipulating-raster-objects"><i class="fa fa-check"></i><b>5.1.3</b> Manipulating <code>raster</code> objects</a></li>
 <li class="chapter" data-level="5.1.4" data-path="raster-data-1.html"><a href="raster-data-1.html#reading-existing-rasters-on-disk"><i class="fa fa-check"></i><b>5.1.4</b> Reading existing rasters on disk</a></li>
 <li class="chapter" data-level="5.1.5" data-path="raster-data-1.html"><a href="raster-data-1.html#multiband-rasters"><i class="fa fa-check"></i><b>5.1.5</b> Multiband rasters</a></li>
@@ -253,9 +195,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.5.1" data-path="geoprocessing.html"><a href="geoprocessing.html#next-well-create-a-dummy-spatial-polygon-file-to-compare-area-with-using-the-rmapshaper-package-to-simplify-the-border-of-the-pdx-metropolitan-polygon"><i class="fa fa-check"></i><b>6.5.1</b> Next we’ll create a dummy spatial polygon file to compare area with using the <code>rmapshaper</code> package to simplify the border of the PDX metropolitan polygon</a></li>
 <li class="chapter" data-level="6.5.2" data-path="geoprocessing.html"><a href="geoprocessing.html#then-we-can-overlay-polygons-in-ggplot-to-see-how-similar-they-are-showing-the-original-census-pdx-metropolitan-area-in-green-and-new-simplified-polygon-in-red"><i class="fa fa-check"></i><b>6.5.2</b> Then we can overlay polygons in ggplot to see how similar they are, showing the original census PDX metropolitan area in green, and new simplified polygon in red</a></li>
 <li class="chapter" data-level="6.5.3" data-path="geoprocessing.html"><a href="geoprocessing.html#now-that-we-have-an-original-and-simplified-polygon-to-compare-the-process-we-want-to-use-is"><i class="fa fa-check"></i><b>6.5.3</b> Now that we have an original and simplified polygon to compare, the process we want to use is:</a></li>
-<li class="chapter" data-level="6.5.4" data-path="geoprocessing.html"><a href="geoprocessing.html#exercise-8"><i class="fa fa-check"></i><b>6.5.4</b> Exercise</a></li>
-<li class="chapter" data-level="6.5.5" data-path="geoprocessing.html"><a href="geoprocessing.html#solution-8"><i class="fa fa-check"></i><b>6.5.5</b> Solution</a></li>
-<li class="chapter" data-level="6.5.6" data-path="geoprocessing.html"><a href="geoprocessing.html#exercise-9"><i class="fa fa-check"></i><b>6.5.6</b> Exercise</a></li>
+<li class="chapter" data-level="6.5.4" data-path="geoprocessing.html"><a href="geoprocessing.html#exercise-9"><i class="fa fa-check"></i><b>6.5.4</b> Exercise</a></li>
+<li class="chapter" data-level="6.5.5" data-path="geoprocessing.html"><a href="geoprocessing.html#solution-9"><i class="fa fa-check"></i><b>6.5.5</b> Solution</a></li>
+<li class="chapter" data-level="6.5.6" data-path="geoprocessing.html"><a href="geoprocessing.html#exercise-10"><i class="fa fa-check"></i><b>6.5.6</b> Exercise</a></li>
 </ul></li>
 <li class="chapter" data-level="6.6" data-path="geoprocessing.html"><a href="geoprocessing.html#deriving-data-for-a-sites-or-a-watershed"><i class="fa fa-check"></i><b>6.6</b> Deriving data for a sites or a watershed</a>
 <ul>
@@ -268,16 +210,33 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7" data-path="visualizing-spatial-data.html"><a href="visualizing-spatial-data.html"><i class="fa fa-check"></i><b>7</b> Visualizing Spatial Data</a>
 <ul>
 <li class="chapter" data-level="7.1" data-path="visualizing-spatial-data.html"><a href="visualizing-spatial-data.html#lesson-goals-1"><i class="fa fa-check"></i><b>7.1</b> Lesson Goals</a></li>
-<li class="chapter" data-level="7.2" data-path="visualizing-spatial-data.html"><a href="visualizing-spatial-data.html#chorpleths-with-tmap"><i class="fa fa-check"></i><b>7.2</b> Chorpleths with <code>tmap</code></a></li>
+<li class="chapter" data-level="7.2" data-path="visualizing-spatial-data.html"><a href="visualizing-spatial-data.html#tmap"><i class="fa fa-check"></i><b>7.2</b> <code>tmap</code></a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="visualizing-spatial-data.html"><a href="visualizing-spatial-data.html#exercise-12"><i class="fa fa-check"></i><b>7.2.1</b> Exercise</a></li>
+<li class="chapter" data-level="7.2.2" data-path="visualizing-spatial-data.html"><a href="visualizing-spatial-data.html#solution-12"><i class="fa fa-check"></i><b>7.2.2</b> Solution</a></li>
+</ul></li>
 <li class="chapter" data-level="7.3" data-path="visualizing-spatial-data.html"><a href="visualizing-spatial-data.html#leaflet"><i class="fa fa-check"></i><b>7.3</b> <code>leaflet</code></a></li>
-<li class="chapter" data-level="7.4" data-path="visualizing-spatial-data.html"><a href="visualizing-spatial-data.html#mapview"><i class="fa fa-check"></i><b>7.4</b> <code>mapview</code></a></li>
-<li class="chapter" data-level="7.5" data-path="visualizing-spatial-data.html"><a href="visualizing-spatial-data.html#visualize-site-data"><i class="fa fa-check"></i><b>7.5</b> Visualize site data</a></li>
+<li class="chapter" data-level="7.4" data-path="visualizing-spatial-data.html"><a href="visualizing-spatial-data.html#mapview"><i class="fa fa-check"></i><b>7.4</b> <code>mapview</code></a>
+<ul>
+<li class="chapter" data-level="7.4.1" data-path="visualizing-spatial-data.html"><a href="visualizing-spatial-data.html#exercise-13"><i class="fa fa-check"></i><b>7.4.1</b> Exercise</a></li>
+<li class="chapter" data-level="7.4.2" data-path="visualizing-spatial-data.html"><a href="visualizing-spatial-data.html#solution-13"><i class="fa fa-check"></i><b>7.4.2</b> Solution</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="visualizing-spatial-data.html"><a href="visualizing-spatial-data.html#adding-web-map-services-in-mapview"><i class="fa fa-check"></i><b>7.5</b> Adding Web Map services in <code>mapview</code></a></li>
+<li class="chapter" data-level="7.6" data-path="visualizing-spatial-data.html"><a href="visualizing-spatial-data.html#ggplot2"><i class="fa fa-check"></i><b>7.6</b> <code>ggplot2</code></a>
+<ul>
+<li class="chapter" data-level="7.6.1" data-path="visualizing-spatial-data.html"><a href="visualizing-spatial-data.html#exercise-14"><i class="fa fa-check"></i><b>7.6.1</b> Exercise</a></li>
+<li class="chapter" data-level="7.6.2" data-path="visualizing-spatial-data.html"><a href="visualizing-spatial-data.html#solution-14"><i class="fa fa-check"></i><b>7.6.2</b> Solution</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="extensions-to-work-with-gis-software-in-r.html"><a href="extensions-to-work-with-gis-software-in-r.html"><i class="fa fa-check"></i><b>8</b> Extensions to work with GIS software in R</a>
 <ul>
 <li class="chapter" data-level="8.1" data-path="extensions-to-work-with-gis-software-in-r.html"><a href="extensions-to-work-with-gis-software-in-r.html#rqgis"><i class="fa fa-check"></i><b>8.1</b> RQGIS</a></li>
 <li class="chapter" data-level="8.2" data-path="extensions-to-work-with-gis-software-in-r.html"><a href="extensions-to-work-with-gis-software-in-r.html#r-arcgis-bridge"><i class="fa fa-check"></i><b>8.2</b> R-ArcGIS bridge</a></li>
-<li class="chapter" data-level="8.3" data-path="extensions-to-work-with-gis-software-in-r.html"><a href="extensions-to-work-with-gis-software-in-r.html#accessing-python-toolbox-using-reticulate"><i class="fa fa-check"></i><b>8.3</b> Accessing Python toolbox using reticulate</a></li>
+<li class="chapter" data-level="8.3" data-path="extensions-to-work-with-gis-software-in-r.html"><a href="extensions-to-work-with-gis-software-in-r.html#accessing-python-toolbox-using-reticulate"><i class="fa fa-check"></i><b>8.3</b> Accessing Python toolbox using reticulate</a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="extensions-to-work-with-gis-software-in-r.html"><a href="extensions-to-work-with-gis-software-in-r.html#access-python-objects-directly-from-r"><i class="fa fa-check"></i><b>8.3.1</b> Access Python objects directly from R</a></li>
+<li class="chapter" data-level="8.3.2" data-path="extensions-to-work-with-gis-software-in-r.html"><a href="extensions-to-work-with-gis-software-in-r.html#and-share-spatial-results-from-python"><i class="fa fa-check"></i><b>8.3.2</b> And share spatial results from Python</a></li>
+</ul></li>
 <li class="chapter" data-level="8.4" data-path="extensions-to-work-with-gis-software-in-r.html"><a href="extensions-to-work-with-gis-software-in-r.html#r-whitebox-tools"><i class="fa fa-check"></i><b>8.4</b> R Whitebox Tools</a></li>
 <li class="chapter" data-level="8.5" data-path="extensions-to-work-with-gis-software-in-r.html"><a href="extensions-to-work-with-gis-software-in-r.html#rgee"><i class="fa fa-check"></i><b>8.5</b> rgee</a></li>
 </ul></li>
@@ -360,7 +319,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="https://github.com/mtennekes/tmap"><strong>tmap</strong></a></li>
 <li><a href="http://zevross.com/blog/2018/10/02/creating-beautiful-demographic-maps-in-r-with-the-tidycensus-and-tmap-packages/">Zev Ross <strong>Creating beautiful demographic maps in R with the <code>tidycensus</code> and <code>tmap</code> packages</strong></a></li>
 <li><a href="https://geocompr.robinlovelace.net/adv-map.html">Geocomputation with R: <strong>Making maps with R</strong></a></li>
-<li><a href="https://ryanpeek.github.io/mapping-in-R-workshop/index.html">Ryan Peek: <strong>Mapping in R</strong></a></li>
+<li><a href="https://bookdown.org/nicohahn/making_maps_with_r5/docs/introduction.html">Nico Hahn: <strong>Making Maps with R R</strong></a></li>
 </ul>
 </div>
 <div id="general-r-resources" class="section level2" number="9.5">
