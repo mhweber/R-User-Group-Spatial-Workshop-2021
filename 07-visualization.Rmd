@@ -2,27 +2,88 @@
 
 ## Lesson Goals
 
-* Explore a basics of several mapping libraries in R
+* Explore several mapping libraries in R
 * Construct a couple example visualizations with spatial data in R
 
 R is fantastic for making publication quality static maps, and for generating repetitive graphics through scripts;  we've already seen how to make simple maps using base plotting,`ggplot`, and `tmap`. There are also a number of packages in R that link R code to plotting libraries developed in Javascript (or other languages) for interactive plotting and web integration.
 
-## Chorpleths with `tmap`
-Load `tidycensus` - you'll need to set your Census API key. A key can be obtained from [here](http://api.census.gov/data/key_signup.html). Here we make a choropleth map of median household income in Travis county in Texas.
+
+It can be hard to decide which mapping packages to learn and use - some nice advice from Martin Tennekes who created `tmap`:
+  - If you know some `ggplot`, don't care about interactive maps, and don't want to spend a lot of time learning new packages, use `ggplot`
+  - If you want interactive maps as flexible as possible, use `leaflet`
+  - If you want to simply explore spatial objects ineractively as easily as possible, use `mapview`
+  - Otherwise, use `tmap`!
+  
+## `tmap`
+Load `tidycensus` - you'll need to set your Census API key. A key can be obtained from [here](http://api.census.gov/data/key_signup.html). 
 ```{r message=FALSE, error=FALSE, warning=FALSE, results='hide'}
 library(sf,quietly = T)
 library(tidycensus)
 # census_api_key("YOUR API KEY GOES HERE")
 ```
 
+Here we'll start with a simple choropleth map of median household income in Benton county in Oregon.
 ```{r, message=FALSE, error=FALSE, warning=FALSE, results='hide'}
 library(tidycensus)
 library(tmap)
 options(tigris_use_cache = FALSE)
-austin_tracts <- get_acs(state = 'TX', county = 'Travis', geography = "tract",
+benton_tracts <- get_acs(state = 'OR', county = 'Benton', geography = "tract",
                          variables = "B19013_001", geometry = TRUE)
 
-tm_shape(austin_tracts) + tm_polygons("estimate")
+# Rename a column
+benton_tracts <- benton_tracts %>% 
+  dplyr::rename(MedianIncome=estimate)
+tm_shape(benton_tracts) + tm_polygons(col="MedianIncome")
+```
+
+That's a pretty basic map - we can adjust a number of settings:
+ - breaks: we can set different breaks for our map
+ - n: we can control the number of bins
+ - palette: we can change the color palette
+ 
+These are just a few - let's play with those to start.
+```{r, message=FALSE, error=FALSE, warning=FALSE, results='hide'}
+breaks = c(0, 40, 80, 120, 140) * 1000
+t1 <- tm_shape(benton_tracts) + tm_polygons(col="MedianIncome", breaks=breaks)
+t2 <- tm_shape(benton_tracts) + tm_polygons(col = "MedianIncome", n = 10)
+t3 <- tm_shape(benton_tracts) + tm_polygons(col = "MedianIncome", palette = "BuGn")
+tmap_arrange(t1, t2, t3, nrow = 1)
+```
+
+`tmap` also has `view` mode which can be handy
+```{r, message=FALSE, error=FALSE, warning=FALSE, results='hide'}
+tmap_mode("view")
+tm_shape(benton_tracts) + tm_polygons(col="MedianIncome")
+```
+
+We can make multi-layered maps (shout out to Amalia Handler who used this in `tmap` demo for our lab group)
+```{r, message=FALSE, error=FALSE, warning=FALSE, results='hide'}
+# Load data
+data(World, metro, rivers, land)
+
+# Set to static mode
+tmap_mode("plot")
+
+# Make map that is multilayered
+tm_shape(land) +
+    tm_raster("elevation", palette = terrain.colors(10)) +
+tm_shape(World) +
+    tm_borders("white", lwd = .5) +
+    tm_text("iso_a3", size = "AREA") +
+tm_shape(metro) +
+    tm_symbols(col = "red", size = "pop2020", scale = .5) +
+tm_legend(show = FALSE)
+```
+
+We can make faceted maps with `tmap`
+```{r, message=FALSE, error=FALSE, warning=FALSE, results='hide'}
+# Set mode to interactive
+tmap_mode("view")
+
+# Plot it out
+tm_shape(World) +
+    tm_polygons(c("pop_est", "HPI","life_exp","well_being")) +
+    tm_facets(sync = TRUE, ncol = 2)
 ```
 
 ## `leaflet`

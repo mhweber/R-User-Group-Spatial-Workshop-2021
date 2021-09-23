@@ -164,3 +164,6 @@ what-makes-up-a-crs
 the-ellipsoid-and-geoid
 exercise-11
 solution-11
+access-python-objects-directly-from-r
+and-share-spatial-results-from-python
+tmap
