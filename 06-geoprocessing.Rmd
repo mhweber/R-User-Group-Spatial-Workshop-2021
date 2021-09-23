@@ -1,7 +1,7 @@
 # Geoprocessing
 ## Lesson Goals
 
-A quick look at a some typical topological operations (spatial subsetting, spatial joins, dissolve) using `sf` - followed by a couple 'real world' spatial tasks
+A quick look at a some typical topological operations (spatial subsetting, spatial joins, dissolve) using `sf` - followed by a couple 'real world' spatial tasks.  We'll be using several of the geometric binary predicates described in `?sf::geos_binary_pred`.
 
 ## Spatial Subsetting
 Let's look at the bike paths and parks data in the `Rspatialworkshop` package. There are `sf` feature collections of parks and trails in Austin in the package - we want to know what bike trails go through parks. A great feature of `sf` is it supports spatial indexing:

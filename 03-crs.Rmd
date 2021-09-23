@@ -47,7 +47,7 @@ There is no 'on-the-fly' projection in R - you need to make sure you specify the
 
 - [spatialreference.org](https://spatialreference.org/) is your friend in R - chances are you will use it frequently working with spatial data in R.
 
-- [projection Wizard](https://projectionwizard.org/) is also really useful
+- [projection Wizard](https://projectionwizard.org/) is also really useful, as is [epsg.io](https://epsg.io/)
 
 - Useful `rgdal` package functions:
   + projInfo(type='datum')

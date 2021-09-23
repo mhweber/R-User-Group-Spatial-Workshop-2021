@@ -60,6 +60,7 @@ install.packages("spDataLarge", repos = "https://nowosad.github.io/drat/", type 
 library(devtools)
 install_github("mhweber/Rspatialworkshop")
 install.packages("rmapshaper")
+install.packages("plot.matrix")
 ```
 
 ## Downloading content via Github
@@ -404,7 +405,7 @@ Run and examine code chunk above and try geocoding examples you think of
   To
   
   - do this *then* do that *then* do that
-4. Technically, it's a transposed version of `print` - columns run down page, data across like rows - it additionally gives you the number of observations and variables, and the data type of each column
+4. Technically, it's a transposed version of `print` - columns run down page, data across like rows - it additionally gives you the number of observations and variables, and the data type of each column.  Note that glimpse omits geometry information - you would type the name of your object at the console to get full information, or use print.sf() or str().
   - bonus: how would you quickly learn more about `glimpse` from the console?
 
 
